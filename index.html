@@ -84,7 +84,7 @@
       .btn-dropdown-nome { font-weight: 800; color: #14532d; }
       .btn-dropdown-seta { font-size: 0.75rem; color: #15803d; transition: transform 0.25s ease; margin-left: 6px; }
       .btn-menu-dropdown.aberto .btn-dropdown-seta { transform: rotate(180deg); }
-      .menu-dropdown-painel { display: none; position: absolute; top: calc(100% + 6px); left: 0; width: 320px; max-width: 95vw; background: #ffffff; border: 1.5px solid #86efac; border-radius: 10px; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22); z-index: 1000; overflow: hidden; animation: fadeInMenu 0.18s cubic-bezier(0.16, 1, 0.3, 1); }
+      .menu-dropdown-painel { display: none; position: absolute; top: calc(100% + 6px); left: 0; width: 340px; max-width: 95vw; background: #ffffff; border: 1.5px solid #86efac; border-radius: 10px; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22); z-index: 1000; overflow: hidden; animation: fadeInMenu 0.18s cubic-bezier(0.16, 1, 0.3, 1); }
       @keyframes fadeInMenu { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
       .menu-dropdown-painel.aberto { display: block; }
       .menu-dropdown-cabecalho { background: #f0fdf4; padding: 8px 12px; border-bottom: 1px solid #dcfce7; font-size: 0.75rem; font-weight: 700; color: #166534; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -361,7 +361,7 @@
         header, nav.barra-navegacao-dropdown, .faixa-programacao, .barra-semanas, .abas-dias, .barra-lancamento-dia, .modal-overlay, .banner-confirmacao { display: none !important; }
         main { padding: 0 !important; }
         .conteudo-aba { display: none !important; }
-        #aba-resumo.ativo, #aba-ciclo.ativo, #aba-producao-individual.ativo, #aba-fad7.ativo, #aba-relatorio-campo.ativo { display: block !important; }
+        #aba-resumo.ativo, #aba-ciclo.ativo, #aba-producao-individual.ativo, #aba-fad7.ativo, #aba-relatorio-campo.ativo, #aba-quarteiroes-designados.ativo { display: block !important; }
         .area-impressao { border: none !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
         * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       }
@@ -387,7 +387,7 @@
         <h1>🌿 Lançamentos de Campo</h1>
         <span id="dataHoje"></span>
         <span id="statusNuvem" class="badge-nuvem offline">🔄 Conectando...</span>
-        <span style="font-size:0.75rem; background:#dcfce7; color:#14532d; font-weight:700; padding:2px 8px; border-radius:9999px; border:1px solid #86efac;">v4.9</span>
+        <span style="font-size:0.75rem; background:#dcfce7; color:#14532d; font-weight:700; padding:2px 8px; border-radius:9999px; border:1px solid #86efac;">v5.0</span>
         <button onclick="recarregarAppCompleto()" style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:3px 8px; font-size:0.75rem; cursor:pointer; color:#334155; font-weight:600;">🔄 Atualizar Versão</button>
       </div>
       <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
@@ -431,6 +431,7 @@
               <button type="button" class="menu-dropdown-opcao" data-aba="resumo" role="menuitem"><span class="opcao-icone">📊</span><div class="opcao-textos"><span class="opcao-titulo">Resumo da Semana</span><span class="opcao-sub">Relatório semanal consolidado e PDF</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="ciclo" role="menuitem"><span class="opcao-icone">🔄</span><div class="opcao-textos"><span class="opcao-titulo">Resumo do Ciclo</span><span class="opcao-sub">Relatório consolidado do ciclo e PDF</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="producao-individual" role="menuitem"><span class="opcao-icone">👤</span><div class="opcao-textos"><span class="opcao-titulo">Produção Individual</span><span class="opcao-sub">Produção diária por agente</span></div><span class="opcao-marcador">✓</span></button>
+              <button type="button" class="menu-dropdown-opcao" data-aba="quarteiroes-designados" role="menuitem"><span class="opcao-icone">🧱</span><div class="opcao-textos"><span class="opcao-titulo">Quarteirões Designados</span><span class="opcao-sub">Quarteirões trabalhados por agente no ciclo vigente</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="fad7" role="menuitem"><span class="opcao-icone">📋</span><div class="opcao-textos"><span class="opcao-titulo">FAD 7</span><span class="opcao-sub">Resumo semanal do serviço antivetorial (LIRAa)</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="relatorio-campo" role="menuitem"><span class="opcao-icone">📄</span><div class="opcao-textos"><span class="opcao-titulo">Relatório de Campo</span><span class="opcao-sub">Relatório detalhado de atividade de campo</span></div><span class="opcao-marcador">✓</span></button>
             </div>
@@ -671,6 +672,23 @@
             <div class="subtitulo-doc">PRODUÇÃO INDIVIDUAL DOS AGENTES</div>
           </div>
           <div class="resumo-wrapper" id="prodIndWrapper"></div>
+        </div>
+      </section>
+      <section id="aba-quarteiroes-designados" class="conteudo-aba">
+        <h2>🧱 Quarteirões Designados</h2>
+        <div class="barra-semanas">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span style="font-weight: 700; color: #166534;">🔄 Ciclo vigente:</span>
+            <span id="qdCicloInfo" class="badge-aviso-atividade ciclo" style="font-size: 0.8rem;">—</span>
+          </div>
+          <button class="btn btn-pdf" id="btnImprimirPDFQuarteiroes">🖨️ Baixar PDF</button>
+        </div>
+        <div class="area-impressao" id="areaQuarteiroesDesignados">
+          <div class="cabecalho-resumo">
+            <div class="titulo-doc">PROGRAMA MUNICIPAL DE CONTROLE DA DENGUE - PMCD</div>
+            <div class="subtitulo-doc">QUARTEIRÕES DESIGNADOS POR AGENTE (CICLO VIGENTE)</div>
+          </div>
+          <div class="resumo-wrapper" id="qdWrapper"></div>
         </div>
       </section>
       <section id="aba-fad7" class="conteudo-aba">
@@ -1130,7 +1148,7 @@
         atividadeAtiva: "ciclo", semanaAtiva: "1", diaAtivo: "segunda",
         cicloFiltroConsolidado: "1", semanas: {}, semanasLiraa: {},
         programacao: [], ciclosConfig: {}, ciclo: { cabecalho: {}, rodape: {} }, configEquipe: null,
-        relatoriosCampo: []
+        relatoriosCampo: [], _migracaoObsCiclo: false
       };
       function pad2(v) { if (v === undefined || v === null || v === "") return ""; const n = Number(v); if (!isFinite(n)) return String(v); return (n < 0 ? "-" : "") + String(Math.abs(Math.trunc(n))).padStart(2, "0"); }
       function fmtIntCell(v) { if (v === undefined || v === null) return ""; const s = String(v).trim(); if (s === "") return ""; if (/^-?\d+$/.test(s)) { const n = parseInt(s, 10); return (n < 0 ? "-" : "") + String(Math.abs(n)).padStart(2, "0"); } return s; }
@@ -1198,6 +1216,7 @@
         else if (elementoId === "areaProducaoIndividual") { fw = 1400; }
         else if (elementoId === "areaImpressaoFad7") { fw = 1400; }
         else if (elementoId === "areaRelatorioCampo") { fw = 1400; }
+        else if (elementoId === "areaQuarteiroesDesignados") { fw = 1200; }
         else { fw = 1580; }
         el.style.width = fw + "px"; el.style.maxWidth = "none"; el.style.minWidth = fw + "px";
         void el.offsetWidth;
@@ -1375,7 +1394,7 @@
       let idProgramacaoParaExcluir = null;
       function solicitarExclusaoProgramacao(id) { idProgramacaoParaExcluir = id; const p = (estado.programacao || []).find(x => x && x.id === id); const d = document.getElementById("detalhesExclusaoProg"); if (d) { if (p) d.innerHTML = `<strong>Ano:</strong> ${p.ano || "—"}<br><strong>Atividade:</strong> ${p.atividade === "liraa" ? "LIRAa" : "Ciclo"}<br><strong>Ciclo:</strong> ${formatarCicloTexto(p.ciclo)}<br><strong>Período:</strong> ${formatarDataBR(p.cicloDataInicio || p.dataInicio)} a ${formatarDataBR(p.cicloDataTermino || p.dataTermino)}`; else d.textContent = "—"; } document.getElementById("modalConfirmarExclusaoProg").classList.add("ativo"); }
       function fecharModalExclusaoProg() { idProgramacaoParaExcluir = null; document.getElementById("modalConfirmarExclusaoProg").classList.remove("ativo"); }
-      function executarExclusaoProgramacaoConfirmada() { if (!idProgramacaoParaExcluir) { fecharModalExclusaoProg(); return; } const id = idProgramacaoParaExcluir; estado.programacao = (estado.programacao || []).filter(x => x && x.id !== id); salvar(); fecharModalExclusaoProg(); renderizarTabelaProgramacao(); sincronizarPeriodosSemanasCiclo(); try { verificarEAtualizarBadgeAtividade(); } catch(e) {} try { atualizarPreviewPeriodoCiclo(); } catch(e) {} }
+      function executarExclusaoProgramacaoConfirmada() { if (!idProgramacaoParaExcluir) { fecharModalExclusaoProg(); return; } const id = idProgramacaoParaExcluir; estado.programacao = (estado.programacao || []).filter(x => x && x.id !== id); salvar(); fecharModalExclusaoProg(); renderizarTabelaProgramacao(); sincronizarPeriodosSemanasCiclo(); try { verificarEAtualizarBadgeAtividade(); } catch(e) {} try { atualizarPreviewPeriodoCiclo(); } catch(e) {} try { renderizarQuarteiroesDesignados(); } catch(e) {} }
       function renderizarTabelaProgramacao() {
         const c = document.getElementById("corpoTabelaProg"); if (!c) return;
         c.innerHTML = "";
@@ -1408,7 +1427,7 @@
         if (!estado.programacao) estado.programacao = [];
         if (eId) { const p = estado.programacao.find(x => x && x.id === eId); if (p) { p.ano = ano; p.ciclo = normalizarNumeroCiclo(c); p.cicloSemanaInicio = sI; p.cicloSemanaTermino = sF; p.cicloDataInicio = dI; p.cicloDataTermino = dF; p.dataInicio = dI; p.dataTermino = dF; p.semana = sI; p.mes = m; p.atividade = at; } }
         else { estado.programacao.push({ id: "prog_" + Date.now() + "_" + Math.random().toString(36).slice(2,6), ano, ciclo: normalizarNumeroCiclo(c), cicloSemanaInicio: sI, cicloSemanaTermino: sF, cicloDataInicio: dI, cicloDataTermino: dF, dataInicio: dI, dataTermino: dF, semana: sI, mes: m, atividade: at }); }
-        salvar(); resetarFormularioProg(); renderizarTabelaProgramacao(); sincronizarPeriodosSemanasCiclo(); verificarEAtualizarBadgeAtividade(); renderizar(); atualizarTotais();
+        salvar(); resetarFormularioProg(); renderizarTabelaProgramacao(); sincronizarPeriodosSemanasCiclo(); verificarEAtualizarBadgeAtividade(); renderizar(); atualizarTotais(); try { renderizarQuarteiroesDesignados(); } catch(e) {}
         alert("✅ Programação salva!");
       }
       function abrirModalCorrecao() { const s = semana(); if (!s) return; atualizarLimitesSemanas(obterAnoSemana(s)); document.getElementById("corrAtividade").value = estado.atividadeAtiva; document.getElementById("corrSemana").value = estado.semanaAtiva; document.getElementById("corrCiclo").value = (s.cabecalho && normalizarNumeroCiclo(s.cabecalho.ciclo)) || "1"; document.getElementById("corrDataSegunda").value = obterDataSegundaSemana(s); document.getElementById("modalCorrecao").classList.add("ativo"); }
@@ -1434,7 +1453,7 @@
         sd.atividade = na; sd.ano = ano;
         if (ns !== ko || na !== ao) delete ro[ko];
         estado.atividadeAtiva = na; estado.semanaAtiva = ns;
-        salvar(); fecharModalCorrecao(); renderizar(); atualizarTotais();
+        salvar(); fecharModalCorrecao(); renderizar(); atualizarTotais(); try { renderizarQuarteiroesDesignados(); } catch(e) {}
         alert(`✅ Lançamento transferido para SE ${pad2(ns)}!`);
       }
       let timeoutSalvarNuvem = null;
@@ -1455,7 +1474,7 @@
           if (salvandoLocalmente) return;
           sincronizadoInicial = true;
           const d = snapshot.val();
-          if (d && typeof d === "object" && (d.semanas || d.semanasLiraa)) { estado = d; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {} carregar(); sincronizarPeriodosSemanasCiclo(); renderizar(); atualizarTotais(); atualizarStatusNuvem("☁️ Nuvem OK", "online"); }
+          if (d && typeof d === "object" && (d.semanas || d.semanasLiraa)) { estado = d; if (estado._migracaoObsCiclo === undefined) estado._migracaoObsCiclo = false; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {} carregar(); sincronizarPeriodosSemanasCiclo(); renderizar(); atualizarTotais(); atualizarStatusNuvem("☁️ Nuvem OK", "online"); }
           else if (!d) { salvarNuvem(); } else { atualizarStatusNuvem("☁️ Nuvem OK", "online"); }
         }, () => atualizarStatusNuvem("⚠️ Offline", "offline"));
       }
@@ -1474,6 +1493,7 @@
         if (!estado.ciclo) estado.ciclo = { cabecalho: {}, rodape: {} };
         if (!estado.ciclo.rodape) estado.ciclo.rodape = {};
         if (!Array.isArray(estado.relatoriosCampo)) estado.relatoriosCampo = [];
+        if (estado._migracaoObsCiclo === undefined) estado._migracaoObsCiclo = false;
         if (!estado.configEquipe) estado.configEquipe = obterConfigEquipePadrao();
         else if (!Array.isArray(estado.configEquipe.agentes)) estado.configEquipe.agentes = NOMES_AGENTES_PADRAO.map(nome => ({ id: "ag_" + Date.now() + "_" + Math.random().toString(36).slice(2,6), nome, ativo: true }));
         const r = repoAtivo();
@@ -1500,7 +1520,23 @@
           });
         });
         sincronizarPeriodosSemanasCiclo();
+        migrarObservacaoCiclo();
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+      }
+      function migrarObservacaoCiclo() {
+        if (estado._migracaoObsCiclo) return;
+        if (!estado.ciclo) estado.ciclo = { cabecalho: {}, rodape: {} };
+        if (!estado.ciclo.rodape) estado.ciclo.rodape = {};
+        if (!estado.ciclo.rodape.observacao) {
+          let origem = "";
+          const sk = estado.semanaAtiva;
+          if (sk && estado.semanas && estado.semanas[sk] && estado.semanas[sk].rodape && estado.semanas[sk].rodape.observacao) { origem = estado.semanas[sk].rodape.observacao; }
+          else if (estado.semanas) { for (const k of Object.keys(estado.semanas)) { if (estado.semanas[k]?.rodape?.observacao) { origem = estado.semanas[k].rodape.observacao; break; } } }
+          if (origem) estado.ciclo.rodape.observacao = origem;
+        }
+        estado._migracaoObsCiclo = true;
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+        salvarNuvem();
       }
       function exportarJSON() { salvar(); const b = new Blob([JSON.stringify(estado, null, 2)], { type: "application/json" }); const u = URL.createObjectURL(b); const a = document.createElement("a"); a.href = u; a.download = `backup_lancamentos_campo_${hojeISO()}.json`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u); }
       function importarJSON(e) { const arq = e.target.files[0]; if (!arq) return; if (!confirm("⚠️ Substituirá todos os dados. Continuar?")) { e.target.value = ""; return; } const r = new FileReader(); r.onload = (ev) => { try { const d = JSON.parse(ev.target.result); if (!d || (!d.semanas && !d.semanasLiraa)) throw new Error("JSON inválido."); estado = d; salvar(); carregar(); sincronizarPeriodosSemanasCiclo(); renderizar(); atualizarTotais(); renderizarRelatorioCampo(); alert("✅ Backup importado!"); } catch (err) { alert("❌ " + err.message); } finally { e.target.value = ""; } }; r.readAsText(arq); }
@@ -1572,8 +1608,10 @@
         });
         const cr = (estado.ciclo && estado.ciclo.rodape) ? estado.ciclo.rodape : {};
         document.querySelectorAll("[data-ciclorodape]").forEach(el => {
-          const k = el.dataset.ciclorodape; const vd = (k === "responsavel" && estado.configEquipe?.responsavel) ? estado.configEquipe.responsavel : "";
-          el.value = cr[k] || (r && r[k]) || vd || "";
+          const k = el.dataset.ciclorodape;
+          if (k === "observacao") { el.value = cr.observacao || ""; return; }
+          const vd = (k === "responsavel" && estado.configEquipe?.responsavel) ? estado.configEquipe.responsavel : "";
+          el.value = cr[k] || vd || "";
           if (k === "responsavel") { const f = cr.fontResponsavel || ""; if (f) { el.style.setProperty("font-family", f, "important"); el.style.setProperty("font-size", "1.35rem", "important"); } else { el.style.removeProperty("font-family"); el.style.removeProperty("font-size"); } }
         });
       }
@@ -1760,6 +1798,8 @@
           const cel = document.querySelector(`[data-total-equipe-deposito-final="b5-c${c}"]`); if (cel) { if (c === COL_GRAMAS) cel.textContent = fmtDecCell(s); else cel.textContent = fmtIntCell(s); }
         }
         const tEe = num(document.querySelector(`[data-total-equipe-deposito-final="b5-c${COL_ENCONTRADO}"]`)?.textContent), tNe = num(document.querySelector(`[data-total-equipe-deposito-final="b5-c${COL_NAO_INSP}"]`)?.textContent); const ciTe = document.querySelector(`[data-inspecionado-equipe-total="1"]`); if (ciTe) ciTe.textContent = fmtIntCell(tEe - tNe);
+        // Atualiza a aba "Quarteirões Designados" se estiver aberta
+        try { if (document.getElementById("aba-quarteiroes-designados")?.classList.contains("ativo")) renderizarQuarteiroesDesignados(); } catch(e) {}
       }
       function calcularSomasDia(diaKey, sk = null, repoA = null) {
         const repo = repoA || repoAtivo(); const s = sk ? repo[sk] : semana();
@@ -1880,7 +1920,6 @@
         tb.appendChild(trT); t.appendChild(tb); w.appendChild(t);
       }
       function calcularProducaoAgenteDia(ag) { if (!ag || !ag.valores) return 0; const v = ag.valores; let s = 0; for (let c = 1; c <= 7; c++) s += num(v[`b1-r2-c${c}`]) + num(v[`b1-r3-c${c}`]) + num(v[`b1-r4-c${c}`]) + num(v[`b1-r6-c${c}`]); return s; }
-      /* ===================== PRODUÇÃO INDIVIDUAL — SEGUNDA TABELA EDITÁVEL + TOTAL AUTOMÁTICO ===================== */
       function renderizarProducaoIndividual() {
         const w = document.getElementById("prodIndWrapper"); if (!w) return; w.innerHTML = "";
         const s = semana(); if (!s) return;
@@ -1892,8 +1931,6 @@
         if (ags.length === 0) { w.innerHTML = `<p style="text-align:center; padding: 30px; color: #64748b; font-weight: 600;">Nenhum agente cadastrado.</p>`; return; }
         const LP = ["160px","60px","60px","60px","60px","60px","60px","340px"]; const MP = "860px";
         const acg = (t) => { const c = document.createElement("colgroup"); LP.forEach(x => { const cc = document.createElement("col"); cc.style.width = x; c.appendChild(cc); }); t.appendChild(c); };
-
-        // ===== PRIMEIRA TABELA (somente leitura: produção calculada dos lançamentos) =====
         const t = document.createElement("table"); t.className = "resumo-tabela"; t.style.minWidth = MP; t.style.width = "100%"; t.style.tableLayout = "fixed"; acg(t);
         const th = document.createElement("thead"); const trH = document.createElement("tr"); ["Agente","Segunda","Terça","Quarta","Quinta","Sexta","Total","Observação"].forEach(x => { const e = document.createElement("th"); e.className = x === "Total" ? "cabecalho-destaque" : "cabecalho-titulo"; e.textContent = x; trH.appendChild(e); });
         th.appendChild(trH); t.appendChild(th);
@@ -1908,15 +1945,11 @@
         });
         const trT = document.createElement("tr"); trT.className = "linha-total-resumo"; const tl = document.createElement("td"); tl.className = "celula-rotulo-dia"; tl.textContent = "TOTAL DA EQUIPE"; trT.appendChild(tl); DIAS_SEMANA.forEach(dk => { const td = document.createElement("td"); td.textContent = fmtIntCell(tD[dk]); td.style.fontWeight = "800"; trT.appendChild(td); }); const ttd = document.createElement("td"); ttd.className = "col-total"; ttd.style.fontWeight = "800"; ttd.textContent = fmtIntCell(tg); trT.appendChild(ttd); trT.appendChild(document.createElement("td")); tb.appendChild(trT);
         t.appendChild(tb); w.appendChild(t);
-
-        // ===== SEGUNDA TABELA (totalmente editável; Total automático = soma Seg→Sex) =====
         const tA = document.createElement("table"); tA.className = "resumo-tabela"; tA.style.minWidth = MP; tA.style.width = "100%"; tA.style.tableLayout = "fixed"; tA.style.marginTop = "20px"; acg(tA);
         const thA = document.createElement("thead"); const trA = document.createElement("tr"); ["Agente","Segunda","Terça","Quarta","Quinta","Sexta","Total","Observação"].forEach(x => { const e = document.createElement("th"); e.className = x === "Total" ? "cabecalho-destaque" : "cabecalho-titulo"; e.textContent = x; trA.appendChild(e); }); thA.appendChild(trA); tA.appendChild(thA);
         const tbA = document.createElement("tbody");
         [{ key: "prod-supervisor", p: "Nome do supervisor..." }, { key: "prod-responsavel", p: "Nome do responsável..." }].forEach(({ key, p }) => {
           const tr = document.createElement("tr");
-
-          // Coluna 1 — nome (editável)
           const tdNome = document.createElement("td"); tdNome.style.padding = "0"; tdNome.style.textAlign = "left";
           const inpNome = document.createElement("input"); inpNome.type = "text"; inpNome.placeholder = p;
           inpNome.style.cssText = "width:100%; border:none; background:transparent; padding:10px; font-size:0.82rem; font-weight:700; color:#14532d; outline:none; text-align:left;";
@@ -1925,43 +1958,22 @@
           inpNome.addEventListener("focus", () => { inpNome.style.background = "#fef9c3"; });
           inpNome.addEventListener("blur", () => { inpNome.style.background = "transparent"; });
           tdNome.appendChild(inpNome); tr.appendChild(tdNome);
-
-          // Referência para a célula do Total automático
           let celulaTotal = null;
-
-          // Colunas Segunda..Sexta (editáveis)
           DIAS_SEMANA.forEach(dk => {
             const td = document.createElement("td"); td.style.padding = "0";
             const inp = document.createElement("input"); inp.type = "text"; inp.inputMode = "numeric";
             inp.style.cssText = "width:100%; border:none; background:transparent; padding:10px 2px; font-size:0.8rem; outline:none; text-align:center; font-weight:700; color:#14532d;";
             const ch = `${key}-${dk}`;
             inp.value = getResumoValor(ch, "");
-            const recalcularTotal = () => {
-              let soma = 0;
-              DIAS_SEMANA.forEach(d => { soma += num(getResumoValor(`${key}-${d}`, "")); });
-              if (celulaTotal) celulaTotal.textContent = fmtIntCell(soma);
-              setResumoValor(`${key}-total`, String(soma));
-            };
+            const recalcularTotal = () => { let soma = 0; DIAS_SEMANA.forEach(d => { soma += num(getResumoValor(`${key}-${d}`, "")); }); if (celulaTotal) celulaTotal.textContent = fmtIntCell(soma); setResumoValor(`${key}-total`, String(soma)); };
             inp.addEventListener("input", () => { setResumoValor(ch, inp.value); recalcularTotal(); });
-            inp.addEventListener("blur", () => {
-              const v = getResumoValor(ch, "");
-              if (v !== "" && v !== undefined) { const f = fmtIntCell(v); setResumoValor(ch, f); inp.value = f; }
-              recalcularTotal();
-              inp.style.background = "transparent";
-            });
+            inp.addEventListener("blur", () => { const v = getResumoValor(ch, ""); if (v !== "" && v !== undefined) { const f = fmtIntCell(v); setResumoValor(ch, f); inp.value = f; } recalcularTotal(); inp.style.background = "transparent"; });
             inp.addEventListener("focus", () => { inp.style.background = "#fef9c3"; });
             td.appendChild(inp); tr.appendChild(td);
           });
-
-          // Coluna Total — AUTOMÁTICA (somente leitura)
-          const tdTot = document.createElement("td"); tdTot.className = "col-total";
-          tdTot.style.padding = "10px 2px"; tdTot.style.textAlign = "center";
-          tdTot.style.fontWeight = "800"; tdTot.style.color = "#92400e"; tdTot.style.fontSize = "0.82rem";
+          const tdTot = document.createElement("td"); tdTot.className = "col-total"; tdTot.style.padding = "10px 2px"; tdTot.style.textAlign = "center"; tdTot.style.fontWeight = "800"; tdTot.style.color = "#92400e"; tdTot.style.fontSize = "0.82rem";
           tdTot.textContent = fmtIntCell(num(getResumoValor(`${key}-total`, "")));
-          celulaTotal = tdTot;
-          tr.appendChild(tdTot);
-
-          // Coluna Observação (editável)
+          celulaTotal = tdTot; tr.appendChild(tdTot);
           const tdObs = document.createElement("td"); tdObs.style.padding = "0";
           const inpObs = document.createElement("input"); inpObs.type = "text"; inpObs.placeholder = "Observação...";
           inpObs.style.cssText = "width:100%; border:none; background:transparent; padding:10px 8px; font-size:0.78rem; outline:none; text-align:left;";
@@ -1971,10 +1983,107 @@
           inpObs.addEventListener("focus", () => { inpObs.style.background = "#fef9c3"; });
           inpObs.addEventListener("blur", () => { inpObs.style.background = "transparent"; });
           tdObs.appendChild(inpObs); tr.appendChild(tdObs);
-
           tbA.appendChild(tr);
         });
         tA.appendChild(tbA); w.appendChild(tA);
+      }
+      /* ============ NOVA ABA: QUARTEIRÕES DESIGNADOS ============ */
+      function obterContextoCicloVigente() {
+        const s = semana(); if (!s) return { ano: new Date().getFullYear(), ciclo: "1", atividade: estado.atividadeAtiva };
+        const ano = obterAnoSemana(s);
+        const ciclo = normalizarNumeroCiclo(s?.cabecalho?.ciclo || "1");
+        return { ano, ciclo, atividade: estado.atividadeAtiva };
+      }
+      function renderizarQuarteiroesDesignados() {
+        const w = document.getElementById("qdWrapper"); if (!w) return;
+        const info = document.getElementById("qdCicloInfo");
+        const ctx = obterContextoCicloVigente();
+        if (info) {
+          const dc = obterDatasCicloEfetivas(ctx.ano, ctx.ciclo, ctx.atividade);
+          if (dc.inicio && dc.termino) { info.className = "badge-aviso-atividade ciclo"; info.textContent = `${formatarCicloTexto(ctx.ciclo)} • ${formatarDataBR(dc.inicio)} a ${formatarDataBR(dc.termino)}`; }
+          else { info.className = "badge-aviso-atividade alerta"; info.textContent = `${formatarCicloTexto(ctx.ciclo)} • sem programação cadastrada`; }
+        }
+        const repo = repoAtivo();
+        const dc = obterDatasCicloEfetivas(ctx.ano, ctx.ciclo, ctx.atividade);
+        const iniCiclo = dc.inicio || "";
+        const fimCiclo = dc.termino || "";
+        const anoCiclo = ctx.ano;
+        const cicloStr = ctx.ciclo;
+        const mapa = new Map();
+        Object.keys(repo).forEach(sk => {
+          const sem = repo[sk]; if (!sem) return;
+          const sCiclo = normalizarNumeroCiclo(sem.cabecalho?.ciclo || "1");
+          const sAno = obterAnoSemana(sem);
+          if (sCiclo !== cicloStr || sAno !== anoCiclo) return;
+          DIAS_SEMANA.forEach(dk => {
+            const dia = sem.dias?.[dk]; if (!dia) return;
+            const iso = dia.data || ""; if (!iso) return;
+            if (iniCiclo && iso < iniCiclo) return;
+            if (fimCiclo && iso > fimCiclo) return;
+            const agentes = (dia.agentes || []).filter(a => a && a.ativo !== false && a.nome);
+            agentes.forEach(ag => {
+              const v = ag.valores || {};
+              const partes = [];
+              for (let c = 1; c <= 7; c++) {
+                const raw = v[`b1-r0-c${c}`];
+                if (raw === undefined || raw === null) continue;
+                extrairQuarteiroesDeTexto(raw).forEach(q => partes.push(q));
+              }
+              partes.forEach(qRaw => {
+                const q = normalizarQuarteirao(qRaw); if (!q) return;
+                const nome = (ag.nome || "").trim(); if (!nome) return;
+                const chave = q + "|" + nome.toLowerCase();
+                const atual = mapa.get(chave);
+                if (!atual) mapa.set(chave, { quarteirao: q, agente: nome, primeira: iso, ultima: iso });
+                else { if (iso < atual.primeira) atual.primeira = iso; if (iso > atual.ultima) atual.ultima = iso; }
+              });
+            });
+          });
+        });
+        const linhas = Array.from(mapa.values()).sort((a, b) => {
+          const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
+          const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
+          if (qa !== qb) return qa - qb;
+          return String(a.quarteirao).localeCompare(String(b.quarteirao));
+        }).sort((a, b) => {
+          const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
+          const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
+          if (qa !== qb) return 0;
+          return a.agente.localeCompare(b.agente);
+        });
+        // ordenação definitiva: por quarteirão (numérico) e depois por agente
+        linhas.sort((a, b) => {
+          const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
+          const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
+          if (qa !== qb) return qa - qb;
+          if (a.quarteirao !== b.quarteirao) return String(a.quarteirao).localeCompare(String(b.quarteirao));
+          return a.agente.localeCompare(b.agente, "pt-BR", { sensitivity: "base" });
+        });
+        const t = document.createElement("table");
+        t.className = "resumo-tabela";
+        t.style.minWidth = "720px";
+        t.style.width = "100%";
+        t.style.tableLayout = "fixed";
+        const cg = document.createElement("colgroup");
+        ["140px","320px","180px","180px"].forEach(x => { const c = document.createElement("col"); c.style.width = x; cg.appendChild(c); });
+        t.appendChild(cg);
+        const th = document.createElement("thead");
+        const trH = document.createElement("tr");
+        ["Quarteirão","Agente","Primeira Ocorrência","Última Ocorrência"].forEach(x => { const e = document.createElement("th"); e.className = "cabecalho-titulo"; e.textContent = x; trH.appendChild(e); });
+        th.appendChild(trH); t.appendChild(th);
+        const tb = document.createElement("tbody");
+        if (linhas.length === 0) {
+          tb.innerHTML = `<tr><td colspan="4" style="padding:18px;color:#64748b;font-weight:600;text-align:center;">Nenhum quarteirão identificado no ciclo vigente com os lançamentos atuais.</td></tr>`;
+        } else {
+          linhas.forEach(l => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `<td style="font-weight:800;color:#14532d;">${l.quarteirao}</td><td style="text-align:left;padding-left:10px;font-weight:700;color:#14532d;">${l.agente}</td><td>${formatarDataBR(l.primeira)}</td><td>${formatarDataBR(l.ultima)}</td>`;
+            tb.appendChild(tr);
+          });
+        }
+        t.appendChild(tb);
+        w.innerHTML = "";
+        w.appendChild(t);
       }
       function obterConfigEquipePadrao() {
         const s = (estado?.semanaAtiva && repoAtivo()?.[estado.semanaAtiva]) || null; const cab = s ? s.cabecalho : {}; const rod = s ? s.rodape : {};
@@ -2129,7 +2238,7 @@
           aplicarFonte(fS);
           const selF = document.getElementById("selectFonte"); if (selF) selF.addEventListener("change", e => aplicarFonte(e.target.value));
           const inPA = document.getElementById("progAno"); if (inPA && !inPA.value) inPA.value = new Date().getFullYear();
-          const MAPA = { "sugarbo": { icone: "🍬", titulo: "SUGARBO" }, "config-equipe": { icone: "⚙️", titulo: "Configuração da Equipe" }, "lancamentos": { icone: "📝", titulo: "Lançamentos Diários" }, "resumo": { icone: "📊", titulo: "Resumo da Semana" }, "ciclo": { icone: "🔄", titulo: "Resumo do Ciclo" }, "producao-individual": { icone: "👤", titulo: "Produção Individual" }, "fad7": { icone: "📋", titulo: "FAD 7" }, "relatorio-campo": { icone: "📄", titulo: "Relatório de Campo" } };
+          const MAPA = { "sugarbo": { icone: "🍬", titulo: "SUGARBO" }, "config-equipe": { icone: "⚙️", titulo: "Configuração da Equipe" }, "lancamentos": { icone: "📝", titulo: "Lançamentos Diários" }, "resumo": { icone: "📊", titulo: "Resumo da Semana" }, "ciclo": { icone: "🔄", titulo: "Resumo do Ciclo" }, "producao-individual": { icone: "👤", titulo: "Produção Individual" }, "quarteiroes-designados": { icone: "🧱", titulo: "Quarteirões Designados" }, "fad7": { icone: "📋", titulo: "FAD 7" }, "relatorio-campo": { icone: "📄", titulo: "Relatório de Campo" } };
           function alternarAba(id) {
             if (!MAPA[id]) id = "lancamentos"; const m = MAPA[id];
             const iE = document.getElementById("menuDropdownIcone"), nE = document.getElementById("menuDropdownNome"), bE = document.getElementById("navStatusBadge");
@@ -2144,6 +2253,7 @@
             if (id === "lancamentos") { renderizar(); atualizarTotais(); }
             if (id === "config-equipe") { renderizarConfigEquipe(); }
             if (id === "producao-individual") { renderizarProducaoIndividual(); }
+            if (id === "quarteiroes-designados") { renderizarQuarteiroesDesignados(); }
             if (id === "fad7") { if (estado.atividadeAtiva !== "liraa") { const s = semana(); const an = obterAnoSemana(s); const c = normalizarNumeroCiclo(s?.cabecalho?.ciclo || "1"); estado.atividadeAtiva = "liraa"; if (!estado.semanasLiraa) estado.semanasLiraa = {}; if (!estado.semanasLiraa[String(estado.semanaAtiva)]) { const p = obterPeriodoDaSemana(estado.semanaAtiva, an, c, "liraa"); estado.semanasLiraa[String(estado.semanaAtiva)] = criarSemana(p.inicioISO, String(estado.semanaAtiva), "liraa", c); } salvar(); renderizar(); atualizarTotais(); } renderizarFad7(); }
             if (id === "relatorio-campo") { renderizarRelatorioCampo(); }
           }
@@ -2210,6 +2320,7 @@
           const bPA = document.getElementById("btnSemanaAnteriorProdInd"); if (bPA) bPA.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) - 1); renderizarProducaoIndividual(); });
           const bPP = document.getElementById("btnSemanaProximaProdInd"); if (bPP) bPP.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) + 1); renderizarProducaoIndividual(); });
           const bPPI = document.getElementById("btnImprimirPDFProdInd"); if (bPPI) bPPI.addEventListener("click", () => gerarPDF("areaProducaoIndividual", `PMCD_Producao_Individual_SE${pad2(estado.semanaAtiva)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e))));
+          const bQdPdf = document.getElementById("btnImprimirPDFQuarteiroes"); if (bQdPdf) bQdPdf.addEventListener("click", () => gerarPDF("areaQuarteiroesDesignados", `PMCD_Quarteiroes_Designados_${hojeISO()}.pdf`, { orientacao: "portrait" }).catch(e => alert("❌ " + (e?.message || e))));
           atualizarTextoGeracao(); obterLocalizacao().then(() => atualizarTextoGeracao()).catch(() => {});
           renderizarTabelaProgramacao(); atualizarPreviewPeriodoCiclo();
           autoDetectarProgramacaoPorData(hojeISO(), false);
