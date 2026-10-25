@@ -296,7 +296,6 @@
       #aba-resumo .campo-rodape { display: flex; align-items: center; gap: 8px; flex: 1; max-width: 440px; }
       #aba-resumo .campo-rodape label { font-size: 0.86rem; font-weight: 800; color: #14532d; }
       #aba-resumo .campo-rodape input { flex: 1; border-bottom: 1.5px solid #475569; padding: 4px 6px; font-size: 0.86rem; }
-      /* FAD 7 */
       .fad7-form { display: flex; flex-direction: column; gap: 8px; }
       .fad7-secao { border: 1.5px solid #475569; border-radius: 6px; overflow: hidden; }
       .fad7-secao-titulo { background: #dcfce7; color: #14532d; font-weight: 800; font-size: 0.8rem; padding: 5px 10px; border-bottom: 1.5px solid #475569; text-transform: uppercase; letter-spacing: 0.3px; }
@@ -322,7 +321,6 @@
       .fad7-resumo-campo-card.indices { flex: 2 1 0; min-width: 180px; }
       .fad7-card-titulo { background: #e2e8f0; color: #14532d; font-weight: 800; font-size: 0.68rem; padding: 4px 4px; border-bottom: 1.5px solid #475569; text-align: center; text-transform: uppercase; letter-spacing: 0.2px; line-height: 1.2; }
       .fad7-resumo-campo-card .fad7-tabela { flex: 1 1 auto; }
-      /* RELATÓRIO DE CAMPO */
       .rc-form { display: flex; flex-direction: column; gap: 10px; }
       .rc-cabecalho { text-align: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1.5px solid #475569; }
       .rc-titulo { font-size: 1.2rem; font-weight: 900; color: #14532d; text-transform: uppercase; letter-spacing: 1px; }
@@ -368,27 +366,9 @@
         * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       }
       .capturando-pdf { margin: 0 !important; padding: 10px 14px 12px !important; background: #fff !important; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; gap: 6px !important; box-sizing: border-box !important; overflow: visible !important; }
-      /* Relatório de Campo — largura fixa igual à captura do PDF e centralização */
-      #aba-relatorio-campo .area-impressao {
-        width: 100%;
-        max-width: 1000px;
-        margin: 0 auto 14px;
-      }
-
-      /* Durante a captura do PDF: manter padding e display idênticos à tela
-         (evita o padding reduzido e o display:flex do .capturando-pdf global) */
-      #areaRelatorioCampo.capturando-pdf {
-        padding: 20px 16px !important;
-        display: block !important;
-      }
-
-      /* Resumo da Semana: preservar layout e padding originais durante captura do PDF */
-      #areaImpressao.capturando-pdf {
-        padding: 24px 22px 28px !important;
-        display: block !important;
-      }
-
-      /* Supervisão integrada à linha de identificação */
+      #aba-relatorio-campo .area-impressao { width: 100%; max-width: 1000px; margin: 0 auto 14px; }
+      #areaRelatorioCampo.capturando-pdf { padding: 20px 16px !important; display: block !important; }
+      #areaImpressao.capturando-pdf { padding: 24px 22px 28px !important; display: block !important; }
       .sup-cab { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; }
       .sup-rotulo { font-weight: 800; color: #14532d; font-size: 0.74rem; white-space: nowrap; }
       .sup-sim-nao { padding: 2px 4px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.74rem; font-weight: 700; color: #14532d; background: #fff; outline: none; cursor: pointer; }
@@ -1197,181 +1177,63 @@
           else if (a === "ciclorodape-responsavel") { const v = (estado.ciclo?.rodape?.fontResponsavel) || ""; if (sel.value !== v) sel.value = v; const i = document.querySelector('[data-ciclorodape="responsavel"]'); if (i) { if (v) { i.style.setProperty("font-family", v, "important"); i.style.setProperty("font-size", "1.35rem", "important"); } else { i.style.removeProperty("font-family"); i.style.removeProperty("font-size"); } } }
         });
       }
-      /* ============================================================
-         GERAR PDF — aceita opções { orientacao: "landscape" | "portrait" }
-         ============================================================ */
       async function gerarPDF(elementoId, nomeArquivo, opcoes = {}) {
         const el = document.getElementById(elementoId);
         if (!el) return;
-
         const orientacao = opcoes.orientacao === "portrait" ? "portrait" : "landscape";
         const ehRetrato = orientacao === "portrait";
-
         atualizarStatusNuvem("📄 Gerando PDF...", "salvando");
         let loc = ""; try { loc = await obterLocalizacao(); } catch(e) { loc = _locCache || ""; }
-
         el.classList.add("capturando-pdf");
         el.querySelectorAll("textarea").forEach(t => { t.textContent = t.value; });
         atualizarTextoGeracao(loc);
-
         const wrapper = el.querySelector(".resumo-wrapper");
         const sc = wrapper ? wrapper.scrollLeft : 0;
         if (wrapper) wrapper.scrollLeft = 0;
-
         void el.offsetWidth;
-
         let fw;
-        if (ehRetrato) {
-          fw = 1000;
-        } else if (elementoId === "areaImpressao") {
-          const baseW = Math.round(el.getBoundingClientRect().width);
-          const wrapEl = el.querySelector(".resumo-wrapper");
-          const tableW = wrapEl ? wrapEl.scrollWidth : 0;
-          const padH = 44;
-          fw = Math.max(baseW, tableW + padH);
-        } else if (elementoId === "areaImpressaoCiclo") {
-          fw = 1680;
-        } else if (elementoId === "areaProducaoIndividual") {
-          fw = 1400;
-        } else if (elementoId === "areaImpressaoFad7") {
-          fw = 1400;
-        } else if (elementoId === "areaRelatorioCampo") {
-          fw = 1400;
-        } else {
-          fw = 1580;
-        }
-
-        el.style.width    = fw + "px";
-        el.style.maxWidth = "none";
-        el.style.minWidth = fw + "px";
+        if (ehRetrato) { fw = 1000; }
+        else if (elementoId === "areaImpressao") { const baseW = Math.round(el.getBoundingClientRect().width); const wrapEl = el.querySelector(".resumo-wrapper"); const tableW = wrapEl ? wrapEl.scrollWidth : 0; const padH = 44; fw = Math.max(baseW, tableW + padH); }
+        else if (elementoId === "areaImpressaoCiclo") { fw = 1680; }
+        else if (elementoId === "areaProducaoIndividual") { fw = 1400; }
+        else if (elementoId === "areaImpressaoFad7") { fw = 1400; }
+        else if (elementoId === "areaRelatorioCampo") { fw = 1400; }
+        else { fw = 1580; }
+        el.style.width = fw + "px"; el.style.maxWidth = "none"; el.style.minWidth = fw + "px";
         void el.offsetWidth;
-
         const ch = Math.max(el.scrollHeight || 0, el.offsetHeight || 0) + 4;
-
-        const restaurar = () => {
-          el.classList.remove("capturando-pdf");
-          el.style.width = ""; el.style.maxWidth = ""; el.style.minWidth = "";
-          if (wrapper) wrapper.scrollLeft = sc;
-          atualizarStatusNuvem("☁️ Nuvem OK", "online");
-        };
-
+        const restaurar = () => { el.classList.remove("capturando-pdf"); el.style.width = ""; el.style.maxWidth = ""; el.style.minWidth = ""; if (wrapper) wrapper.scrollLeft = sc; atualizarStatusNuvem("☁️ Nuvem OK", "online"); };
         const h2c = window.html2canvas || null;
         const JsPDF = (window.jspdf?.jsPDF) || null;
-
         const clone = (cd) => {
           try {
-            cd.documentElement.style.width = fw + 'px';
-            cd.documentElement.style.minWidth = fw + 'px';
-            if (cd.body) {
-              cd.body.style.width = fw + 'px';
-              cd.body.style.minWidth = fw + 'px';
-              cd.body.style.overflow = 'visible';
-            }
+            cd.documentElement.style.width = fw + 'px'; cd.documentElement.style.minWidth = fw + 'px';
+            if (cd.body) { cd.body.style.width = fw + 'px'; cd.body.style.minWidth = fw + 'px'; cd.body.style.overflow = 'visible'; }
             const c = cd.getElementById(elementoId);
             if (c) { c.style.width = fw + 'px'; c.style.maxWidth = 'none'; c.style.minWidth = fw + 'px'; }
             const cont = c || cd;
-
             cont.querySelectorAll('input').forEach(inp => {
               const v = (inp.value !== undefined && inp.value !== null && inp.value !== "") ? inp.value : (inp.placeholder || "");
               const rep = cd.createElement('div'); rep.textContent = v; rep.className = inp.className;
-
-              // Preservar estilos inline aplicados ao input (ex.: font-family de assinatura)
-              const ff = inp.style.getPropertyValue("font-family");
-              const fs = inp.style.getPropertyValue("font-size");
-              const lh = inp.style.getPropertyValue("line-height");
-
+              const ff = inp.style.getPropertyValue("font-family"); const fs = inp.style.getPropertyValue("font-size"); const lh = inp.style.getPropertyValue("line-height");
               const ptd = inp.closest('td');
-              if (ptd) {
-                rep.style.cssText = `width:100%;text-align:center;font-weight:700;font-size:0.78rem;line-height:1.3;padding:0;color:#14532d;display:block;`;
-                ptd.style.padding = '10px 2px';
-                ptd.style.verticalAlign = 'middle';
-              } else {
-                rep.style.cssText = `display:inline-block;border-bottom:1.5px solid #94a3b8;padding:1px 6px 3px;font-size:0.82rem;font-weight:600;color:#1e293b;min-height:20px;`;
-              }
-
-              // Reaplicar fontes inline com !important para vencer o cssText acima
+              if (ptd) { rep.style.cssText = `width:100%;text-align:center;font-weight:700;font-size:0.78rem;line-height:1.3;padding:0;color:#14532d;display:block;`; ptd.style.padding = '10px 2px'; ptd.style.verticalAlign = 'middle'; }
+              else { rep.style.cssText = `display:inline-block;border-bottom:1.5px solid #94a3b8;padding:1px 6px 3px;font-size:0.82rem;font-weight:600;color:#1e293b;min-height:20px;`; }
               if (ff) rep.style.setProperty("font-family", ff, "important");
               if (fs) rep.style.setProperty("font-size", fs, "important");
               if (lh) rep.style.setProperty("line-height", lh, "important");
-
               if (inp.type === "checkbox") { rep.textContent = inp.checked ? "☑" : "☐"; }
               inp.parentNode.replaceChild(rep, inp);
             });
-
-            cont.querySelectorAll('textarea').forEach(tx => {
-              const rep = cd.createElement('div');
-              rep.textContent = tx.value || tx.placeholder || "";
-              rep.style.cssText = `width:100%;min-height:55px;font-size:0.82rem;padding:6px 10px;border:1.5px solid #94a3b8;border-radius:6px;background:#fff;line-height:1.4;white-space:pre-wrap;box-sizing:border-box;`;
-              tx.parentNode.replaceChild(rep, tx);
-            });
-
-            cont.querySelectorAll("select").forEach(s => {
-              // NÃO substituir o seletor de fonte de assinatura —
-              // ele fica oculto via CSS (.capturando-pdf .font-assinatura-select{display:none}),
-              // assim o nome da fonte ("Dancing Script") NÃO aparece no PDF.
-              if (s.classList.contains("font-assinatura-select")) return;
-              const rep = cd.createElement('div');
-              rep.textContent = s.options[s.selectedIndex]?.text || "";
-              rep.style.cssText = `display:inline-block;border-bottom:1.5px solid #94a3b8;padding:1px 6px 3px;font-size:0.82rem;font-weight:600;color:#1e293b;`;
-              s.parentNode.replaceChild(rep, s);
-            });
+            cont.querySelectorAll('textarea').forEach(tx => { const rep = cd.createElement('div'); rep.textContent = tx.value || tx.placeholder || ""; rep.style.cssText = `width:100%;min-height:55px;font-size:0.82rem;padding:6px 10px;border:1.5px solid #94a3b8;border-radius:6px;background:#fff;line-height:1.4;white-space:pre-wrap;box-sizing:border-box;`; tx.parentNode.replaceChild(rep, tx); });
+            cont.querySelectorAll("select").forEach(s => { if (s.classList.contains("font-assinatura-select")) return; const rep = cd.createElement('div'); rep.textContent = s.options[s.selectedIndex]?.text || ""; rep.style.cssText = `display:inline-block;border-bottom:1.5px solid #94a3b8;padding:1px 6px 3px;font-size:0.82rem;font-weight:600;color:#1e293b;`; s.parentNode.replaceChild(rep, s); });
           } catch(e) { console.warn('[clone]', e); }
         };
-
-        const direto = () => {
-          if (!h2c || !JsPDF) return Promise.reject(new Error("libs"));
-          return (document.fonts?.ready || Promise.resolve()).then(() =>
-            h2c(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff', width: fw, height: ch, windowWidth: fw, windowHeight: ch, scrollX: 0, scrollY: 0, onclone: clone })
-          ).then(cv => {
-            const img = cv.toDataURL('image/png');
-            const pdf = new JsPDF({ orientation: orientacao, unit: 'mm', format: 'a4', compress: true });
-            const pw = pdf.internal.pageSize.getWidth();
-            const ph = pdf.internal.pageSize.getHeight();
-            const ratio = Math.min((pw - 7) / cv.width, (ph - 8) / cv.height);
-            const fW = cv.width * ratio;
-            const fH = cv.height * ratio;
-            pdf.addImage(img, 'PNG', (pw - fW) / 2, (ph - fH) / 2, fW, fH, undefined, 'FAST');
-            pdf.save(nomeArquivo);
-          });
-        };
-
-        const fb = () => {
-          if (typeof html2pdf === "undefined") return Promise.reject(new Error("html2pdf"));
-          return html2pdf().set({
-            margin: [4, 3.5, 4, 3.5],
-            filename: nomeArquivo,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: { scale: 2, useCORS: true, windowWidth: fw, windowHeight: ch, onclone: clone },
-            jsPDF: { unit: 'mm', format: 'a4', orientation: orientacao, compress: true }
-          }).from(el).save();
-        };
-
-        const fallbackImpressao = () => {
-          restaurar();
-          if (ehRetrato) {
-            let st = document.getElementById('pmcd-page-size-override');
-            if (!st) {
-              st = document.createElement('style');
-              st.id = 'pmcd-page-size-override';
-              st.textContent = '@media print { @page { size: A4 portrait; margin: 6mm; } }';
-              document.head.appendChild(st);
-            }
-            const limpar = () => {
-              const s = document.getElementById('pmcd-page-size-override');
-              if (s) s.remove();
-              window.removeEventListener('afterprint', limpar);
-            };
-            window.addEventListener('afterprint', limpar);
-            setTimeout(() => window.print(), 120);
-          } else {
-            window.print();
-          }
-        };
-
+        const direto = () => { if (!h2c || !JsPDF) return Promise.reject(new Error("libs")); return (document.fonts?.ready || Promise.resolve()).then(() => h2c(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff', width: fw, height: ch, windowWidth: fw, windowHeight: ch, scrollX: 0, scrollY: 0, onclone: clone })).then(cv => { const img = cv.toDataURL('image/png'); const pdf = new JsPDF({ orientation: orientacao, unit: 'mm', format: 'a4', compress: true }); const pw = pdf.internal.pageSize.getWidth(); const ph = pdf.internal.pageSize.getHeight(); const ratio = Math.min((pw - 7) / cv.width, (ph - 8) / cv.height); const fW = cv.width * ratio; const fH = cv.height * ratio; pdf.addImage(img, 'PNG', (pw - fW) / 2, (ph - fH) / 2, fW, fH, undefined, 'FAST'); pdf.save(nomeArquivo); }); };
+        const fb = () => { if (typeof html2pdf === "undefined") return Promise.reject(new Error("html2pdf")); return html2pdf().set({ margin: [4, 3.5, 4, 3.5], filename: nomeArquivo, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2, useCORS: true, windowWidth: fw, windowHeight: ch, onclone: clone }, jsPDF: { unit: 'mm', format: 'a4', orientation: orientacao, compress: true } }).from(el).save(); };
+        const fallbackImpressao = () => { restaurar(); if (ehRetrato) { let st = document.getElementById('pmcd-page-size-override'); if (!st) { st = document.createElement('style'); st.id = 'pmcd-page-size-override'; st.textContent = '@media print { @page { size: A4 portrait; margin: 6mm; } }'; document.head.appendChild(st); } const limpar = () => { const s = document.getElementById('pmcd-page-size-override'); if (s) s.remove(); window.removeEventListener('afterprint', limpar); }; window.addEventListener('afterprint', limpar); setTimeout(() => window.print(), 120); } else { window.print(); } };
         return direto().then(restaurar).catch(() => fb().then(restaurar).catch(fallbackImpressao));
       }
-      /* ============================ fim gerarPDF ============================ */
-
       function obterTotalSemanasEpidemiologicas(ano) { const a = Number(ano) || new Date().getFullYear(); function p(y) { return (y + Math.floor(y/4) - Math.floor(y/100) + Math.floor(y/400)) % 7; } return (p(a) === 4 || p(a-1) === 3) ? 53 : 52; }
       function atualizarLimitesSemanas(ano) { const t = obterTotalSemanasEpidemiologicas(ano); ["progCicloSemanaInicio","progCicloSemanaTermino","semanaLancamento","liraaSemanaInicio","liraaSemanaTermino","corrSemana"].forEach(id => { const el = document.getElementById(id); if (el) el.max = t; }); }
       function repoAtivo() { if (!estado.semanas) estado.semanas = {}; if (!estado.semanasLiraa) estado.semanasLiraa = {}; return estado.atividadeAtiva === "liraa" ? estado.semanasLiraa : estado.semanas; }
@@ -1745,7 +1607,6 @@
       function criarBlocoQuarteirao(ag) {
         const w = document.createElement("div"); w.className = "bloco-tabela"; const v = valoresDoDia(ag); const t = document.createElement("table"); aplicarColgroupBloco(t);
         const dA = diaAtual(); const dS = dA ? dA.data : hojeISO(); const th = document.createElement("thead"); const trId = document.createElement("tr"); trId.className = "linha-identificacao";
-        // Linha de identificação: Data | Dia | Nome | Supervisão?
         trId.innerHTML = `<th colspan="2">📅 ${formatarDataBR(dS)}</th><th colspan="2">🗓 ${nomeDiaExibido(dS, estado.diaAtivo)}</th><th colspan="2"><input type="text" class="nome-agente" value="${ag.nome}" /></th><th colspan="3" style="padding:2px 3px;"><div class="sup-cab"><span class="sup-rotulo">👁️ Supervisão?</span><select class="sup-sim-nao"><option value="">—</option><option value="Sim">Sim</option><option value="Não">Não</option></select><div class="sup-detalhes" style="display:none;"><label>D:</label><input type="text" inputmode="numeric" class="sup-input sup-direta" placeholder="0" /><label>I:</label><input type="text" inputmode="numeric" class="sup-input sup-indireta" placeholder="0" /><span class="sup-total-wrap"><strong>T:</strong> <span class="sup-total">0</span></span></div></div></th>`;
         th.appendChild(trId);
         trId.querySelector("input.nome-agente").addEventListener("input", e => { ag.nome = e.target.value; if (estado.configEquipe?.agentes) { const c = estado.configEquipe.agentes.find(a => a.id === ag.id); if (c) c.nome = ag.nome; } const s = semana(); if (s?.cabecalho) { s.cabecalho.agentesEquipe = obterTextoAgentesEquipe(s); const eq = document.querySelector('[data-cab="agentesEquipe"]'); if (eq) eq.value = s.cabecalho.agentesEquipe; } salvar(); const h = document.querySelector(`.coluna-agente[data-agente-id="${ag.id}"] .cabecalho-agente h3`); if (h) h.textContent = ag.nome || "Agente"; });
@@ -2019,6 +1880,7 @@
         tb.appendChild(trT); t.appendChild(tb); w.appendChild(t);
       }
       function calcularProducaoAgenteDia(ag) { if (!ag || !ag.valores) return 0; const v = ag.valores; let s = 0; for (let c = 1; c <= 7; c++) s += num(v[`b1-r2-c${c}`]) + num(v[`b1-r3-c${c}`]) + num(v[`b1-r4-c${c}`]) + num(v[`b1-r6-c${c}`]); return s; }
+      /* ===================== PRODUÇÃO INDIVIDUAL — SEGUNDA TABELA EDITÁVEL + TOTAL AUTOMÁTICO ===================== */
       function renderizarProducaoIndividual() {
         const w = document.getElementById("prodIndWrapper"); if (!w) return; w.innerHTML = "";
         const s = semana(); if (!s) return;
@@ -2030,6 +1892,8 @@
         if (ags.length === 0) { w.innerHTML = `<p style="text-align:center; padding: 30px; color: #64748b; font-weight: 600;">Nenhum agente cadastrado.</p>`; return; }
         const LP = ["160px","60px","60px","60px","60px","60px","60px","340px"]; const MP = "860px";
         const acg = (t) => { const c = document.createElement("colgroup"); LP.forEach(x => { const cc = document.createElement("col"); cc.style.width = x; c.appendChild(cc); }); t.appendChild(c); };
+
+        // ===== PRIMEIRA TABELA (somente leitura: produção calculada dos lançamentos) =====
         const t = document.createElement("table"); t.className = "resumo-tabela"; t.style.minWidth = MP; t.style.width = "100%"; t.style.tableLayout = "fixed"; acg(t);
         const th = document.createElement("thead"); const trH = document.createElement("tr"); ["Agente","Segunda","Terça","Quarta","Quinta","Sexta","Total","Observação"].forEach(x => { const e = document.createElement("th"); e.className = x === "Total" ? "cabecalho-destaque" : "cabecalho-titulo"; e.textContent = x; trH.appendChild(e); });
         th.appendChild(trH); t.appendChild(th);
@@ -2044,11 +1908,71 @@
         });
         const trT = document.createElement("tr"); trT.className = "linha-total-resumo"; const tl = document.createElement("td"); tl.className = "celula-rotulo-dia"; tl.textContent = "TOTAL DA EQUIPE"; trT.appendChild(tl); DIAS_SEMANA.forEach(dk => { const td = document.createElement("td"); td.textContent = fmtIntCell(tD[dk]); td.style.fontWeight = "800"; trT.appendChild(td); }); const ttd = document.createElement("td"); ttd.className = "col-total"; ttd.style.fontWeight = "800"; ttd.textContent = fmtIntCell(tg); trT.appendChild(ttd); trT.appendChild(document.createElement("td")); tb.appendChild(trT);
         t.appendChild(tb); w.appendChild(t);
+
+        // ===== SEGUNDA TABELA (totalmente editável; Total automático = soma Seg→Sex) =====
         const tA = document.createElement("table"); tA.className = "resumo-tabela"; tA.style.minWidth = MP; tA.style.width = "100%"; tA.style.tableLayout = "fixed"; tA.style.marginTop = "20px"; acg(tA);
         const thA = document.createElement("thead"); const trA = document.createElement("tr"); ["Agente","Segunda","Terça","Quarta","Quinta","Sexta","Total","Observação"].forEach(x => { const e = document.createElement("th"); e.className = x === "Total" ? "cabecalho-destaque" : "cabecalho-titulo"; e.textContent = x; trA.appendChild(e); }); thA.appendChild(trA); tA.appendChild(thA);
         const tbA = document.createElement("tbody");
         [{ key: "prod-supervisor", p: "Nome do supervisor..." }, { key: "prod-responsavel", p: "Nome do responsável..." }].forEach(({ key, p }) => {
-          const tr = document.createElement("tr"); const td = document.createElement("td"); td.style.padding = "0"; td.style.textAlign = "left"; const inp = document.createElement("input"); inp.type = "text"; inp.placeholder = p; inp.style.cssText = "width:100%; border:none; background:transparent; padding:10px; font-size:0.82rem; font-weight:700; color:#14532d; outline:none; text-align:left;"; inp.value = getResumoValor(key, ""); inp.addEventListener("input", () => setResumoValor(key, inp.value)); inp.addEventListener("focus", () => { inp.style.background = "#fef9c3"; }); inp.addEventListener("blur", () => { inp.style.background = "transparent"; }); td.appendChild(inp); tr.appendChild(td); for (let i = 0; i < 5; i++) tr.appendChild(document.createElement("td")); tr.appendChild(document.createElement("td")).className = "col-total"; tr.appendChild(document.createElement("td")); tbA.appendChild(tr);
+          const tr = document.createElement("tr");
+
+          // Coluna 1 — nome (editável)
+          const tdNome = document.createElement("td"); tdNome.style.padding = "0"; tdNome.style.textAlign = "left";
+          const inpNome = document.createElement("input"); inpNome.type = "text"; inpNome.placeholder = p;
+          inpNome.style.cssText = "width:100%; border:none; background:transparent; padding:10px; font-size:0.82rem; font-weight:700; color:#14532d; outline:none; text-align:left;";
+          inpNome.value = getResumoValor(key, "");
+          inpNome.addEventListener("input", () => setResumoValor(key, inpNome.value));
+          inpNome.addEventListener("focus", () => { inpNome.style.background = "#fef9c3"; });
+          inpNome.addEventListener("blur", () => { inpNome.style.background = "transparent"; });
+          tdNome.appendChild(inpNome); tr.appendChild(tdNome);
+
+          // Referência para a célula do Total automático
+          let celulaTotal = null;
+
+          // Colunas Segunda..Sexta (editáveis)
+          DIAS_SEMANA.forEach(dk => {
+            const td = document.createElement("td"); td.style.padding = "0";
+            const inp = document.createElement("input"); inp.type = "text"; inp.inputMode = "numeric";
+            inp.style.cssText = "width:100%; border:none; background:transparent; padding:10px 2px; font-size:0.8rem; outline:none; text-align:center; font-weight:700; color:#14532d;";
+            const ch = `${key}-${dk}`;
+            inp.value = getResumoValor(ch, "");
+            const recalcularTotal = () => {
+              let soma = 0;
+              DIAS_SEMANA.forEach(d => { soma += num(getResumoValor(`${key}-${d}`, "")); });
+              if (celulaTotal) celulaTotal.textContent = fmtIntCell(soma);
+              setResumoValor(`${key}-total`, String(soma));
+            };
+            inp.addEventListener("input", () => { setResumoValor(ch, inp.value); recalcularTotal(); });
+            inp.addEventListener("blur", () => {
+              const v = getResumoValor(ch, "");
+              if (v !== "" && v !== undefined) { const f = fmtIntCell(v); setResumoValor(ch, f); inp.value = f; }
+              recalcularTotal();
+              inp.style.background = "transparent";
+            });
+            inp.addEventListener("focus", () => { inp.style.background = "#fef9c3"; });
+            td.appendChild(inp); tr.appendChild(td);
+          });
+
+          // Coluna Total — AUTOMÁTICA (somente leitura)
+          const tdTot = document.createElement("td"); tdTot.className = "col-total";
+          tdTot.style.padding = "10px 2px"; tdTot.style.textAlign = "center";
+          tdTot.style.fontWeight = "800"; tdTot.style.color = "#92400e"; tdTot.style.fontSize = "0.82rem";
+          tdTot.textContent = fmtIntCell(num(getResumoValor(`${key}-total`, "")));
+          celulaTotal = tdTot;
+          tr.appendChild(tdTot);
+
+          // Coluna Observação (editável)
+          const tdObs = document.createElement("td"); tdObs.style.padding = "0";
+          const inpObs = document.createElement("input"); inpObs.type = "text"; inpObs.placeholder = "Observação...";
+          inpObs.style.cssText = "width:100%; border:none; background:transparent; padding:10px 8px; font-size:0.78rem; outline:none; text-align:left;";
+          const chObs = `${key}-obs`;
+          inpObs.value = getResumoValor(chObs, "");
+          inpObs.addEventListener("input", () => setResumoValor(chObs, inpObs.value));
+          inpObs.addEventListener("focus", () => { inpObs.style.background = "#fef9c3"; });
+          inpObs.addEventListener("blur", () => { inpObs.style.background = "transparent"; });
+          tdObs.appendChild(inpObs); tr.appendChild(tdObs);
+
+          tbA.appendChild(tr);
         });
         tA.appendChild(tbA); w.appendChild(tA);
       }
@@ -2188,16 +2112,11 @@
         garantirRepoRelatorios();
         const b1 = document.getElementById("btnRcNovo"); if (b1) b1.addEventListener("click", novoRelatorioCampo);
         const b2 = document.getElementById("btnRcSalvar"); if (b2) b2.addEventListener("click", salvarRelatorioCampoAtual);
-        // PDF do Relatório de Campo: RETRATO (A4 portrait)
         const b3 = document.getElementById("btnRcPDF");
         if (b3) b3.addEventListener("click", () => {
           const r = obterRelatorioCampoAtivo();
           const d = r.dataAtividade || hojeISO();
-          gerarPDF(
-            "areaRelatorioCampo",
-            `PMCD_Relatorio_Campo_${d}_${hojeISO()}.pdf`,
-            { orientacao: "portrait" }
-          ).catch(e => alert("❌ " + (e?.message || e)));
+          gerarPDF("areaRelatorioCampo", `PMCD_Relatorio_Campo_${d}_${hojeISO()}.pdf`, { orientacao: "portrait" }).catch(e => alert("❌ " + (e?.message || e)));
         });
         document.querySelectorAll("[data-rc]").forEach(inp => { const k = inp.dataset.rc; const ev = (inp.tagName === "SELECT" || inp.type === "checkbox") ? "change" : "input"; inp.addEventListener(ev, () => { const r = obterRelatorioCampoAtivo(); if (inp.type === "checkbox") r[k] = !!inp.checked; else r[k] = inp.value; salvar(); }); });
         const b4 = document.getElementById("btnRcAutoPreencher"); if (b4) b4.addEventListener("click", () => { const r = obterRelatorioCampoAtivo(); const c = estado.configEquipe || {}; if (c.estrato && !r.estrato) r.estrato = c.estrato; if (c.bairro && !r.localidade) r.localidade = c.bairro; if (c.supervisor && !r.supervisorNome) r.supervisorNome = c.supervisor; if (c.responsavel && !r.agenteNome) r.agenteNome = c.responsavel; salvar(); renderizarRelatorioCampo(); const b = b4; const t = b.textContent; b.textContent = "✅ Preenchido!"; setTimeout(() => { b.textContent = t; }, 1500); });
