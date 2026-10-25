@@ -1,0 +1,8 @@
+{
+  "name": "PMCD - Lançamentos de Campo",
+  "description": "Sistema de Lançamentos de Campo, SUGARBO e Resumos para agentes de combate às endemias (PMCD)",
+  "requestFeedback": false,
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
