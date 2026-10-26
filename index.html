@@ -407,6 +407,7 @@
           <button class="btn-backup btn-baixar-html" id="btnBaixarCodigo">💻 Baixar index.html</button>
           <button class="btn-backup" id="btnExportarJSON">💾 Exportar JSON</button>
           <button class="btn-backup" id="btnImportarJSON">📂 Importar JSON</button>
+          <button class="btn-backup" id="btnDiagnosticoRecuperacao" style="background:#059669; border-color:#34d399;" title="Verificar e restaurar lançamentos salvos no navegador">🔍 Recuperar Dados</button>
           <input type="file" id="inputImportarJSON" accept=".json,application/json" style="display: none;" />
         </div>
       </div>
@@ -1062,6 +1063,21 @@
         <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 4px;"><button type="button" class="btn btn-cinza" id="btnCancelarConfirmacaoData">Cancelar</button><button type="button" class="btn btn-verde" id="btnExecutarConfirmacaoData">✓ Confirmar</button></div>
       </div>
     </div>
+    <div class="modal-overlay" id="modalDiagnostico">
+      <div class="modal-conteudo" style="max-width: 620px;">
+        <div class="modal-header">
+          <h3>🔍 Recuperação de Lançamentos na Memória</h3>
+          <button type="button" class="btn-fechar-modal" id="btnFecharModalDiagnostico">&times;</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.85rem; color: #334155;">
+          <p>Esta ferramenta vasculha as versões e dados salvos na memória local (<code>localStorage</code>) do seu navegador para restaurar lançamentos preenchidos.</p>
+          <div id="diagnosticoResultado" style="display:flex; flex-direction:column; gap:8px;"></div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 8px;">
+          <button type="button" class="btn btn-cinza" id="btnFecharModalDiagnostico2">Fechar</button>
+        </div>
+      </div>
+    </div>
     <script>
       const firebaseConfig = {
         apiKey: "AIzaSyA1YbZ9uGY3WW5fiMLVpTC2_fC2qKB6vos",
@@ -1457,25 +1473,111 @@
         alert(`✅ Lançamento transferido para SE ${pad2(ns)}!`);
       }
       let timeoutSalvarNuvem = null;
+      function contarTotalLancamentos(dados) {
+        if (!dados || typeof dados !== "object") return 0;
+        let total = 0;
+        [dados.semanas, dados.semanasLiraa].forEach(col => {
+          if (!col || typeof col !== "object") return;
+          Object.keys(col).forEach(sk => {
+            const sem = col[sk];
+            if (!sem || !sem.dias) return;
+            DIAS_SEMANA.forEach(dk => {
+              const d = sem.dias[dk];
+              if (!d || !Array.isArray(d.agentes)) return;
+              d.agentes.forEach(ag => {
+                const vals = ag.valores || {};
+                Object.keys(vals).forEach(k => {
+                  const v = vals[k];
+                  if (v !== undefined && v !== null && String(v).trim() !== "" && k !== "supTotal" && k !== "supSimNao") {
+                    total++;
+                  }
+                });
+              });
+            });
+          });
+        });
+        return total;
+      }
+      function tentarRecuperarVersoesAnterioresLocalStorage() {
+        const chavesPossiveis = [];
+        try {
+          for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (k && (k.startsWith("lancamentos_campo") || k.startsWith("pmcd_"))) chavesPossiveis.push(k);
+          }
+        } catch(e) {}
+        const versoesPadrao = [
+          "lancamentos_campo_v26","lancamentos_campo_v25","lancamentos_campo_v24",
+          "lancamentos_campo_v23","lancamentos_campo_v22","lancamentos_campo_v21",
+          "lancamentos_campo_v20","lancamentos_campo_v19","lancamentos_campo_v18",
+          "lancamentos_campo_v15","lancamentos_campo_v14","lancamentos_campo_v13",
+          "lancamentos_campo_v12","lancamentos_campo_v11","lancamentos_campo_v10",
+          "lancamentos_campo_v2","lancamentos_campo_v1","lancamentos_campo"
+        ];
+        versoesPadrao.forEach(k => { if (!chavesPossiveis.includes(k)) chavesPossiveis.push(k); });
+        let melhor = null, maxL = 0, chaveEncontrada = "";
+        chavesPossiveis.forEach(k => {
+          try {
+            const raw = localStorage.getItem(k);
+            if (!raw) return;
+            const p = JSON.parse(raw);
+            const c = contarTotalLancamentos(p);
+            if (c > maxL) { maxL = c; melhor = p; chaveEncontrada = k; }
+          } catch(e) {}
+        });
+        return { melhor, maxL, chaveEncontrada };
+      }
       function salvarNuvem() {
         if (!dbAtivo || !db) return;
+        if (!sincronizadoInicial) {
+          console.warn("[PMCD] Bloqueado salvarNuvem antes da sincronização inicial para proteger dados.");
+          return;
+        }
         atualizarStatusNuvem("⏳ Salvando...", "salvando");
         clearTimeout(timeoutSalvarNuvem);
         timeoutSalvarNuvem = setTimeout(() => {
-          try { salvandoLocalmente = true; db.ref("pmcd_dados/principal").set(JSON.parse(JSON.stringify(estado))).then(() => { sincronizadoInicial = true; atualizarStatusNuvem("☁️ Nuvem OK", "online"); }).catch(() => atualizarStatusNuvem("⚠️ Erro Nuvem", "offline")).finally(() => setTimeout(() => { salvandoLocalmente = false; }, 400)); }
-          catch (e) { salvandoLocalmente = false; atualizarStatusNuvem("⚠️ Erro Local", "offline"); }
+          try {
+            salvandoLocalmente = true;
+            db.ref("pmcd_dados/principal").set(JSON.parse(JSON.stringify(estado)))
+              .then(() => { sincronizadoInicial = true; atualizarStatusNuvem("☁️ Nuvem OK", "online"); })
+              .catch(() => atualizarStatusNuvem("⚠️ Erro Nuvem", "offline"))
+              .finally(() => setTimeout(() => { salvandoLocalmente = false; }, 400));
+          } catch (e) { salvandoLocalmente = false; atualizarStatusNuvem("⚠️ Erro Local", "offline"); }
         }, 500);
       }
       function iniciarSincronizacaoNuvem() {
         if (!dbAtivo && !inicializarFirebase()) { atualizarStatusNuvem("⚙️ Modo Local", "offline"); return; }
         atualizarStatusNuvem("🔄 Conectando...", "salvando");
-        db.ref(".info/connected").on("value", snap => { const on = snap.val() === true; atualizarStatusNuvem(on ? (sincronizadoInicial ? "☁️ Nuvem OK" : "🔄 Sincronizando...") : "⚠️ Desconectado", on ? "online" : "offline"); });
+        db.ref(".info/connected").on("value", snap => {
+          const on = snap.val() === true;
+          atualizarStatusNuvem(on ? (sincronizadoInicial ? "☁️ Nuvem OK" : "🔄 Sincronizando...") : "⚠️ Desconectado", on ? "online" : "offline");
+        });
         db.ref("pmcd_dados/principal").on("value", snapshot => {
           if (salvandoLocalmente) return;
           sincronizadoInicial = true;
           const d = snapshot.val();
-          if (d && typeof d === "object" && (d.semanas || d.semanasLiraa)) { estado = d; if (estado._migracaoObsCiclo === undefined) estado._migracaoObsCiclo = false; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {} carregar(); sincronizarPeriodosSemanasCiclo(); renderizar(); atualizarTotais(); atualizarStatusNuvem("☁️ Nuvem OK", "online"); }
-          else if (!d) { salvarNuvem(); } else { atualizarStatusNuvem("☁️ Nuvem OK", "online"); }
+          if (d && typeof d === "object" && (d.semanas || d.semanasLiraa)) {
+            const qLocal = contarTotalLancamentos(estado);
+            const qNuvem = contarTotalLancamentos(d);
+            // PROTEÇÃO CRÍTICA: Se o navegador local tiver lançamentos reais e a nuvem vier vazia, não sobrescrever!
+            if (qLocal > 0 && qNuvem === 0) {
+              console.warn(`[PMCD] Nuvem vazia (${qNuvem}) enquanto local possui ${qLocal} lançamentos. Preservando dados locais e restaurando nuvem!`);
+              salvarNuvem();
+              return;
+            }
+            estado = d;
+            if (estado._migracaoObsCiclo === undefined) estado._migracaoObsCiclo = false;
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+            carregar();
+            sincronizarPeriodosSemanasCiclo();
+            renderizar();
+            atualizarTotais();
+            atualizarStatusNuvem("☁️ Nuvem OK", "online");
+          } else if (!d) {
+            salvarNuvem();
+          } else {
+            atualizarStatusNuvem("☁️ Nuvem OK", "online");
+          }
         }, () => atualizarStatusNuvem("⚠️ Offline", "offline"));
       }
       function salvar() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {} salvarNuvem(); }
@@ -1483,6 +1585,18 @@
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) { try { const p = JSON.parse(raw); if (p && typeof p === "object") estado = p; } catch(e) {} }
         if (!estado || typeof estado !== "object") estado = {};
+
+        // Se o estado atual não tiver lançamentos, tentar recuperar de versões anteriores de localStorage
+        if (contarTotalLancamentos(estado) === 0) {
+          const { melhor, maxL, chaveEncontrada } = tentarRecuperarVersoesAnterioresLocalStorage();
+          if (melhor && maxL > 0) {
+            console.log(`[PMCD] Restaurando ${maxL} lançamentos encontrados na chave anterior: ${chaveEncontrada}`);
+            estado = melhor;
+            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+            if (sincronizadoInicial) salvarNuvem();
+          }
+        }
+
         if (!estado.semanas) estado.semanas = {};
         if (!estado.semanasLiraa) estado.semanasLiraa = {};
         if (!Array.isArray(estado.programacao)) estado.programacao = [];
@@ -1536,7 +1650,7 @@
         }
         estado._migracaoObsCiclo = true;
         try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
-        salvarNuvem();
+        if (sincronizadoInicial) salvarNuvem();
       }
       function exportarJSON() { salvar(); const b = new Blob([JSON.stringify(estado, null, 2)], { type: "application/json" }); const u = URL.createObjectURL(b); const a = document.createElement("a"); a.href = u; a.download = `backup_lancamentos_campo_${hojeISO()}.json`; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u); }
       function importarJSON(e) { const arq = e.target.files[0]; if (!arq) return; if (!confirm("⚠️ Substituirá todos os dados. Continuar?")) { e.target.value = ""; return; } const r = new FileReader(); r.onload = (ev) => { try { const d = JSON.parse(ev.target.result); if (!d || (!d.semanas && !d.semanasLiraa)) throw new Error("JSON inválido."); estado = d; salvar(); carregar(); sincronizarPeriodosSemanasCiclo(); renderizar(); atualizarTotais(); renderizarRelatorioCampo(); alert("✅ Backup importado!"); } catch (err) { alert("❌ " + err.message); } finally { e.target.value = ""; } }; r.readAsText(arq); }
@@ -2321,6 +2435,83 @@
           const bPP = document.getElementById("btnSemanaProximaProdInd"); if (bPP) bPP.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) + 1); renderizarProducaoIndividual(); });
           const bPPI = document.getElementById("btnImprimirPDFProdInd"); if (bPPI) bPPI.addEventListener("click", () => gerarPDF("areaProducaoIndividual", `PMCD_Producao_Individual_SE${pad2(estado.semanaAtiva)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e))));
           const bQdPdf = document.getElementById("btnImprimirPDFQuarteiroes"); if (bQdPdf) bQdPdf.addEventListener("click", () => gerarPDF("areaQuarteiroesDesignados", `PMCD_Quarteiroes_Designados_${hojeISO()}.pdf`, { orientacao: "portrait" }).catch(e => alert("❌ " + (e?.message || e))));
+          
+          function fecharModalDiagnostico() {
+            const m = document.getElementById("modalDiagnostico");
+            if (m) m.classList.remove("ativo");
+          }
+          function abrirModalDiagnostico() {
+            const m = document.getElementById("modalDiagnostico");
+            const res = document.getElementById("diagnosticoResultado");
+            if (!m || !res) return;
+            res.innerHTML = "";
+            const chaves = [];
+            try {
+              for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k) chaves.push(k);
+              }
+            } catch(e) {}
+            const encontrados = [];
+            chaves.forEach(k => {
+              try {
+                const raw = localStorage.getItem(k);
+                if (!raw) return;
+                const p = JSON.parse(raw);
+                const qtd = contarTotalLancamentos(p);
+                encontrados.push({ chave: k, tamanho: raw.length, qtd, dados: p });
+              } catch(e) {
+                encontrados.push({ chave: k, tamanho: (localStorage.getItem(k)||'').length, qtd: 0, dados: null });
+              }
+            });
+            const comDados = encontrados.filter(e => e.qtd > 0);
+            if (comDados.length > 0) {
+              comDados.forEach(item => {
+                const card = document.createElement("div");
+                card.style.cssText = "background:#f0fdf4; border:1.5px solid #86efac; border-radius:6px; padding:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;";
+                const semKeys = Object.keys(item.dados?.semanas || {}).join(", ") || "—";
+                card.innerHTML = `
+                  <div style="flex:1; min-width:200px;">
+                    <strong style="color:#14532d; font-size:0.9rem;">💾 ${item.chave}</strong><br>
+                    <span style="color:#166534; font-weight:800;">🟢 ${item.qtd} lançamento(s) encontrado(s)!</span><br>
+                    <small style="color:#64748b;">Semanas identificadas: SE ${semKeys} • Tamanho: ${Math.round(item.tamanho/1024)} KB</small>
+                  </div>
+                  <button type="button" class="btn btn-verde" style="font-weight:700; padding:8px 14px;">Restaurar Estes Dados</button>
+                `;
+                card.querySelector("button").addEventListener("click", () => {
+                  if (confirm(`Restaurar os ${item.qtd} lançamentos da chave "${item.chave}"?`)) {
+                    estado = item.dados;
+                    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+                    salvarNuvem();
+                    renderizar();
+                    atualizarTotais();
+                    fecharModalDiagnostico();
+                    alert("✅ Dados restaurados com sucesso!");
+                  }
+                });
+                res.appendChild(card);
+              });
+            } else {
+              res.innerHTML = `
+                <div style="background:#fff7ed; border:1.5px solid #fdba74; border-radius:6px; padding:14px; color:#9a3412;">
+                  <strong style="font-size:0.92rem;">Nenhum lançamento anterior foi encontrado no armazenamento deste navegador/endereço.</strong>
+                  <p style="margin-top:8px; font-size:0.82rem; line-height:1.5; color:#78350f;">
+                    💡 <strong>Onde seus dados podem estar:</strong><br>
+                    1. <strong>Navegador ou Aparelho onde foram digitados:</strong> se você digitou em outro computador ou no celular, abra este aplicativo <em>naquele aparelho específico</em> e clique no botão <strong>"🔍 Recuperar Dados"</strong> lá!<br>
+                    2. <strong>Outro link/endereço:</strong> se você acessou através do seu site no <strong>GitHub Pages</strong> ou no link de <strong>Pré-visualização</strong>, cada site guarda seus dados no seu próprio endereço. Abra o link que você utilizou anteriormente.
+                  </p>
+                </div>
+              `;
+            }
+            m.classList.add("ativo");
+          }
+          const bDiag = document.getElementById("btnDiagnosticoRecuperacao");
+          if (bDiag) bDiag.addEventListener("click", abrirModalDiagnostico);
+          const bFDiag1 = document.getElementById("btnFecharModalDiagnostico");
+          if (bFDiag1) bFDiag1.addEventListener("click", fecharModalDiagnostico);
+          const bFDiag2 = document.getElementById("btnFecharModalDiagnostico2");
+          if (bFDiag2) bFDiag2.addEventListener("click", fecharModalDiagnostico);
+
           atualizarTextoGeracao(); obterLocalizacao().then(() => atualizarTextoGeracao()).catch(() => {});
           renderizarTabelaProgramacao(); atualizarPreviewPeriodoCiclo();
           autoDetectarProgramacaoPorData(hojeISO(), false);
