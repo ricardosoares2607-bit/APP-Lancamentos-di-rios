@@ -355,13 +355,33 @@
       #rcListaTbody tr.linha-ativa { background: #dcfce7 !important; font-weight: 700; }
       #rcListaTbody tr:hover { background: #f8fafc; }
       #rcListaTbody tr.linha-ativa:hover { background: #bbf7d0 !important; }
+      /* ===== CONFIGURAÇÃO DO ESTRATO ===== */
+      .estrato-container { max-width: 1050px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+      .estrato-card-seguranca { border-radius: 8px; padding: 14px; border: 1.5px solid; display: flex; flex-direction: column; gap: 8px; }
+      .estrato-card-seguranca.livres { background: #f0fdf4; border-color: #86efac; }
+      .estrato-card-seguranca.parciais { background: #fffbeb; border-color: #fde68a; }
+      .estrato-card-seguranca.conflagrados { background: #fef2f2; border-color: #fca5a5; }
+      .estrato-card-header-seg { display: flex; justify-content: space-between; align-items: center; }
+      .estrato-card-titulo-seg { font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+      .estrato-card-titulo-seg.livres { color: #166534; }
+      .estrato-card-titulo-seg.parciais { color: #b45309; }
+      .estrato-card-titulo-seg.conflagrados { color: #b91c1c; }
+      .estrato-card-pct { font-weight: 800; font-size: 0.85rem; padding: 2px 8px; border-radius: 9999px; }
+      .estrato-card-pct.livres { background: #dcfce7; color: #14532d; }
+      .estrato-card-pct.parciais { background: #fef3c7; color: #92400e; }
+      .estrato-card-pct.conflagrados { background: #fee2e2; color: #991b1b; }
+      .estrato-barra-distribuicao { display: flex; height: 18px; border-radius: 9999px; overflow: hidden; background: #e2e8f0; border: 1px solid #cbd5e1; margin-top: 6px; }
+      .estrato-barra-seg { height: 100%; transition: width 0.3s ease; }
+      .estrato-barra-seg.livres { background: #16a34a; }
+      .estrato-barra-seg.parciais { background: #f59e0b; }
+      .estrato-barra-seg.conflagrados { background: #dc2626; }
       @media print {
         @page { size: A4 landscape; margin: 4mm; }
         body { background: #fff; }
         header, nav.barra-navegacao-dropdown, .faixa-programacao, .barra-semanas, .abas-dias, .barra-lancamento-dia, .modal-overlay, .banner-confirmacao { display: none !important; }
         main { padding: 0 !important; }
         .conteudo-aba { display: none !important; }
-        #aba-resumo.ativo, #aba-ciclo.ativo, #aba-producao-individual.ativo, #aba-fad7.ativo, #aba-relatorio-campo.ativo, #aba-quarteiroes-designados.ativo { display: block !important; }
+        #aba-resumo.ativo, #aba-ciclo.ativo, #aba-producao-individual.ativo, #aba-fad7.ativo, #aba-relatorio-campo.ativo, #aba-quarteiroes-designados.ativo, #aba-config-estrato.ativo { display: block !important; }
         .area-impressao { border: none !important; padding: 0 !important; margin: 0 !important; width: 100% !important; }
         * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       }
@@ -379,6 +399,50 @@
       .sup-input:focus { background: #fef9c3; }
       .sup-total-wrap { background: #dcfce7; padding: 2px 5px; border-radius: 3px; font-size: 0.72rem; color: #14532d; white-space: nowrap; }
       .sup-total-wrap strong { color: #14532d; }
+
+      /* ===== CAMPO PROG. OBRIGATÓRIO ===== */
+      .grupo-data.campo-obrigatorio { background: #fef2f2; border: 1.5px solid #fca5a5; }
+      .grupo-data.campo-obrigatorio label { color: #991b1b; }
+      .grupo-data.campo-obrigatorio label::after { content: " *"; color: #dc2626; font-weight: 900; }
+      #programadosDia.campo-invalido { border-color: #dc2626 !important; box-shadow: 0 0 0 2px rgba(220,38,38,.25); background: #fff; }
+      #programadosDia.campo-preenchido { border-color: #16a34a !important; background: #f0fdf4; }
+      .aviso-prog-obrigatorio { display: none; background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
+      .aviso-prog-obrigatorio.ativo { display: block; }
+
+      /* ===== DASHBOARD ===== */
+      .dash-container { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+      .dash-barra { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; }
+      .dash-filtros { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+      .dash-filtros label { font-weight: 700; font-size: 0.82rem; color: #14532d; }
+      .dash-filtros select, .dash-filtros input { padding: 5px 9px; border: 1.5px solid #16a34a; border-radius: 6px; font-weight: 700; color: #14532d; font-size: 0.82rem; outline: none; }
+      .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+      .dash-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,.05); border-top: 4px solid #16a34a; display: flex; flex-direction: column; gap: 4px; }
+      .dash-card.azul { border-top-color: #0284c7; } .dash-card.ambar { border-top-color: #d97706; }
+      .dash-card.roxo { border-top-color: #7c3aed; } .dash-card.vermelho { border-top-color: #dc2626; }
+      .dash-card.rosa { border-top-color: #e11d48; } .dash-card.teal { border-top-color: #0d9488; }
+      .dash-card .dash-label { font-size: 0.74rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: .4px; }
+      .dash-card .dash-valor { font-size: 1.75rem; font-weight: 900; color: #14532d; line-height: 1.1; }
+      .dash-card .dash-sub { font-size: 0.74rem; color: #64748b; font-weight: 600; }
+      .dash-card .dash-sub b { color: #166534; }
+      .dash-painel { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+      .dash-painel h3 { font-size: 0.95rem; color: #14532d; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+      .dash-duas-colunas { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; }
+      @media (max-width: 860px) { .dash-duas-colunas { grid-template-columns: 1fr; } }
+      .dash-tabela { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+      .dash-tabela th, .dash-tabela td { border: 1px solid #e2e8f0; padding: 6px 8px; text-align: center; }
+      .dash-tabela th { background: #f0fdf4; color: #14532d; font-weight: 800; font-size: 0.74rem; }
+      .dash-tabela td:first-child { text-align: left; font-weight: 700; color: #14532d; }
+      .dash-tabela tr:nth-child(even) td { background: #f8fafc; }
+      .dash-barra-progresso { height: 10px; background: #e5e7eb; border-radius: 6px; overflow: hidden; margin-top: 4px; }
+      .dash-barra-progresso > div { height: 100%; background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 6px; transition: width .4s ease; }
+      .dash-barra-progresso > div.alerta { background: linear-gradient(90deg, #f59e0b, #d97706); }
+      .dash-barra-progresso > div.critico { background: linear-gradient(90deg, #f87171, #dc2626); }
+      .dash-legenda { font-size: 0.72rem; color: #64748b; margin-top: 4px; }
+      .dash-svg-wrap { width: 100%; overflow-x: auto; }
+      .dash-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 9999px; font-size: 0.7rem; font-weight: 800; }
+      .dash-tag.ok { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+      .dash-tag.atencao { background: #fef3c7; color: #92400e; border: 1px solid #fde047; }
+      .dash-tag.critico { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
     </style>
   </head>
   <body class="fonte-merriweather">
@@ -426,8 +490,10 @@
           <div class="menu-dropdown-painel" id="menuDropdownPainel" role="menu">
             <div class="menu-dropdown-cabecalho"><span>Selecione a tela desejada:</span></div>
             <div class="menu-dropdown-lista">
+              <button type="button" class="menu-dropdown-opcao" data-aba="dashboard" role="menuitem"><span class="opcao-icone">📈</span><div class="opcao-textos"><span class="opcao-titulo">Dashboard</span><span class="opcao-sub">Indicadores, cobertura e ranking da equipe</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="sugarbo" role="menuitem"><span class="opcao-icone">🍬</span><div class="opcao-textos"><span class="opcao-titulo">SUGARBO</span><span class="opcao-sub">Programação anual de ciclos e metas</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="config-equipe" role="menuitem"><span class="opcao-icone">⚙️</span><div class="opcao-textos"><span class="opcao-titulo">Configuração da Equipe</span><span class="opcao-sub">Bairro, estrato, supervisor, responsável e agentes</span></div><span class="opcao-marcador">✓</span></button>
+              <button type="button" class="menu-dropdown-opcao" data-aba="config-estrato" role="menuitem"><span class="opcao-icone">🗺️</span><div class="opcao-textos"><span class="opcao-titulo">Configuração do Estrato</span><span class="opcao-sub">Cidade, distrito, bairro, estrato e quarteirões</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao ativa" data-aba="lancamentos" role="menuitem"><span class="opcao-icone">📝</span><div class="opcao-textos"><span class="opcao-titulo">Lançamentos Diários</span><span class="opcao-sub">Lançamentos por agente e totais diários</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="resumo" role="menuitem"><span class="opcao-icone">📊</span><div class="opcao-textos"><span class="opcao-titulo">Resumo da Semana</span><span class="opcao-sub">Relatório semanal consolidado e PDF</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="ciclo" role="menuitem"><span class="opcao-icone">🔄</span><div class="opcao-textos"><span class="opcao-titulo">Resumo do Ciclo</span><span class="opcao-sub">Relatório consolidado do ciclo e PDF</span></div><span class="opcao-marcador">✓</span></button>
@@ -445,6 +511,34 @@
       </div>
     </nav>
     <main>
+      <section id="aba-dashboard" class="conteudo-aba">
+        <h2>📈 Dashboard</h2>
+        <div class="dash-container">
+          <div class="dash-barra">
+            <div class="dash-filtros">
+              <label for="dashAno">Ano:</label>
+              <input type="number" id="dashAno" min="2020" max="2035" style="width: 90px;" />
+              <label for="dashCiclo">Ciclo:</label>
+              <select id="dashCiclo">
+                <option value="1">01º Ciclo</option><option value="2">02º Ciclo</option>
+                <option value="3">03º Ciclo</option><option value="4">04º Ciclo</option>
+                <option value="5">05º Ciclo</option><option value="6">06º Ciclo</option>
+              </select>
+              <label for="dashSemanaRef">Semana ref.:</label>
+              <input type="number" id="dashSemanaRef" min="1" max="53" style="width: 70px;" />
+              <button type="button" class="btn btn-verde" id="btnDashAtualizar">🔄 Atualizar</button>
+            </div>
+            <span id="dashStatus" class="dash-tag ok">Pronto</span>
+          </div>
+          <div class="dash-grid" id="dashKpis"></div>
+          <div class="dash-duas-colunas">
+            <div class="dash-painel"><h3>📊 Produção por semana do ciclo</h3><div class="dash-svg-wrap" id="dashGraficoSemanas"></div></div>
+            <div class="dash-painel"><h3>🧪 Depósitos por tipo</h3><div class="dash-svg-wrap" id="dashGraficoDepositos"></div></div>
+          </div>
+          <div class="dash-painel"><h3>🏆 Ranking de agentes</h3><div class="tabela-agentes-config-wrap"><table class="dash-tabela" id="dashTabelaAgentes"></table></div></div>
+          <div class="dash-painel"><h3>📅 Resumo por semana</h3><div class="tabela-agentes-config-wrap"><table class="dash-tabela" id="dashTabelaSemanas"></table></div></div>
+        </div>
+      </section>
       <section id="aba-sugarbo" class="conteudo-aba">
         <h2>🍬 SUGARBO - Programação Anual</h2>
         <div class="area-impressao">
@@ -543,9 +637,15 @@
         <div class="barra-lancamento-dia">
           <div class="grupo-campos">
             <div class="grupo-data"><label for="dataDia">📅 Data:</label><input type="date" id="dataDia" /><span id="diaSemanaPreview">—</span><button type="button" id="btnAutoPreencherSemana" class="btn-mini">⚡ Auto-datas</button></div>
-            <div class="grupo-data"><label for="programadosDia">👥 Prog.:</label><input type="number" id="programadosDia" min="0" placeholder="0" style="width: 65px;" /></div>
+            <div class="grupo-data campo-obrigatorio" id="grupoProgramadosDia">
+              <label for="programadosDia">👥 Prog.:</label>
+              <input type="number" id="programadosDia" min="0" placeholder="0" style="width: 65px;" required />
+            </div>
           </div>
           <button id="btnAdicionarAgente" class="btn btn-verde">+ Adicionar agente</button>
+        </div>
+        <div class="aviso-prog-obrigatorio" id="avisoProgObrigatorio">
+          ⚠️ Preencha o campo <strong>👥 Prog. (programados)</strong> antes de confirmar a data ou gerar relatórios desta semana.
         </div>
         <div class="area-tabelas" id="areaTabelas"></div>
       </section>
@@ -1028,6 +1128,172 @@
           </div>
         </div>
       </section>
+      <section id="aba-config-estrato" class="conteudo-aba">
+        <h2>🗺️ Configuração do Estrato</h2>
+        <div class="estrato-container">
+          <div class="barra-semanas" style="margin-bottom: 0;">
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="font-weight: 700; color: #166534;">📍 Território & Quarteirões</span>
+              <span id="badgeEstratoStatus" class="badge-aviso-atividade ciclo" style="font-size: 0.78rem;">💾 Salvo automaticamente</span>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" class="btn btn-verde" id="btnSalvarEstrato">💾 Salvar Estrato</button>
+              <button type="button" class="btn btn-cinza" id="btnSincronizarEstrato">🔄 Sincronizar com Equipe</button>
+              <button type="button" class="btn btn-pdf" id="btnImprimirPDFEstrato">🖨️ Baixar PDF do Estrato</button>
+            </div>
+          </div>
+
+          <div class="area-impressao" id="areaConfigEstrato" style="padding: 22px 24px;">
+            <div class="cabecalho-resumo" style="margin-bottom: 16px; padding-bottom: 14px;">
+              <div class="titulo-doc">PROGRAMA MUNICIPAL DE CONTROLE DA DENGUE - PMCD</div>
+              <div class="subtitulo-doc">CONFIGURAÇÃO E CARACTERIZAÇÃO DO ESTRATO</div>
+              <p style="font-size: 0.8rem; color: #475569; text-align: center; margin-top: 4px;">Levantamento territorial, controle de quarteirões e segurança operacional para equipes de campo.</p>
+            </div>
+
+            <!-- Card 1: Localização e Identificação do Estrato -->
+            <div class="config-card" style="margin-bottom: 16px; border: 1.5px solid #cbd5e1;">
+              <div class="config-card-header">
+                <h3>🏛️ Localização e Identificação do Estrato</h3>
+                <p>Identificação do município, distrito sanitário, bairro e número do estrato trabalhado.</p>
+              </div>
+              <div class="config-grid-campos" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));">
+                <div class="config-grupo">
+                  <label for="estratoCidade">🏙️ Cidade:</label>
+                  <input type="text" id="estratoCidade" data-estrato="cidade" placeholder="Ex: Salvador" />
+                </div>
+                <div class="config-grupo">
+                  <label for="estratoDistrito">🏥 Distrito:</label>
+                  <input type="text" id="estratoDistrito" data-estrato="distrito" placeholder="Ex: DS Cabula / Beiru" />
+                </div>
+                <div class="config-grupo">
+                  <label for="estratoBairro">🏡 Bairro:</label>
+                  <input type="text" id="estratoBairro" data-estrato="bairro" placeholder="Ex: Trobogy" />
+                </div>
+                <div class="config-grupo">
+                  <label for="estratoNumero">📍 Estrato:</label>
+                  <input type="text" id="estratoNumero" data-estrato="estrato" placeholder="Ex: 01" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Levantamento e Classificação de Quarteirões -->
+            <div class="config-card" style="margin-bottom: 16px; border: 1.5px solid #cbd5e1;">
+              <div class="config-card-header">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                  <div>
+                    <h3>🧱 Quarteirões do Estrato</h3>
+                    <p>Total de quarteirões e classificação quanto às condições de segurança e acesso.</p>
+                  </div>
+                  <div id="badgeValidaQuart" class="badge-contagem-agentes" style="font-size: 0.8rem;">—</div>
+                </div>
+              </div>
+
+              <!-- Quarteirões Total -->
+              <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <label for="estratoQuartTotal" style="font-weight: 800; color: #14532d; font-size: 0.95rem;">🧱 Quarteirões Total:</label>
+                    <input type="number" min="0" id="estratoQuartTotal" data-estrato="quarteiroesTotal" placeholder="0" style="width: 100px; padding: 6px 10px; border: 2px solid #16a34a; border-radius: 6px; font-weight: 800; font-size: 1rem; color: #14532d; text-align: center;" />
+                    <button type="button" class="btn btn-mini" id="btnAutoSomarQuart" style="padding: 6px 12px; font-size: 0.78rem;">⚡ Somar Categorias para o Total</button>
+                  </div>
+                  <div style="font-size: 0.8rem; color: #475569;" id="txtSomaCategorias">Soma das categorias: 0</div>
+                </div>
+
+                <!-- Barra visual de distribuição -->
+                <div style="margin-top: 12px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 4px;">
+                    <span>Distribuição de Acesso:</span>
+                    <span id="txtDistribuicaoPct">0% Livres • 0% Parciais • 0% Conflagrados</span>
+                  </div>
+                  <div class="estrato-barra-distribuicao">
+                    <div id="barraLivres" class="estrato-barra-seg livres" style="width: 0%;" title="Livres"></div>
+                    <div id="barraParciais" class="estrato-barra-seg parciais" style="width: 0%;" title="Parcialmente Conflagrados"></div>
+                    <div id="barraConflagrados" class="estrato-barra-seg conflagrados" style="width: 0%;" title="Conflagrados"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Grid dos 3 tipos de quarteirões com seus respectivos campos -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+                <!-- 1. Quarteirões Livres -->
+                <div class="estrato-card-seguranca livres">
+                  <div class="estrato-card-header-seg">
+                    <span class="estrato-card-titulo-seg livres">🟢 Quarteirões Livres</span>
+                    <span class="estrato-card-pct livres" id="pctQuartLivres">0,0%</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="estratoQuartLivresQtd" style="font-size: 0.78rem; font-weight: 700; color: #166534;">Quantidade:</label>
+                    <input type="number" min="0" id="estratoQuartLivresQtd" data-estrato="quarteiroesLivresQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                  </div>
+                  <div>
+                    <label for="estratoQuartLivresLista" style="font-size: 0.75rem; font-weight: 700; color: #166534; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
+                    <textarea id="estratoQuartLivresLista" data-estrato="quarteiroesLivresLista" placeholder="Ex: 001, 002, 003, 005 a 015..." style="width: 100%; min-height: 70px; padding: 6px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-size: 0.78rem; resize: vertical; outline: none; background: #fff; font-family: inherit;"></textarea>
+                  </div>
+                  <span style="font-size: 0.7rem; color: #15803d;">Quarteirões com livre acesso e circulação segura da equipe.</span>
+                </div>
+
+                <!-- 2. Quarteirões Parcialmente Conflagrados -->
+                <div class="estrato-card-seguranca parciais">
+                  <div class="estrato-card-header-seg">
+                    <span class="estrato-card-titulo-seg parciais">🟡 Parcialmente Conflagrados</span>
+                    <span class="estrato-card-pct parciais" id="pctQuartParciais">0,0%</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="estratoQuartParciaisQtd" style="font-size: 0.78rem; font-weight: 700; color: #92400e;">Quantidade:</label>
+                    <input type="number" min="0" id="estratoQuartParciaisQtd" data-estrato="quarteiroesParciaisQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                  </div>
+                  <div>
+                    <label for="estratoQuartParciaisLista" style="font-size: 0.75rem; font-weight: 700; color: #92400e; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
+                    <textarea id="estratoQuartParciaisLista" data-estrato="quarteiroesParciaisLista" placeholder="Ex: 016, 017, 020, 021..." style="width: 100%; min-height: 70px; padding: 6px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-size: 0.78rem; resize: vertical; outline: none; background: #fff; font-family: inherit;"></textarea>
+                  </div>
+                  <span style="font-size: 0.7rem; color: #b45309;">Acesso com atenção, exigindo horários específicos ou acompanhamento.</span>
+                </div>
+
+                <!-- 3. Quarteirões Conflagrados -->
+                <div class="estrato-card-seguranca conflagrados">
+                  <div class="estrato-card-header-seg">
+                    <span class="estrato-card-titulo-seg conflagrados">🔴 Quarteirões Conflagrados</span>
+                    <span class="estrato-card-pct conflagrados" id="pctQuartConflagrados">0,0%</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="estratoQuartConflagradosQtd" style="font-size: 0.78rem; font-weight: 700; color: #991b1b;">Quantidade:</label>
+                    <input type="number" min="0" id="estratoQuartConflagradosQtd" data-estrato="quarteiroesConflagradosQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                  </div>
+                  <div>
+                    <label for="estratoQuartConflagradosLista" style="font-size: 0.75rem; font-weight: 700; color: #991b1b; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
+                    <textarea id="estratoQuartConflagradosLista" data-estrato="quarteiroesConflagradosLista" placeholder="Ex: 025, 026, 028, 032..." style="width: 100%; min-height: 70px; padding: 6px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-size: 0.78rem; resize: vertical; outline: none; background: #fff; font-family: inherit;"></textarea>
+                  </div>
+                  <span style="font-size: 0.7rem; color: #dc2626;">Áreas de risco crítico, conflagração ou impossibilidade temporária de trabalho.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Observações e Assinatura -->
+            <div class="config-card" style="border: 1.5px solid #cbd5e1;">
+              <div class="config-card-header">
+                <h3>📝 Observações Operacionais e Responsável</h3>
+                <p>Orientações de segurança para os agentes de campo e dados de quem realizou a caracterização.</p>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div class="config-grupo">
+                  <label for="estratoObservacoes">Observações e Recomendações de Segurança:</label>
+                  <textarea id="estratoObservacoes" data-estrato="observacoes" placeholder="Recomendações para a equipe de campo, histórico de ocorrências, horários restritos ou contatos locais..." style="width: 100%; min-height: 75px; padding: 8px 10px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.82rem; outline: none; background: #f8fafc; resize: vertical; font-family: inherit;"></textarea>
+                </div>
+                <div class="config-grid-campos" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                  <div class="config-grupo">
+                    <label for="estratoResponsavel">✍️ Responsável pelo Levantamento:</label>
+                    <input type="text" id="estratoResponsavel" data-estrato="responsavel" placeholder="Nome do supervisor ou coordenador..." />
+                  </div>
+                  <div class="config-grupo">
+                    <label for="estratoDataAtualizacao">📅 Data da Atualização:</label>
+                    <input type="date" id="estratoDataAtualizacao" data-estrato="dataAtualizacao" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <div class="modal-overlay" id="modalCorrecao">
       <div class="modal-conteudo" style="max-width: 480px;">
@@ -1102,7 +1368,7 @@
         try { localStorage.setItem("pmcd_fonte_preferida_v2", n || "merriweather"); } catch(e) {}
         const s = document.getElementById("selectFonte"); if (s && s.value !== n) s.value = n;
       }
-      const STORAGE_KEY = "lancamentos_campo_v26";
+      const STORAGE_KEY = "lancamentos_campo_v27";
       const NUM_COLUNAS = 9;
       const NOMES_AGENTES_PADRAO = ["Augusta Rocha", "Ednéia Miranda", "Regilene Ferreira", "Vanuza Souza"];
       const DIAS_SEMANA = ["segunda","terca","quarta","quinta","sexta"];
@@ -1164,6 +1430,7 @@
         atividadeAtiva: "ciclo", semanaAtiva: "1", diaAtivo: "segunda",
         cicloFiltroConsolidado: "1", semanas: {}, semanasLiraa: {},
         programacao: [], ciclosConfig: {}, ciclo: { cabecalho: {}, rodape: {} }, configEquipe: null,
+        configEstrato: null,
         relatoriosCampo: [], _migracaoObsCiclo: false
       };
       function pad2(v) { if (v === undefined || v === null || v === "") return ""; const n = Number(v); if (!isFinite(n)) return String(v); return (n < 0 ? "-" : "") + String(Math.abs(Math.trunc(n))).padStart(2, "0"); }
@@ -1233,6 +1500,7 @@
         else if (elementoId === "areaImpressaoFad7") { fw = 1400; }
         else if (elementoId === "areaRelatorioCampo") { fw = 1400; }
         else if (elementoId === "areaQuarteiroesDesignados") { fw = 1200; }
+        else if (elementoId === "areaConfigEstrato") { fw = 1100; }
         else { fw = 1580; }
         el.style.width = fw + "px"; el.style.maxWidth = "none"; el.style.minWidth = fw + "px";
         void el.offsetWidth;
@@ -1270,7 +1538,7 @@
         return direto().then(restaurar).catch(() => fb().then(restaurar).catch(fallbackImpressao));
       }
       function obterTotalSemanasEpidemiologicas(ano) { const a = Number(ano) || new Date().getFullYear(); function p(y) { return (y + Math.floor(y/4) - Math.floor(y/100) + Math.floor(y/400)) % 7; } return (p(a) === 4 || p(a-1) === 3) ? 53 : 52; }
-      function atualizarLimitesSemanas(ano) { const t = obterTotalSemanasEpidemiologicas(ano); ["progCicloSemanaInicio","progCicloSemanaTermino","semanaLancamento","liraaSemanaInicio","liraaSemanaTermino","corrSemana"].forEach(id => { const el = document.getElementById(id); if (el) el.max = t; }); }
+      function atualizarLimitesSemanas(ano) { const t = obterTotalSemanasEpidemiologicas(ano); ["progCicloSemanaInicio","progCicloSemanaTermino","semanaLancamento","liraaSemanaInicio","liraaSemanaTermino","corrSemana","dashSemanaRef"].forEach(id => { const el = document.getElementById(id); if (el) el.max = t; }); }
       function repoAtivo() { if (!estado.semanas) estado.semanas = {}; if (!estado.semanasLiraa) estado.semanasLiraa = {}; return estado.atividadeAtiva === "liraa" ? estado.semanasLiraa : estado.semanas; }
       function semana() { const r = repoAtivo(); if (!r[estado.semanaAtiva]) { const k = Object.keys(r); if (k.length > 0) estado.semanaAtiva = k[0]; else { const s = String(semanaAtualDoAno()); r[s] = criarSemana(null, s, estado.atividadeAtiva, "1"); estado.semanaAtiva = s; } } return r[estado.semanaAtiva]; }
       function diaAtual() { const s = semana(); if (!s || !s.dias) return null; if (!s.dias[estado.diaAtivo]) estado.diaAtivo = "segunda"; return s.dias[estado.diaAtivo]; }
@@ -1507,7 +1775,7 @@
           }
         } catch(e) {}
         const versoesPadrao = [
-          "lancamentos_campo_v26","lancamentos_campo_v25","lancamentos_campo_v24",
+          "lancamentos_campo_v27","lancamentos_campo_v26","lancamentos_campo_v25","lancamentos_campo_v24",
           "lancamentos_campo_v23","lancamentos_campo_v22","lancamentos_campo_v21",
           "lancamentos_campo_v20","lancamentos_campo_v19","lancamentos_campo_v18",
           "lancamentos_campo_v15","lancamentos_campo_v14","lancamentos_campo_v13",
@@ -1559,7 +1827,6 @@
           if (d && typeof d === "object" && (d.semanas || d.semanasLiraa)) {
             const qLocal = contarTotalLancamentos(estado);
             const qNuvem = contarTotalLancamentos(d);
-            // PROTEÇÃO CRÍTICA: Se o navegador local tiver lançamentos reais e a nuvem vier vazia, não sobrescrever!
             if (qLocal > 0 && qNuvem === 0) {
               console.warn(`[PMCD] Nuvem vazia (${qNuvem}) enquanto local possui ${qLocal} lançamentos. Preservando dados locais e restaurando nuvem!`);
               salvarNuvem();
@@ -1586,7 +1853,6 @@
         if (raw) { try { const p = JSON.parse(raw); if (p && typeof p === "object") estado = p; } catch(e) {} }
         if (!estado || typeof estado !== "object") estado = {};
 
-        // Se o estado atual não tiver lançamentos, tentar recuperar de versões anteriores de localStorage
         if (contarTotalLancamentos(estado) === 0) {
           const { melhor, maxL, chaveEncontrada } = tentarRecuperarVersoesAnterioresLocalStorage();
           if (melhor && maxL > 0) {
@@ -1610,6 +1876,7 @@
         if (estado._migracaoObsCiclo === undefined) estado._migracaoObsCiclo = false;
         if (!estado.configEquipe) estado.configEquipe = obterConfigEquipePadrao();
         else if (!Array.isArray(estado.configEquipe.agentes)) estado.configEquipe.agentes = NOMES_AGENTES_PADRAO.map(nome => ({ id: "ag_" + Date.now() + "_" + Math.random().toString(36).slice(2,6), nome, ativo: true }));
+        if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
         const r = repoAtivo();
         if (Object.keys(r).length === 0) { const s = String(semanaAtualDoAno()); r[s] = criarSemana(null, s, estado.atividadeAtiva, "1"); estado.semanaAtiva = s; }
         if (!estado.semanaAtiva || !r[estado.semanaAtiva]) estado.semanaAtiva = Object.keys(r)[0];
@@ -1657,14 +1924,204 @@
       function getResumoValor(ch, pad = "", sk = null) { const s = sk ? repoAtivo()[sk] : semana(); return (s?.resumo?.valores && s.resumo.valores[ch] !== undefined) ? s.resumo.valores[ch] : pad; }
       function setResumoValor(ch, v) { const s = semana(); if (!s.resumo) s.resumo = { valores: {} }; if (!s.resumo.valores) s.resumo.valores = {}; s.resumo.valores[ch] = v; salvar(); }
       function diaEstaConfirmado() { const d = diaAtual(); if (!d || !d.data) return false; return d._dataConfirmada === d.data; }
+
+      /* ===== VALIDAÇÃO: PROG. OBRIGATÓRIO ===== */
+      function progDiaPreenchido(dia) {
+        if (!dia) return false;
+        const v = String(dia.programados ?? "").trim();
+        return v !== "" && !isNaN(Number(v)) && Number(v) >= 0;
+      }
+      function atualizarEstadoCampoProg() {
+        const d = diaAtual();
+        const inp = document.getElementById("programadosDia");
+        const aviso = document.getElementById("avisoProgObrigatorio");
+        if (!inp || !d) return;
+        const ok = progDiaPreenchido(d);
+        inp.classList.toggle("campo-preenchido", ok);
+        inp.classList.toggle("campo-invalido", !ok);
+        if (aviso) aviso.classList.toggle("ativo", !ok);
+      }
+      function semanasComProgPendente(repo) {
+        const col = repo || repoAtivo();
+        const pend = [];
+        Object.keys(col || {}).forEach(k => {
+          const s = col[k];
+          if (!s || !s.dias) return;
+          const temDados = DIAS_SEMANA.some(d => {
+            const dd = s.dias[d];
+            if (!dd || !dd.agentes) return false;
+            return dd.agentes.some(a => a && a.valores && Object.values(a.valores).some(v => String(v ?? "").trim() !== ""));
+          });
+          if (!temDados) return;
+          const algumVazio = DIAS_SEMANA.some(d => {
+            const dd = s.dias[d];
+            if (!dd) return false;
+            const temAgenteComDado = dd.agentes && dd.agentes.some(a => a && a.valores && Object.values(a.valores).some(v => String(v ?? "").trim() !== ""));
+            return temAgenteComDado && !progDiaPreenchido(dd);
+          });
+          if (algumVazio) pend.push(k);
+        });
+        return pend;
+      }
+      /* Função para chamar sempre que um agente for renderizado */
+      function aplicarProgObrigatorioNoDia() {
+        const d = diaAtual();
+        if (!d) return;
+        const ok = progDiaPreenchido(d);
+        if (ok) return;
+        document.querySelectorAll(".coluna-agente .corpo-tabelas-agente input:not(.nome-agente), .coluna-agente .corpo-tabelas-agente select").forEach(i => {
+          i.disabled = true;
+          i.title = "Preencha 👥 Prog. antes de lançar";
+        });
+      }
+
       function atualizarBannerConfirmacao() { const b = document.getElementById("bannerConfirmacaoDia"), dt = document.getElementById("bannerConfirmacaoDetalhes"); if (!b || !dt) return; const d = diaAtual(); if (!d) { b.style.display = "none"; return; } if (diaEstaConfirmado()) { b.style.display = "none"; } else { b.style.display = "flex"; dt.textContent = `Semana ${pad2(estado.semanaAtiva)} · ${nomeDiaExibido(d.data, estado.diaAtivo) || "—"} · ${formatarDataBR(d.data) || "—"}`; } }
-      function abrirModalConfirmacaoData() { const d = diaAtual(); if (!d) return; document.getElementById("confSemana").textContent = `Semana ${pad2(estado.semanaAtiva)}`; document.getElementById("confDiaSemana").textContent = nomeDiaExibido(d.data, estado.diaAtivo) || "—"; document.getElementById("confData").textContent = formatarDataBR(d.data) || "—"; const av = document.getElementById("confAvisoRetroativo"); const hj = hojeISO(); const se = obterSemanaEpidemiologicaDeISO(d.data); let m = ""; if (d.data < hj) m = `⚠️ Data retroativa (hoje: ${formatarDataBR(hj)}).`; else if (d.data > hj) m = `⚠️ Data futura.`; if (se && String(se) !== String(estado.semanaAtiva)) { const ex = `📅 A data pertence à SE ${pad2(se)}, mas você está na SE ${pad2(estado.semanaAtiva)}.`; m = m ? m + "<br>" + ex : ex; } if (m) { av.style.display = "block"; av.innerHTML = m; } else { av.style.display = "none"; av.textContent = ""; } document.getElementById("modalConfirmacaoData").classList.add("ativo"); }
+      function abrirModalConfirmacaoData() {
+        const dPre = diaAtual();
+        if (!progDiaPreenchido(dPre)) {
+          alert("⚠️ Preencha o campo 👥 Prog. (programados) antes de confirmar a data.");
+          document.getElementById("programadosDia")?.focus();
+          return;
+        }
+        const d = diaAtual(); if (!d) return;
+        document.getElementById("confSemana").textContent = `Semana ${pad2(estado.semanaAtiva)}`;
+        document.getElementById("confDiaSemana").textContent = nomeDiaExibido(d.data, estado.diaAtivo) || "—";
+        document.getElementById("confData").textContent = formatarDataBR(d.data) || "—";
+        const av = document.getElementById("confAvisoRetroativo"); const hj = hojeISO(); const se = obterSemanaEpidemiologicaDeISO(d.data); let m = "";
+        if (d.data < hj) m = `⚠️ Data retroativa (hoje: ${formatarDataBR(hj)}).`; else if (d.data > hj) m = `⚠️ Data futura.`;
+        if (se && String(se) !== String(estado.semanaAtiva)) { const ex = `📅 A data pertence à SE ${pad2(se)}, mas você está na SE ${pad2(estado.semanaAtiva)}.`; m = m ? m + "<br>" + ex : ex; }
+        if (m) { av.style.display = "block"; av.innerHTML = m; } else { av.style.display = "none"; av.textContent = ""; }
+        document.getElementById("modalConfirmacaoData").classList.add("ativo");
+      }
       function fecharModalConfirmacaoData() { document.getElementById("modalConfirmacaoData").classList.remove("ativo"); }
       function confirmarDataDia() { const d = diaAtual(); if (!d || !d.data) return; d._dataConfirmada = d.data; salvar(); fecharModalConfirmacaoData(); renderizar(); atualizarTotais(); }
+
+      /* ============================ DASHBOARD ============================ */
+      function dashObterFiltros() {
+        const ano = Number(document.getElementById("dashAno")?.value) || new Date().getFullYear();
+        const ciclo = normalizarNumeroCiclo(document.getElementById("dashCiclo")?.value || "1");
+        const semRef = Number(document.getElementById("dashSemanaRef")?.value) || Number(estado.semanaAtiva) || 1;
+        return { ano, ciclo, semRef };
+      }
+      function dashSemanasDoCiclo(ano, ciclo) {
+        const cfg = obterDatasCicloEfetivas(ano, ciclo, "ciclo");
+        const si = Number(cfg.semanaInicio), st = Number(cfg.semanaTermino);
+        let ks = [];
+        if (si && st && si <= st) { for (let s = si; s <= st; s++) ks.push(String(s)); }
+        else { ks = Object.keys(estado.semanas || {}).filter(k => normalizarNumeroCiclo(estado.semanas[k]?.cabecalho?.ciclo) === ciclo); }
+        return ks.filter(s => !semanaEhExclusivaLiraa(Number(s), ano, ciclo));
+      }
+      function dashAgregarCiclo(ano, ciclo) {
+        const semanas = dashSemanasDoCiclo(ano, ciclo);
+        const agg = { semanas: semanas.length, diasProd: 0, PROGRAMADOS: 0, TRABALHADO: 0, TOTAL: 0, INFORMADOS: 0, PENDENCIAS: 0, TRATADOS_GERAL: 0, SUPERVISAO: 0, DEP: {}, DEP_TOTAL: 0, DEP_TRATADOS: 0, DEP_GRAMAS: 0, porSemana: [], porAgente: {} };
+        TIPOS_DEPOSITOS.forEach(t => agg.DEP[t] = 0);
+        semanas.forEach(sk => {
+          const tS = calcularTotaisSemana(sk, estado.semanas);
+          if (tS) {
+            agg.diasProd += tS.diasComProducao; agg.PROGRAMADOS += tS.PROGRAMADOS; agg.TRABALHADO += tS.TRABALHADO; agg.TOTAL += tS.TOTAL; agg.INFORMADOS += tS.INFORMADOS; agg.PENDENCIAS += tS.PENDENCIAS; agg.TRATADOS_GERAL += tS.TRATADOS_GERAL; agg.SUPERVISAO += tS.SUPERVISAO;
+            TIPOS_DEPOSITOS.forEach(t => agg.DEP[t] += tS.DEP[t] || 0);
+            agg.DEP_TOTAL += tS.DEP_TOTAL || 0; agg.DEP_TRATADOS += tS.DEP_TRATADOS || 0; agg.DEP_GRAMAS += tS.DEP_GRAMAS || 0;
+            agg.porSemana.push({ semana: sk, total: tS.TOTAL, programados: tS.PROGRAMADOS, trabalhado: tS.TRABALHADO, rendimento: tS.RENDIMENTO, ip: tS.IP, pend: tS.PENDENCIAS });
+          }
+          const s = estado.semanas?.[sk];
+          DIAS_SEMANA.forEach(dk => {
+            const d = s?.dias?.[dk]; if (!d?.agentes) return;
+            d.agentes.forEach(ag => {
+              if (!ag) return;
+              const nome = (ag.nome || "Agente").trim();
+              const key = ag.id || nome.toLowerCase();
+              if (!agg.porAgente[key]) agg.porAgente[key] = { nome, ativo: ag.ativo !== false, total: 0, dias: 0, depositos: 0 };
+              let prod = 0;
+              for (let c = 1; c <= 7; c++) prod += num(ag.valores?.[`b1-r2-c${c}`]) + num(ag.valores?.[`b1-r3-c${c}`]) + num(ag.valores?.[`b1-r4-c${c}`]) + num(ag.valores?.[`b1-r6-c${c}`]);
+              agg.porAgente[key].total += prod;
+              if (prod > 0) agg.porAgente[key].dias += 1;
+              TIPOS_DEPOSITOS.forEach((_, i) => { agg.porAgente[key].depositos += num(ag.valores?.[`b5-r${i}-c${COL_TRATADOS}`]); });
+            });
+          });
+        });
+        agg.ip = agg.INFORMADOS !== 0 ? (100 / agg.INFORMADOS) * agg.PENDENCIAS : 0;
+        agg.rendimento = agg.TRABALHADO !== 0 ? agg.TOTAL / agg.TRABALHADO : null;
+        agg.coberturaProg = agg.PROGRAMADOS > 0 ? (100 * agg.TRABALHADO / agg.PROGRAMADOS) : null;
+        return agg;
+      }
+      function dashCard(label, valor, sub, cor) {
+        return `<div class="dash-card ${cor || ''}"><span class="dash-label">${label}</span><span class="dash-valor">${valor}</span>${sub ? `<span class="dash-sub">${sub}</span>` : ""}</div>`;
+      }
+      function dashBarra(valorPct, rotulo) {
+        const p = valorPct == null ? 0 : Math.max(0, Math.min(100, valorPct));
+        const cls = p >= 90 ? "" : p >= 60 ? "alerta" : "critico";
+        return `<div class="dash-barra-progresso"><div class="${cls}" style="width:${p.toFixed(1)}%"></div></div><div class="dash-legenda">${rotulo}: <b>${p.toFixed(1).replace(".", ",")}%</b></div>`;
+      }
+      function dashGraficoBarras(dados) {
+        const largura = Math.max(520, dados.length * 46);
+        const altura = 200, padL = 46, padB = 42, padT = 14;
+        const max = Math.max(1, ...dados.map(d => d.valor));
+        const bw = (largura - padL - 10) / Math.max(1, dados.length);
+        let svg = `<svg viewBox="0 0 ${largura} ${altura}" width="100%" height="${altura}" role="img">`;
+        for (let i = 0; i <= 4; i++) { const y = padT + (altura - padT - padB) * (i / 4); const v = Math.round(max * (1 - i / 4)); svg += `<line x1="${padL}" y1="${y}" x2="${largura - 6}" y2="${y}" stroke="#e2e8f0" stroke-width="1"/>`; svg += `<text x="${padL - 6}" y="${y + 4}" font-size="10" fill="#64748b" text-anchor="end">${v}</text>`; }
+        dados.forEach((d, i) => { const h = (altura - padT - padB) * (d.valor / max); const x = padL + i * bw + bw * 0.15; const y = altura - padB - h; const cor = d.cor || "#16a34a"; svg += `<rect x="${x}" y="${y}" width="${bw * 0.7}" height="${h}" fill="${cor}" rx="3"><title>${d.rotulo}: ${d.valor}</title></rect>`; svg += `<text x="${x + bw * 0.35}" y="${altura - padB + 14}" font-size="10" fill="#475569" text-anchor="middle">${d.rotulo}</text>`; });
+        svg += `</svg>`;
+        return svg;
+      }
+      function renderizarDashboard() {
+        const { ano, ciclo, semRef } = dashObterFiltros();
+        const statusEl = document.getElementById("dashStatus");
+        if (statusEl) statusEl.textContent = "Calculando...";
+        try {
+          const agg = dashAgregarCiclo(ano, ciclo);
+          const semAtual = calcularTotaisSemana(String(semRef), estado.semanas);
+          const kpis = document.getElementById("dashKpis");
+          if (kpis) {
+            kpis.innerHTML = [
+              dashCard("Total do ciclo", fmtIntCell(agg.TOTAL), `${agg.semanas} semana(s) · ${agg.diasProd} dia(s) produtivos`, ""),
+              dashCard("Trabalhados", fmtIntCell(agg.TRABALHADO), `Programados: <b>${fmtIntCell(agg.PROGRAMADOS)}</b>`, "azul"),
+              dashCard("Rendimento", fmtRendimento(agg.rendimento), "Imóveis trabalhados / dia", "ambar"),
+              dashCard("Cobertura prog.", agg.coberturaProg != null ? agg.coberturaProg.toFixed(1).replace(".", ",") + "%" : "—", dashBarra(agg.coberturaProg, "Trab. sobre prog."), "roxo"),
+              dashCard("Informados", fmtIntCell(agg.INFORMADOS), `Pendentes: <b>${fmtIntCell(agg.PENDENCIAS)}</b>`, "teal"),
+              dashCard("Índice pendência (IP)", fmtPct(agg.ip), "100 × Pend / Inform.", "vermelho"),
+              dashCard("Supervisão", fmtIntCell(agg.SUPERVISAO), "Total supervisionado", "rosa"),
+              dashCard("Depósitos tratados", fmtIntCell(agg.DEP_TRATADOS), `Total dep.: <b>${fmtIntCell(agg.DEP_TOTAL)}</b> · Bti: <b>${fmtDecCell(agg.DEP_GRAMAS)}g</b>`, ""),
+              dashCard(`Semana ${pad2(semRef)}`, semAtual ? fmtIntCell(semAtual.TOTAL) : "—", semAtual ? `Inf.: ${fmtIntCell(semAtual.INFORMADOS)} · IP: ${fmtPct(semAtual.IP)}` : "Sem lançamentos", "azul")
+            ].join("");
+          }
+          const gS = document.getElementById("dashGraficoSemanas");
+          if (gS) { if (!agg.porSemana.length) gS.innerHTML = `<p class="dash-legenda">Sem lançamentos no ciclo.</p>`; else gS.innerHTML = dashGraficoBarras(agg.porSemana.map(x => ({ rotulo: "SE" + pad2(x.semana), valor: x.total }))); }
+          const gD = document.getElementById("dashGraficoDepositos");
+          if (gD) { const cores = { A1: "#16a34a", A2: "#22c55e", B: "#0284c7", C: "#7c3aed", D1: "#d97706", D2: "#e11d48", E: "#0d9488" }; const dados = TIPOS_DEPOSITOS.map(t => ({ rotulo: t, valor: agg.DEP[t] || 0, cor: cores[t] })); gD.innerHTML = dashGraficoBarras(dados); }
+          const tAg = document.getElementById("dashTabelaAgentes");
+          if (tAg) {
+            const arr = Object.values(agg.porAgente).filter(a => a.total > 0 || a.depositos > 0).sort((a, b) => b.total - a.total);
+            if (!arr.length) tAg.innerHTML = `<thead><tr><th>Agente</th><th>Total</th></tr></thead><tbody><tr><td colspan="2" style="text-align:center;color:#64748b;padding:16px;">Sem produção no período.</td></tr></tbody>`;
+            else tAg.innerHTML = `<thead><tr><th>#</th><th>Agente</th><th>Imóveis</th><th>Dias</th><th>Depósitos tratados</th><th>Status</th></tr></thead><tbody>${arr.map((a, i) => `<tr><td style="text-align:center;font-weight:800;color:#14532d;">${i + 1}º</td><td>${a.nome}</td><td>${fmtIntCell(a.total)}</td><td>${fmtIntCell(a.dias)}</td><td>${fmtIntCell(a.depositos)}</td><td><span class="dash-tag ${a.ativo ? 'ok' : 'critico'}">${a.ativo ? 'Ativo' : 'Inativo'}</span></td></tr>`).join("")}</tbody>`;
+          }
+          const tS = document.getElementById("dashTabelaSemanas");
+          if (tS) {
+            if (!agg.porSemana.length) tS.innerHTML = `<thead><tr><th>Semana</th><th>Total</th></tr></thead><tbody><tr><td colspan="2" style="text-align:center;color:#64748b;padding:16px;">Nenhuma semana.</td></tr></tbody>`;
+            else tS.innerHTML = `<thead><tr><th>Semana</th><th>Total</th><th>Prog.</th><th>Trab.</th><th>Rend.</th><th>IP</th><th>Pend.</th></tr></thead><tbody>${agg.porSemana.map(x => `<tr><td>SE ${pad2(x.semana)}</td><td>${fmtIntCell(x.total)}</td><td>${x.programados ? fmtIntCell(x.programados) : "—"}</td><td>${fmtIntCell(x.trabalhado)}</td><td>${fmtRendimento(x.rendimento)}</td><td>${fmtPct(x.ip)}</td><td>${fmtIntCell(x.pend)}</td></tr>`).join("")}</tbody>`;
+          }
+          if (statusEl) {
+            const pend = semanasComProgPendente(estado.semanas);
+            if (pend.length) { statusEl.className = "dash-tag atencao"; statusEl.textContent = `⚠️ ${pend.length} semana(s) sem 👥 Prog.`; }
+            else { statusEl.className = "dash-tag ok"; statusEl.textContent = `Atualizado · ${new Date().toLocaleTimeString("pt-BR")}`; }
+          }
+        } catch (e) {
+          console.error("[Dashboard]", e);
+          if (statusEl) { statusEl.className = "dash-tag critico"; statusEl.textContent = "Erro ao calcular"; }
+        }
+      }
+      function configurarDashboard() {
+        const b = document.getElementById("btnDashAtualizar"); if (b) b.addEventListener("click", renderizarDashboard);
+        ["dashAno", "dashCiclo", "dashSemanaRef"].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener("change", renderizarDashboard); });
+      }
+      /* ========================== fim DASHBOARD ========================== */
       function aplicarBloqueiosAgente(ag, dia) {
         if (!ag || !dia) return;
         const v = valoresDoDia(ag); const c = dia._dataConfirmada === dia.data;
         const col = document.querySelector(`.coluna-agente[data-agente-id="${ag.id}"]`); if (!col) return;
+        if (!progDiaPreenchido(dia)) {
+          col.querySelectorAll('.corpo-tabelas-agente input:not(.nome-agente), .corpo-tabelas-agente select').forEach(i => { i.disabled = true; i.title = "Preencha 👥 Prog. antes de lançar"; });
+          return;
+        }
         col.querySelectorAll('.corpo-tabelas-agente input:not(.nome-agente), .corpo-tabelas-agente select').forEach(i => { i.disabled = !c; i.title = c ? "" : "Confirme a data antes de lançar"; });
         if (c) { col.querySelectorAll('.corpo-tabelas-agente [data-producao-col]').forEach(i => { const cc = Number(i.dataset.producaoCol); const q = String(v[`b1-r0-c${cc}`] || '').trim() !== ''; const cn = String(v[`b1-r1-c${cc}`] || '').trim() !== ''; if (!q || !cn) { i.disabled = true; i.title = "Preencha Quarteirão e Concluído?"; } }); }
       }
@@ -1693,10 +2150,12 @@
         const dA = diaAtual(); const inp = document.getElementById("dataDia"); if (inp && dA) inp.value = dA.data || hojeISO();
         const pv = document.getElementById("diaSemanaPreview"); if (pv && dA) pv.textContent = nomeDiaExibido(dA.data, estado.diaAtivo) || "—";
         const pr = document.getElementById("programadosDia"); if (pr && dA) pr.value = dA.programados || "";
+        atualizarEstadoCampoProg();
         const ar = document.getElementById("areaTabelas"); if (ar) { ar.innerHTML = ""; if (dA?.agentes) { dA.agentes.forEach((ag, i) => ar.appendChild(criarColunaAgente(ag, i))); ar.appendChild(criarColunaTotal()); } }
         verificarEAtualizarBadgeAtividade(); atualizarBannerConfirmacao();
         renderizarCabecalhoResumo(); renderizarRodape(); renderizarResumo(); renderizarCiclo(); renderizarConfigEquipe();
         atualizarTotais(); sincronizarFontesAssinatura();
+        try { if (document.getElementById("aba-quarteiroes-designados")?.classList.contains("ativo")) renderizarQuarteiroesDesignados(); } catch(e) {}
       }
       function renderizarCabecalhoResumo() {
         const s = semana(); const cab = s ? s.cabecalho : {}; const ano = obterAnoSemana(s); const cN = normalizarNumeroCiclo(cab ? cab.ciclo : "1"); const dc = obterDatasCicloEfetivas(ano, cN, estado.atividadeAtiva); const pA = obterPeriodoDaSemana(estado.semanaAtiva, ano, cN, estado.atividadeAtiva);
@@ -1912,7 +2371,6 @@
           const cel = document.querySelector(`[data-total-equipe-deposito-final="b5-c${c}"]`); if (cel) { if (c === COL_GRAMAS) cel.textContent = fmtDecCell(s); else cel.textContent = fmtIntCell(s); }
         }
         const tEe = num(document.querySelector(`[data-total-equipe-deposito-final="b5-c${COL_ENCONTRADO}"]`)?.textContent), tNe = num(document.querySelector(`[data-total-equipe-deposito-final="b5-c${COL_NAO_INSP}"]`)?.textContent); const ciTe = document.querySelector(`[data-inspecionado-equipe-total="1"]`); if (ciTe) ciTe.textContent = fmtIntCell(tEe - tNe);
-        // Atualiza a aba "Quarteirões Designados" se estiver aberta
         try { if (document.getElementById("aba-quarteiroes-designados")?.classList.contains("ativo")) renderizarQuarteiroesDesignados(); } catch(e) {}
       }
       function calcularSomasDia(diaKey, sk = null, repoA = null) {
@@ -2101,7 +2559,7 @@
         });
         tA.appendChild(tbA); w.appendChild(tA);
       }
-      /* ============ NOVA ABA: QUARTEIRÕES DESIGNADOS ============ */
+      /* ============ ABA: QUARTEIRÕES DESIGNADOS ============ */
       function obterContextoCicloVigente() {
         const s = semana(); if (!s) return { ano: new Date().getFullYear(), ciclo: "1", atividade: estado.atividadeAtiva };
         const ano = obterAnoSemana(s);
@@ -2154,18 +2612,7 @@
             });
           });
         });
-        const linhas = Array.from(mapa.values()).sort((a, b) => {
-          const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
-          const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
-          if (qa !== qb) return qa - qb;
-          return String(a.quarteirao).localeCompare(String(b.quarteirao));
-        }).sort((a, b) => {
-          const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
-          const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
-          if (qa !== qb) return 0;
-          return a.agente.localeCompare(b.agente);
-        });
-        // ordenação definitiva: por quarteirão (numérico) e depois por agente
+        const linhas = Array.from(mapa.values());
         linhas.sort((a, b) => {
           const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
           const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
@@ -2252,9 +2699,179 @@
         if (bAdd && inN) { const ex = () => { const n = inN.value.trim(); if (!n) { alert("Digite o nome."); inN.focus(); return; } cadastrarAgenteConfig(n); inN.value = ""; }; bAdd.addEventListener("click", ex); inN.addEventListener("keydown", e => { if (e.key === "Enter") { e.preventDefault(); ex(); } }); }
         const bS = document.getElementById("btnAplicarSemanaAtual"); if (bS) bS.addEventListener("click", () => { sincronizarAgentesComSemanaAtiva(); const s = semana(); if (s?.cabecalho && estado.configEquipe) { s.cabecalho.bairro = estado.configEquipe.bairro || ""; s.cabecalho.estrato = estado.configEquipe.estrato || ""; s.cabecalho.equipe = estado.configEquipe.equipe || ""; s.cabecalho.supervisor = estado.configEquipe.supervisor || ""; s.cabecalho.agentesEquipe = obterTextoAgentesEquipe(s); } if (s?.rodape && estado.configEquipe) s.rodape.responsavel = estado.configEquipe.responsavel || ""; salvar(); renderizar(); atualizarTotais(); renderizarConfigEquipe(); const st = document.getElementById("statusSalvarConfig"); if (st) { st.textContent = "✅ Sincronizado!"; setTimeout(() => { st.textContent = "💾 Salvo automaticamente"; }, 3000); } });
       }
+      function obterConfigEstratoPadrao() {
+        const cEq = estado.configEquipe || {};
+        return {
+          cidade: "Salvador",
+          distrito: "",
+          bairro: cEq.bairro || "",
+          estrato: cEq.estrato || "",
+          quarteiroesTotal: "",
+          quarteiroesLivresQtd: "",
+          quarteiroesLivresLista: "",
+          quarteiroesParciaisQtd: "",
+          quarteiroesParciaisLista: "",
+          quarteiroesConflagradosQtd: "",
+          quarteiroesConflagradosLista: "",
+          observacoes: "",
+          responsavel: cEq.responsavel || cEq.supervisor || "",
+          dataAtualizacao: hojeISO()
+        };
+      }
+      function recalcularIndicadoresEstrato() {
+        if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+        const est = estado.configEstrato;
+        const tot = num(est.quarteiroesTotal);
+        const liv = num(est.quarteiroesLivresQtd);
+        const par = num(est.quarteiroesParciaisQtd);
+        const con = num(est.quarteiroesConflagradosQtd);
+        const soma = liv + par + con;
+
+        const txtSoma = document.getElementById("txtSomaCategorias");
+        if (txtSoma) txtSoma.textContent = `Soma das categorias: ${fmtIntCell(soma)}`;
+
+        const base = tot > 0 ? tot : (soma > 0 ? soma : 0);
+        const pLiv = base > 0 ? (liv / base) * 100 : 0;
+        const pPar = base > 0 ? (par / base) * 100 : 0;
+        const pCon = base > 0 ? (con / base) * 100 : 0;
+
+        const elPLiv = document.getElementById("pctQuartLivres");
+        const elPPar = document.getElementById("pctQuartParciais");
+        const elPCon = document.getElementById("pctQuartConflagrados");
+        if (elPLiv) elPLiv.textContent = `${pLiv.toFixed(1).replace(".", ",")}%`;
+        if (elPPar) elPPar.textContent = `${pPar.toFixed(1).replace(".", ",")}%`;
+        if (elPCon) elPCon.textContent = `${pCon.toFixed(1).replace(".", ",")}%`;
+
+        const bLiv = document.getElementById("barraLivres");
+        const bPar = document.getElementById("barraParciais");
+        const bCon = document.getElementById("barraConflagrados");
+        if (bLiv) bLiv.style.width = `${pLiv.toFixed(1)}%`;
+        if (bPar) bPar.style.width = `${pPar.toFixed(1)}%`;
+        if (bCon) bCon.style.width = `${pCon.toFixed(1)}%`;
+
+        const txtDist = document.getElementById("txtDistribuicaoPct");
+        if (txtDist) {
+          txtDist.textContent = `${pLiv.toFixed(1).replace(".", ",")}% Livres • ${pPar.toFixed(1).replace(".", ",")}% Parciais • ${pCon.toFixed(1).replace(".", ",")}% Conflagrados`;
+        }
+
+        const bdg = document.getElementById("badgeValidaQuart");
+        if (bdg) {
+          if (tot <= 0 && soma === 0) {
+            bdg.className = "badge-contagem-agentes";
+            bdg.innerHTML = `<strong>0</strong> quarteirões`;
+          } else if (tot > 0 && soma === tot) {
+            bdg.className = "tag-status-cfg ativo";
+            bdg.style.background = "#dcfce7";
+            bdg.style.color = "#14532d";
+            bdg.innerHTML = `✓ Total confere (${fmtIntCell(tot)} quart.)`;
+          } else if (tot > 0 && soma !== tot) {
+            const dif = Math.abs(tot - soma);
+            bdg.className = "tag-status-cfg inativo";
+            bdg.style.background = "#fee2e2";
+            bdg.style.color = "#991b1b";
+            bdg.innerHTML = `⚠️ Soma (${fmtIntCell(soma)}) difere do total (${fmtIntCell(tot)}) [Dif: ${dif}]`;
+          } else {
+            bdg.className = "badge-contagem-agentes";
+            bdg.innerHTML = `Total estimado: <strong>${fmtIntCell(soma)}</strong>`;
+          }
+        }
+      }
+      function renderizarConfigEstrato() {
+        if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+        const est = estado.configEstrato;
+        document.querySelectorAll("[data-estrato]").forEach(inp => {
+          const k = inp.dataset.estrato;
+          if (document.activeElement !== inp) {
+            inp.value = (est[k] !== undefined && est[k] !== null) ? est[k] : "";
+          }
+        });
+        recalcularIndicadoresEstrato();
+      }
+      function configurarListenersConfigEstrato() {
+        if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+        document.querySelectorAll("[data-estrato]").forEach(inp => {
+          const k = inp.dataset.estrato;
+          const handler = () => {
+            if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+            estado.configEstrato[k] = inp.value;
+            if (k === "bairro" || k === "estrato") {
+              if (!estado.configEquipe) estado.configEquipe = obterConfigEquipePadrao();
+              estado.configEquipe[k] = inp.value;
+              const s = semana();
+              if (s?.cabecalho) s.cabecalho[k] = inp.value;
+              renderizarConfigEquipe();
+              renderizarCabecalhoResumo();
+              renderizarCiclo();
+            }
+            salvar();
+            recalcularIndicadoresEstrato();
+          };
+          inp.addEventListener("input", handler);
+          inp.addEventListener("change", handler);
+        });
+
+        const bSalvar = document.getElementById("btnSalvarEstrato");
+        if (bSalvar) {
+          bSalvar.addEventListener("click", () => {
+            salvar();
+            const bdg = document.getElementById("badgeEstratoStatus");
+            if (bdg) {
+              bdg.textContent = "✅ Estrato salvo!";
+              setTimeout(() => { bdg.textContent = "💾 Salvo automaticamente"; }, 2500);
+            }
+          });
+        }
+
+        const bAutoSoma = document.getElementById("btnAutoSomarQuart");
+        if (bAutoSoma) {
+          bAutoSoma.addEventListener("click", () => {
+            if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+            const liv = num(estado.configEstrato.quarteiroesLivresQtd);
+            const par = num(estado.configEstrato.quarteiroesParciaisQtd);
+            const con = num(estado.configEstrato.quarteiroesConflagradosQtd);
+            const soma = liv + par + con;
+            estado.configEstrato.quarteiroesTotal = String(soma);
+            const inTot = document.getElementById("estratoQuartTotal");
+            if (inTot) inTot.value = String(soma);
+            salvar();
+            recalcularIndicadoresEstrato();
+          });
+        }
+
+        const bSinc = document.getElementById("btnSincronizarEstrato");
+        if (bSinc) {
+          bSinc.addEventListener("click", () => {
+            if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+            const cEq = estado.configEquipe || {};
+            if (cEq.bairro) estado.configEstrato.bairro = cEq.bairro;
+            if (cEq.estrato) estado.configEstrato.estrato = cEq.estrato;
+            if (cEq.supervisor && !estado.configEstrato.responsavel) estado.configEstrato.responsavel = cEq.supervisor;
+            if (Array.isArray(estado.relatoriosCampo) && estado.relatoriosCampo.length > 0) {
+              const ult = estado.relatoriosCampo[estado.relatoriosCampo.length - 1];
+              if (ult.distritoSanitario && !estado.configEstrato.distrito) estado.configEstrato.distrito = ult.distritoSanitario;
+            }
+            salvar();
+            renderizarConfigEstrato();
+            const bdg = document.getElementById("badgeEstratoStatus");
+            if (bdg) {
+              bdg.textContent = "🔄 Sincronizado com Equipe!";
+              setTimeout(() => { bdg.textContent = "💾 Salvo automaticamente"; }, 2500);
+            }
+          });
+        }
+
+        const bPdf = document.getElementById("btnImprimirPDFEstrato");
+        if (bPdf) {
+          bPdf.addEventListener("click", () => {
+            const eNum = estado.configEstrato?.estrato ? `_Estrato_${estado.configEstrato.estrato}` : "";
+            gerarPDF("areaConfigEstrato", `PMCD_Configuracao${eNum}_${hojeISO()}.pdf`, { orientacao: "portrait" })
+              .catch(e => alert("❌ " + (e?.message || e)));
+          });
+        }
+      }
       function toggleAgente(id) { const d = diaAtual(); if (!d?.agentes) return; const ag = d.agentes.find(x => x && x.id === id); if (!ag) return; ag.ativo = !ag.ativo; if (estado.configEquipe?.agentes) { const c = estado.configEquipe.agentes.find(x => x.id === id || (x.nome && ag.nome && x.nome.trim().toLowerCase() === ag.nome.trim().toLowerCase())); if (c) c.ativo = ag.ativo; } const s = semana(); if (s?.cabecalho) s.cabecalho.agentesEquipe = obterTextoAgentesEquipe(s); salvar(); renderizar(); atualizarTotais(); renderizarConfigEquipe(); }
       function adicionarAgente() { const d = diaAtual(); if (!d?.agentes) return; const n = prompt("Nome do novo agente:", `Agente ${d.agentes.length + 1}`); if (!n || !n.trim()) return; cadastrarAgenteConfig(n.trim()); }
-      function irParaSemana(num) { const k = String(num); const r = repoAtivo(); if (!r[k]) { const s = semana(); const cH = (s?.cabecalho?.ciclo) || "1"; const mH = (s?.cabecalho?.mes) || ""; const p = obterPeriodoDaSemana(k, obterAnoSemana(s), cH, estado.atividadeAtiva); r[k] = criarSemana(p.inicioISO, k, estado.atividadeAtiva, cH, mH); } estado.semanaAtiva = k; salvar(); renderizar(); atualizarTotais(); if (document.getElementById("aba-fad7")?.classList.contains("ativo")) { try { renderizarFad7(); } catch(e) {} } }
+      function irParaSemana(num) { const k = String(num); const r = repoAtivo(); if (!r[k]) { const s = semana(); const cH = (s?.cabecalho?.ciclo) || "1"; const mH = (s?.cabecalho?.mes) || ""; const p = obterPeriodoDaSemana(k, obterAnoSemana(s), cH, estado.atividadeAtiva); r[k] = criarSemana(p.inicioISO, k, estado.atividadeAtiva, cH, mH); } estado.semanaAtiva = k; salvar(); renderizar(); atualizarTotais(); if (document.getElementById("aba-fad7")?.classList.contains("ativo")) { try { renderizarFad7(); } catch(e) {} } if (document.getElementById("aba-producao-individual")?.classList.contains("ativo")) { try { renderizarProducaoIndividual(); } catch(e) {} } }
       function novaSemana() { const r = repoAtivo(); const ns = Object.keys(r).map(Number).filter(n => !isNaN(n)); const s = semana(); const an = obterAnoSemana(s); const mx = obterTotalSemanasEpidemiologicas(an); const m = ns.length > 0 ? Math.max(...ns) : semanaAtualDoAno(); const sg = m < mx ? String(m + 1) : String(mx); const resp = prompt(`Nova SE (1 a ${mx}):`, sg); if (!resp) return; const nS = Number(resp); if (isNaN(nS) || nS <= 0 || nS > mx) { alert("Inválido."); return; } if (r[String(nS)]) { estado.semanaAtiva = String(nS); salvar(); renderizar(); atualizarTotais(); return; } const cH = s?.cabecalho?.ciclo || "1"; const mH = s?.cabecalho?.mes || ""; const p = obterPeriodoDaSemana(nS, an, cH, estado.atividadeAtiva); r[String(nS)] = criarSemana(p.inicioISO, String(nS), estado.atividadeAtiva, cH, mH); estado.semanaAtiva = String(nS); salvar(); renderizar(); atualizarTotais(); }
       function autoPreencherDatasSemana() { const d = diaAtual(); if (!d?.data) return; const o = { segunda: 0, terca: 1, quarta: 2, quinta: 3, sexta: 4 }[estado.diaAtivo] || 0; const seg = adicionarDiasISO(d.data, -o); const s = semana(); if (s?.dias) { DIAS_SEMANA.forEach((dia, i) => { if (s.dias[dia]) s.dias[dia].data = adicionarDiasISO(seg, i); }); if (!s.cabecalho) s.cabecalho = criarCabecalhoVazio(); s.cabecalho.semanaInicio = formatarDataBR(seg); s.cabecalho.semanaTermino = formatarDataBR(adicionarDiasISO(seg, 4)); } salvar(); renderizar(); atualizarTotais(); }
       function haInformadosExcedidosSemana(sR) { const s = sR || semana(); if (!s?.dias) return false; for (const dk of DIAS_SEMANA) { const d = s.dias[dk]; if (!d) continue; const a = (d.agentes || []).filter(x => x && x.ativo); for (const ag of a) { const v = ag.valores || {}; for (let c = 1; c <= 7; c++) { if (calcularInformadoColuna(v, c) > 19) return true; } } } return false; }
@@ -2265,7 +2882,7 @@
           if (!teclas.has(e.key) || e.ctrlKey || e.metaKey || e.altKey) return;
           const a = e.target; if (!a || !a.tagName || (a.tagName !== "INPUT" && a.tagName !== "SELECT")) return;
           if (a.tagName === "INPUT" && ign.has(a.type)) return;
-          const cont = a.closest(".coluna-agente") || a.closest(".resumo-wrapper") || a.closest(".tabela-agentes-config-wrap") || a.closest(".fad7-form") || a.closest(".rc-form");
+          const cont = a.closest(".coluna-agente") || a.closest(".resumo-wrapper") || a.closest(".tabela-agentes-config-wrap") || a.closest(".fad7-form") || a.closest(".rc-form") || a.closest(".estrato-container");
           if (!cont) return;
           if (a.tagName === "SELECT" && (e.key === "ArrowUp" || e.key === "ArrowDown")) return;
           if (a.tagName === "INPUT" && a.type === "text") { if (e.shiftKey) return; const v = a.value || ""; const p1 = a.selectionStart ?? 0, p2 = a.selectionEnd ?? 0; if (p1 !== p2) return; if (e.key === "ArrowLeft" && p1 > 0) return; if (e.key === "ArrowRight" && p1 < v.length) return; }
@@ -2352,7 +2969,7 @@
           aplicarFonte(fS);
           const selF = document.getElementById("selectFonte"); if (selF) selF.addEventListener("change", e => aplicarFonte(e.target.value));
           const inPA = document.getElementById("progAno"); if (inPA && !inPA.value) inPA.value = new Date().getFullYear();
-          const MAPA = { "sugarbo": { icone: "🍬", titulo: "SUGARBO" }, "config-equipe": { icone: "⚙️", titulo: "Configuração da Equipe" }, "lancamentos": { icone: "📝", titulo: "Lançamentos Diários" }, "resumo": { icone: "📊", titulo: "Resumo da Semana" }, "ciclo": { icone: "🔄", titulo: "Resumo do Ciclo" }, "producao-individual": { icone: "👤", titulo: "Produção Individual" }, "quarteiroes-designados": { icone: "🧱", titulo: "Quarteirões Designados" }, "fad7": { icone: "📋", titulo: "FAD 7" }, "relatorio-campo": { icone: "📄", titulo: "Relatório de Campo" } };
+          const MAPA = { "dashboard": { icone: "📈", titulo: "Dashboard" }, "sugarbo": { icone: "🍬", titulo: "SUGARBO" }, "config-equipe": { icone: "⚙️", titulo: "Configuração da Equipe" }, "config-estrato": { icone: "🗺️", titulo: "Configuração do Estrato" }, "lancamentos": { icone: "📝", titulo: "Lançamentos Diários" }, "resumo": { icone: "📊", titulo: "Resumo da Semana" }, "ciclo": { icone: "🔄", titulo: "Resumo do Ciclo" }, "producao-individual": { icone: "👤", titulo: "Produção Individual" }, "quarteiroes-designados": { icone: "🧱", titulo: "Quarteirões Designados" }, "fad7": { icone: "📋", titulo: "FAD 7" }, "relatorio-campo": { icone: "📄", titulo: "Relatório de Campo" } };
           function alternarAba(id) {
             if (!MAPA[id]) id = "lancamentos"; const m = MAPA[id];
             const iE = document.getElementById("menuDropdownIcone"), nE = document.getElementById("menuDropdownNome"), bE = document.getElementById("navStatusBadge");
@@ -2366,10 +2983,19 @@
             if (id === "sugarbo") { renderizarTabelaProgramacao(); atualizarPreviewPeriodoCiclo(); }
             if (id === "lancamentos") { renderizar(); atualizarTotais(); }
             if (id === "config-equipe") { renderizarConfigEquipe(); }
+            if (id === "config-estrato") { renderizarConfigEstrato(); }
             if (id === "producao-individual") { renderizarProducaoIndividual(); }
             if (id === "quarteiroes-designados") { renderizarQuarteiroesDesignados(); }
             if (id === "fad7") { if (estado.atividadeAtiva !== "liraa") { const s = semana(); const an = obterAnoSemana(s); const c = normalizarNumeroCiclo(s?.cabecalho?.ciclo || "1"); estado.atividadeAtiva = "liraa"; if (!estado.semanasLiraa) estado.semanasLiraa = {}; if (!estado.semanasLiraa[String(estado.semanaAtiva)]) { const p = obterPeriodoDaSemana(estado.semanaAtiva, an, c, "liraa"); estado.semanasLiraa[String(estado.semanaAtiva)] = criarSemana(p.inicioISO, String(estado.semanaAtiva), "liraa", c); } salvar(); renderizar(); atualizarTotais(); } renderizarFad7(); }
             if (id === "relatorio-campo") { renderizarRelatorioCampo(); }
+            if (id === "dashboard") {
+              const anoEl = document.getElementById("dashAno"), cicEl = document.getElementById("dashCiclo"), semEl = document.getElementById("dashSemanaRef");
+              const s = semana();
+              if (anoEl && !anoEl.value) anoEl.value = obterAnoSemana(s);
+              if (cicEl) cicEl.value = estado.cicloFiltroConsolidado || identificarCicloAtivo();
+              if (semEl) semEl.value = estado.semanaAtiva;
+              renderizarDashboard();
+            }
           }
           function fecharMenuDropdown() { const p = document.getElementById("menuDropdownPainel"), b = document.getElementById("btnMenuDropdown"); if (p) p.classList.remove("aberto"); if (b) { b.classList.remove("aberto"); b.setAttribute("aria-expanded", "false"); } }
           function toggleMenuDropdown(e) { if (e) { e.preventDefault(); e.stopPropagation(); } const p = document.getElementById("menuDropdownPainel"), b = document.getElementById("btnMenuDropdown"); if (!p || !b) return; if (p.classList.contains("aberto")) fecharMenuDropdown(); else { p.classList.add("aberto"); b.classList.add("aberto"); b.setAttribute("aria-expanded", "true"); } }
@@ -2412,14 +3038,18 @@
           const upL = () => { const s = semana(); const an = obterAnoSemana(s); const c = (s?.cabecalho) ? normalizarNumeroCiclo(s.cabecalho.ciclo) : "1"; const i = document.getElementById("liraaDataInicio")?.value || ""; const f = document.getElementById("liraaDataTermino")?.value || ""; const si = document.getElementById("liraaSemanaInicio")?.value || ""; const sf = document.getElementById("liraaSemanaTermino")?.value || ""; salvarCicloConfig(an, c, i, f, si, sf, "liraa"); if (s?.cabecalho) { s.cabecalho.cicloInicio = formatarDataBR(i); s.cabecalho.cicloTermino = formatarDataBR(f); } salvar(); renderizarCabecalhoResumo(); renderizarCiclo(); };
           ["liraaDataInicio","liraaDataTermino","liraaSemanaInicio","liraaSemanaTermino"].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener("change", upL); });
           const eDD = document.getElementById("dataDia"); if (eDD) eDD.addEventListener("change", e => { const d = diaAtual(); if (d) { d.data = e.target.value; if (!autoDetectarProgramacaoPorData(e.target.value, true)) { salvar(); renderizar(); atualizarTotais(); } } });
-          const ePD = document.getElementById("programadosDia"); if (ePD) ePD.addEventListener("input", e => { const d = diaAtual(); if (d) { d.programados = e.target.value; salvar(); renderizarResumo(); renderizarCiclo(); } });
+          const ePD = document.getElementById("programadosDia");
+          if (ePD) {
+            ePD.addEventListener("input", e => { const d = diaAtual(); if (d) { d.programados = e.target.value; atualizarEstadoCampoProg(); salvar(); renderizarResumo(); renderizarCiclo(); } });
+            ePD.addEventListener("blur", () => { const d = diaAtual(); if (d) { const v = ePD.value.trim(); if (v === "") { ePD.value = ""; } else { const n = Math.max(0, Math.trunc(Number(v) || 0)); ePD.value = String(n); d.programados = String(n); } atualizarEstadoCampoProg(); salvar(); } });
+          }
           const bAD = document.getElementById("btnAutoPreencherSemana"); if (bAD) bAD.addEventListener("click", autoPreencherDatasSemana);
           const bAA = document.getElementById("btnAdicionarAgente"); if (bAA) bAA.addEventListener("click", adicionarAgente);
           document.querySelectorAll("[data-cab]").forEach(inp => inp.addEventListener("input", () => { const s = semana(); if (s?.cabecalho) s.cabecalho[inp.dataset.cab] = inp.value; if (estado.configEquipe && ["bairro","estrato","equipe","supervisor"].includes(inp.dataset.cab)) estado.configEquipe[inp.dataset.cab] = inp.value; salvar(); renderizarConfigEquipe(); }));
           document.querySelectorAll("[data-rodape]").forEach(inp => inp.addEventListener("input", () => { const s = semana(); if (s?.rodape) s.rodape[inp.dataset.rodape] = inp.value; if (estado.configEquipe && inp.dataset.rodape === "responsavel") estado.configEquipe.responsavel = inp.value; salvar(); renderizarConfigEquipe(); }));
           document.querySelectorAll("[data-ciclocab]").forEach(inp => inp.addEventListener("input", () => { if (!estado.ciclo.cabecalho) estado.ciclo.cabecalho = {}; estado.ciclo.cabecalho[inp.dataset.ciclocab] = inp.value; if (estado.configEquipe && ["bairro","estrato","equipe","supervisor"].includes(inp.dataset.ciclocab)) estado.configEquipe[inp.dataset.ciclocab] = inp.value; salvar(); renderizarConfigEquipe(); }));
           document.querySelectorAll("[data-ciclorodape]").forEach(inp => inp.addEventListener("input", () => { if (!estado.ciclo.rodape) estado.ciclo.rodape = {}; estado.ciclo.rodape[inp.dataset.ciclorodape] = inp.value; if (estado.configEquipe && inp.dataset.ciclorodape === "responsavel") estado.configEquipe.responsavel = inp.value; salvar(); renderizarConfigEquipe(); }));
-          configurarListenersConfigEquipe(); configurarListenersFad7(); configurarListenersRelatorioCampo(); instalarNavegacaoSetas();
+          configurarListenersConfigEquipe(); configurarListenersConfigEstrato(); configurarListenersFad7(); configurarListenersRelatorioCampo(); instalarNavegacaoSetas(); configurarDashboard();
           document.querySelectorAll(".font-assinatura-select").forEach(sel => sel.addEventListener("change", () => aplicarFonteAssinatura(sel)));
           sincronizarFontesAssinatura();
           const bOC = document.getElementById("btnCorrigirSemana"); if (bOC) bOC.addEventListener("click", abrirModalCorrecao);
@@ -2429,11 +3059,30 @@
           const bExp = document.getElementById("btnExportarJSON"); if (bExp) bExp.addEventListener("click", exportarJSON);
           const bImp = document.getElementById("btnImportarJSON"), inImp = document.getElementById("inputImportarJSON"); if (bImp && inImp) bImp.addEventListener("click", () => inImp.click()); if (inImp) inImp.addEventListener("change", importarJSON);
           const bDl = document.getElementById("btnBaixarCodigo"); if (bDl) bDl.addEventListener("click", () => { const b = new Blob(["<!doctype html>\n" + document.documentElement.outerHTML], { type: "text/html;charset=utf-8" }); const u = URL.createObjectURL(b); const a = document.createElement("a"); a.href = u; a.download = "index.html"; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u); });
-          const bP1 = document.getElementById("btnImprimirPDF"); if (bP1) bP1.addEventListener("click", () => { if (haInformadosExcedidosSemana()) { alert("⚠️ Corrija 'Informados' > 19 antes do PDF."); return; } const s = semana(); const nS = s?.cabecalho?.semana || estado.semanaAtiva || "1"; gerarPDF("areaImpressao", `PMCD_Resumo_Semana_${pad2(nS)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e))); });
-          const bP2 = document.getElementById("btnImprimirPDFCiclo"); if (bP2) bP2.addEventListener("click", () => { if (haInformadosExcedidosGlobal()) { alert("⚠️ Corrija 'Informados' > 19 antes do PDF."); return; } const c = estado.cicloFiltroConsolidado || "1"; gerarPDF("areaImpressaoCiclo", `PMCD_Resumo_Ciclo_${pad2(c)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e))); });
+          const bP1 = document.getElementById("btnImprimirPDF");
+          if (bP1) bP1.addEventListener("click", () => {
+            if (haInformadosExcedidosSemana()) { alert("⚠️ Corrija 'Informados' > 19 antes do PDF."); return; }
+            const pend = semanasComProgPendente();
+            if (pend.length > 0) { alert("⚠️ Semanas com 👥 Prog. pendente: " + pend.map(p => pad2(p)).join(", ") + ". Preencha antes de gerar o PDF."); return; }
+            const s = semana(); const nS = s?.cabecalho?.semana || estado.semanaAtiva || "1";
+            gerarPDF("areaImpressao", `PMCD_Resumo_Semana_${pad2(nS)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e)));
+          });
+          const bP2 = document.getElementById("btnImprimirPDFCiclo");
+          if (bP2) bP2.addEventListener("click", () => {
+            if (haInformadosExcedidosGlobal()) { alert("⚠️ Corrija 'Informados' > 19 antes do PDF."); return; }
+            const pend = semanasComProgPendente(estado.semanas);
+            if (pend.length > 0) { alert("⚠️ Semanas com 👥 Prog. pendente: " + pend.map(p => pad2(p)).join(", ") + ". Preencha antes de gerar o PDF."); return; }
+            const c = estado.cicloFiltroConsolidado || "1";
+            gerarPDF("areaImpressaoCiclo", `PMCD_Resumo_Ciclo_${pad2(c)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e)));
+          });
           const bPA = document.getElementById("btnSemanaAnteriorProdInd"); if (bPA) bPA.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) - 1); renderizarProducaoIndividual(); });
           const bPP = document.getElementById("btnSemanaProximaProdInd"); if (bPP) bPP.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) + 1); renderizarProducaoIndividual(); });
-          const bPPI = document.getElementById("btnImprimirPDFProdInd"); if (bPPI) bPPI.addEventListener("click", () => gerarPDF("areaProducaoIndividual", `PMCD_Producao_Individual_SE${pad2(estado.semanaAtiva)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e))));
+          const bPPI = document.getElementById("btnImprimirPDFProdInd");
+          if (bPPI) bPPI.addEventListener("click", () => {
+            const pend = semanasComProgPendente();
+            if (pend.length > 0) { alert("⚠️ Semanas com 👥 Prog. pendente: " + pend.map(p => pad2(p)).join(", ") + ". Preencha antes de gerar o PDF."); return; }
+            gerarPDF("areaProducaoIndividual", `PMCD_Producao_Individual_SE${pad2(estado.semanaAtiva)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e)));
+          });
           const bQdPdf = document.getElementById("btnImprimirPDFQuarteiroes"); if (bQdPdf) bQdPdf.addEventListener("click", () => gerarPDF("areaQuarteiroesDesignados", `PMCD_Quarteiroes_Designados_${hojeISO()}.pdf`, { orientacao: "portrait" }).catch(e => alert("❌ " + (e?.message || e))));
           
           function fecharModalDiagnostico() {
@@ -2517,6 +3166,7 @@
           autoDetectarProgramacaoPorData(hojeISO(), false);
           sincronizarPeriodosSemanasCiclo();
           alternarAba("lancamentos");
+          renderizarDashboard();
         } catch (eg) { console.error("[PMCD Erro]:", eg); }
       });
     </script>
