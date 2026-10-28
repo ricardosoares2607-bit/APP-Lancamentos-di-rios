@@ -535,7 +535,6 @@
             <div class="dash-painel"><h3>📊 Produção por semana do ciclo</h3><div class="dash-svg-wrap" id="dashGraficoSemanas"></div></div>
             <div class="dash-painel"><h3>🧪 Depósitos por tipo</h3><div class="dash-svg-wrap" id="dashGraficoDepositos"></div></div>
           </div>
-          <div class="dash-painel"><h3>🏆 Ranking de agentes</h3><div class="tabela-agentes-config-wrap"><table class="dash-tabela" id="dashTabelaAgentes"></table></div></div>
           <div class="dash-painel"><h3>📅 Resumo por semana</h3><div class="tabela-agentes-config-wrap"><table class="dash-tabela" id="dashTabelaSemanas"></table></div></div>
         </div>
       </section>
@@ -1433,37 +1432,58 @@
         configEstrato: null,
         relatoriosCampo: [], _migracaoObsCiclo: false
       };
+      if (typeof window !== "undefined") window.estado = estado;
       function pad2(v) { if (v === undefined || v === null || v === "") return ""; const n = Number(v); if (!isFinite(n)) return String(v); return (n < 0 ? "-" : "") + String(Math.abs(Math.trunc(n))).padStart(2, "0"); }
       function fmtIntCell(v) { if (v === undefined || v === null) return ""; const s = String(v).trim(); if (s === "") return ""; if (/^-?\d+$/.test(s)) { const n = parseInt(s, 10); return (n < 0 ? "-" : "") + String(Math.abs(n)).padStart(2, "0"); } return s; }
       function fmtDecCell(v) { if (v === undefined || v === null || v === "") return "0,0"; return num(v).toFixed(1).replace(".", ","); }
       function num(v) { if (v === undefined || v === null || v === "") return 0; if (typeof v === "number") return isNaN(v) ? 0 : v; const s = String(v).trim().replace(",", "."); const l = s.replace(/[^0-9.-]/g, ""); if (!l || l === "-" || l === ".") return 0; const n = parseFloat(l); return isNaN(n) ? 0 : n; }
-      let _locCache = null, _locPromise = null;
+      const LOCAL_PADRAO_PMCD = "Salvador/BA";
+      let _locCache = LOCAL_PADRAO_PMCD, _locPromise = null;
       function obterLocalizacao() {
-        if (_locCache !== null) return Promise.resolve(_locCache);
+        if (_locCache && _locCache !== LOCAL_PADRAO_PMCD) return Promise.resolve(_locCache);
         if (_locPromise) return _locPromise;
         _locPromise = (async () => {
           if (typeof navigator !== "undefined" && navigator.geolocation) {
             try {
-              const pos = await new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej, { timeout: 4000, maximumAge: 600000, enableHighAccuracy: false }));
+              const pos = await new Promise((res, rej) => navigator.geolocation.getCurrentPosition(res, rej, { timeout: 3000, maximumAge: 600000, enableHighAccuracy: false }));
               const lat = pos.coords?.latitude, lon = pos.coords?.longitude;
               if (lat != null && lon != null) {
                 try {
-                  const ctrl = new AbortController(); const tmr = setTimeout(() => ctrl.abort(), 3500);
+                  const ctrl = new AbortController(); const tmr = setTimeout(() => ctrl.abort(), 2500);
                   const r = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`, { signal: ctrl.signal, headers: { "Accept": "application/json" } });
                   clearTimeout(tmr);
-                  if (r.ok) { const d = await r.json(); const a = d.address || {}; const cid = a.city || a.town || a.village || a.municipality || a.county || ""; const uf = a.state_code || a.state || ""; if (cid) { _locCache = uf ? `${cid}/${uf}` : cid; _locPromise = null; return _locCache; } }
+                  if (r.ok) {
+                    const d = await r.json(); const a = d.address || {};
+                    const cid = a.city || a.town || a.village || a.municipality || a.county || "";
+                    const uf = a.state_code || a.state || "";
+                    if (cid && !/s[aã]o paulo/i.test(cid)) {
+                      _locCache = uf ? `${cid}/${uf}` : cid;
+                      _locPromise = null;
+                      return _locCache;
+                    }
+                  }
                 } catch(e) {}
               }
             } catch(e) {}
           }
-          try { const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone) || ""; const m = { "America/Sao_Paulo":"São Paulo/SP","America/Rio_Branco":"Rio Branco/AC","America/Belem":"Belém/PA","America/Fortaleza":"Fortaleza/CE","America/Recife":"Recife/PE","America/Bahia":"Salvador/BA","America/Cuiaba":"Cuiabá/MT","America/Campo_Grande":"Campo Grande/MS","America/Manaus":"Manaus/AM","America/Porto_Velho":"Porto Velho/RO","America/Boa_Vista":"Boa Vista/RR","America/Maceio":"Maceió/AL","America/Araguaina":"Araguaína/TO","America/Santarem":"Santarém/PA","America/Noronha":"Fernando de Noronha/PE" }; if (m[tz]) _locCache = m[tz]; else if (tz) { const p = tz.split("/"); _locCache = p[p.length-1].replace(/_/g," "); } else _locCache = ""; } catch(e) { _locCache = ""; }
-          _locPromise = null; return _locCache;
+          _locCache = LOCAL_PADRAO_PMCD;
+          _locPromise = null;
+          return _locCache;
         })();
         return _locPromise;
       }
       function formatarDataExtenso(d) { return `${d.getDate()} de ${NOMES_MESES[d.getMonth()].toLowerCase()} de ${d.getFullYear()}`; }
-      function obterTextoGeracao(loc) { const data = formatarDataExtenso(new Date()); return (loc && String(loc).trim()) ? `${loc}, ${data}` : data; }
-      function atualizarTextoGeracao(loc) { const l = (loc !== undefined) ? loc : _locCache; const t = obterTextoGeracao(l); document.querySelectorAll(".data-geracao").forEach(el => { el.textContent = t; }); }
+      function obterTextoGeracao(loc) {
+        let l = (loc && String(loc).trim()) ? String(loc).trim() : LOCAL_PADRAO_PMCD;
+        if (/s[aã]o paulo/i.test(l)) l = LOCAL_PADRAO_PMCD;
+        const data = formatarDataExtenso(new Date());
+        return `${l}, ${data}`;
+      }
+      function atualizarTextoGeracao(loc) {
+        const l = (loc !== undefined && loc !== null && String(loc).trim() !== "") ? loc : (_locCache || LOCAL_PADRAO_PMCD);
+        const t = obterTextoGeracao(l);
+        document.querySelectorAll(".data-geracao").forEach(el => { el.textContent = t; });
+      }
       function aplicarFonteAssinatura(sel) {
         if (!sel) return; const alvo = sel.dataset.fontAlvo; const v = sel.value || "";
         const ap = (inp) => { if (!inp) return; if (v) { inp.style.setProperty("font-family", v, "important"); inp.style.setProperty("font-size", "1.35rem", "important"); inp.style.setProperty("line-height", "1.15", "important"); } else { inp.style.removeProperty("font-family"); inp.style.removeProperty("font-size"); inp.style.removeProperty("line-height"); } };
@@ -2088,12 +2108,6 @@
           if (gS) { if (!agg.porSemana.length) gS.innerHTML = `<p class="dash-legenda">Sem lançamentos no ciclo.</p>`; else gS.innerHTML = dashGraficoBarras(agg.porSemana.map(x => ({ rotulo: "SE" + pad2(x.semana), valor: x.total }))); }
           const gD = document.getElementById("dashGraficoDepositos");
           if (gD) { const cores = { A1: "#16a34a", A2: "#22c55e", B: "#0284c7", C: "#7c3aed", D1: "#d97706", D2: "#e11d48", E: "#0d9488" }; const dados = TIPOS_DEPOSITOS.map(t => ({ rotulo: t, valor: agg.DEP[t] || 0, cor: cores[t] })); gD.innerHTML = dashGraficoBarras(dados); }
-          const tAg = document.getElementById("dashTabelaAgentes");
-          if (tAg) {
-            const arr = Object.values(agg.porAgente).filter(a => a.total > 0 || a.depositos > 0).sort((a, b) => b.total - a.total);
-            if (!arr.length) tAg.innerHTML = `<thead><tr><th>Agente</th><th>Total</th></tr></thead><tbody><tr><td colspan="2" style="text-align:center;color:#64748b;padding:16px;">Sem produção no período.</td></tr></tbody>`;
-            else tAg.innerHTML = `<thead><tr><th>#</th><th>Agente</th><th>Imóveis</th><th>Dias</th><th>Depósitos tratados</th><th>Status</th></tr></thead><tbody>${arr.map((a, i) => `<tr><td style="text-align:center;font-weight:800;color:#14532d;">${i + 1}º</td><td>${a.nome}</td><td>${fmtIntCell(a.total)}</td><td>${fmtIntCell(a.dias)}</td><td>${fmtIntCell(a.depositos)}</td><td><span class="dash-tag ${a.ativo ? 'ok' : 'critico'}">${a.ativo ? 'Ativo' : 'Inativo'}</span></td></tr>`).join("")}</tbody>`;
-          }
           const tS = document.getElementById("dashTabelaSemanas");
           if (tS) {
             if (!agg.porSemana.length) tS.innerHTML = `<thead><tr><th>Semana</th><th>Total</th></tr></thead><tbody><tr><td colspan="2" style="text-align:center;color:#64748b;padding:16px;">Nenhuma semana.</td></tr></tbody>`;
@@ -2438,18 +2452,39 @@
         tb.appendChild(trT); t.appendChild(tb);
         w.appendChild(t);
       }
+      function semanaEhDedicadaLiraa(sN, ano) {
+        const s = Number(sN);
+        if (isNaN(s)) return false;
+        const an = Number(ano) || new Date().getFullYear();
+        // 1. Programação oficial no SUGARBO: se a semana estiver cadastrada para LIRAa, ela é dedicada ao LIRAa
+        const progLiraa = (estado.programacao || []).some(p => {
+          if (!p || p.atividade !== "liraa") return false;
+          if (p.ano && Number(p.ano) !== an) return false;
+          const i = Number(p.cicloSemanaInicio || p.semana);
+          const f = Number(p.cicloSemanaTermino || p.semana);
+          return !isNaN(i) && !isNaN(f) && s >= i && s <= f;
+        });
+        if (progLiraa) return true;
+        // 2. Ou se a semana possui produção EFETIVA lançada em LIRAa e nenhuma produção em ciclo
+        const totLiraa = calcularTotaisSemana(String(s), estado.semanasLiraa);
+        if (totLiraa && (totLiraa.TOTAL > 0 || totLiraa.TRABALHADO > 0)) {
+          const totCiclo = calcularTotaisSemana(String(s), estado.semanas);
+          if (!totCiclo || (totCiclo.TOTAL === 0 && totCiclo.TRABALHADO === 0)) return true;
+        }
+        return false;
+      }
       function semanaEhExclusivaLiraa(sN, ano, cN) {
-        const dp = (p) => { if (!p) return false; const i = Number(p.cicloSemanaInicio || p.semana), f = Number(p.cicloSemanaTermino || p.semana); return !isNaN(i) && !isNaN(f) && sN >= i && sN <= f; };
-        const pc = (estado.programacao || []).filter(p => p && (!p.atividade || p.atividade === "ciclo") && Number(p.ano) === ano && normalizarNumeroCiclo(p.ciclo) === cN && dp(p));
-        if (pc.length > 0) return false;
-        const pl = (estado.programacao || []).filter(p => p && p.atividade === "liraa" && Number(p.ano) === ano && normalizarNumeroCiclo(p.ciclo) === cN && dp(p));
-        return pl.length > 0;
+        return semanaEhDedicadaLiraa(sN, ano);
       }
       function renderizarCiclo() {
         const w = document.getElementById("cicloWrapper"); if (!w) return;
         w.innerHTML = "";
         const cI = estado.cicloFiltroConsolidado || identificarCicloAtivo(); const sel = document.getElementById("filtroCicloConsolidado"); if (sel) sel.value = cI;
-        const sA = semana(); const an = obterAnoSemana(sA); const col = repoAtivo(); const dC = obterDatasCicloEfetivas(an, cI, estado.atividadeAtiva); const si = Number(dC.semanaInicio), st = Number(dC.semanaTermino);
+        const sA = semana();
+        let an = obterAnoSemana(sA);
+        const progCiclo = (estado.programacao || []).find(p => p && normalizarNumeroCiclo(p.ciclo) === cI && (!p.atividade || p.atividade === "ciclo"));
+        if (progCiclo && progCiclo.ano) an = Number(progCiclo.ano);
+        const col = estado.semanas || {}; const dC = obterDatasCicloEfetivas(an, cI, "ciclo"); const si = Number(dC.semanaInicio), st = Number(dC.semanaTermino);
         const bdg = document.getElementById("badgeCicloProgramacao");
         if (bdg) { if (si && st) { bdg.className = "badge-aviso-atividade ciclo"; bdg.textContent = `📋 SE ${pad2(si)} a SE ${pad2(st)} (${formatarDataBR(dC.inicio)} a ${formatarDataBR(dC.termino)})`; } else { bdg.className = "badge-aviso-atividade alerta"; bdg.textContent = "ℹ️ Sem programação cadastrada"; } }
         const cC = (estado.ciclo?.cabecalho) || {}; const cA = sA ? sA.cabecalho : {};
@@ -2465,7 +2500,7 @@
         let ks = [];
         if (si && st && si <= st) { for (let s = si; s <= st; s++) ks.push(s); }
         else { ks = Object.keys(col).map(Number).filter(n => !isNaN(n) && normalizarNumeroCiclo(col[String(n)]?.cabecalho?.ciclo) === cI).sort((a, b) => a - b); }
-        if (estado.atividadeAtiva === "ciclo") ks = ks.filter(s => !semanaEhExclusivaLiraa(s, an, cI));
+        ks = ks.filter(s => !semanaEhDedicadaLiraa(s, an));
         const inS = document.getElementById("cicloTotalSemanas"); if (inS) { if (si && st) inS.value = `SE ${pad2(si)} a SE ${pad2(st)} (${ks.length} semanas)`; else inS.value = `${ks.length} semana(s)`; }
         const t = document.createElement("table"); t.className = "resumo-tabela"; const cg = document.createElement("colgroup"); LARGURAS_TABELA_CICLO.forEach(x => { const c = document.createElement("col"); c.style.width = x; cg.appendChild(c); }); t.appendChild(cg);
         const th = document.createElement("thead"); const trH = document.createElement("tr");
@@ -2978,8 +3013,8 @@
             document.querySelectorAll(".conteudo-aba").forEach(c => c.classList.remove("ativo"));
             const sec = document.getElementById("aba-" + id); if (sec) sec.classList.add("ativo");
             fecharMenuDropdown();
-            if (id === "resumo") { renderizarResumo(); renderizarCabecalhoResumo(); sincronizarFontesAssinatura(); }
-            if (id === "ciclo") { estado.cicloFiltroConsolidado = identificarCicloAtivo(); sincronizarPeriodosSemanasCiclo(); renderizarCiclo(); sincronizarFontesAssinatura(); }
+            if (id === "resumo") { renderizarResumo(); renderizarCabecalhoResumo(); sincronizarFontesAssinatura(); atualizarTextoGeracao(); }
+            if (id === "ciclo") { estado.cicloFiltroConsolidado = identificarCicloAtivo(); sincronizarPeriodosSemanasCiclo(); renderizarCiclo(); sincronizarFontesAssinatura(); atualizarTextoGeracao(); }
             if (id === "sugarbo") { renderizarTabelaProgramacao(); atualizarPreviewPeriodoCiclo(); }
             if (id === "lancamentos") { renderizar(); atualizarTotais(); }
             if (id === "config-equipe") { renderizarConfigEquipe(); }
