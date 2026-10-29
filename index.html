@@ -355,7 +355,6 @@
       #rcListaTbody tr.linha-ativa { background: #dcfce7 !important; font-weight: 700; }
       #rcListaTbody tr:hover { background: #f8fafc; }
       #rcListaTbody tr.linha-ativa:hover { background: #bbf7d0 !important; }
-      /* ===== CONFIGURAÇÃO DO ESTRATO ===== */
       .estrato-container { max-width: 1050px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
       .estrato-card-seguranca { border-radius: 8px; padding: 14px; border: 1.5px solid; display: flex; flex-direction: column; gap: 8px; }
       .estrato-card-seguranca.livres { background: #f0fdf4; border-color: #86efac; }
@@ -399,8 +398,6 @@
       .sup-input:focus { background: #fef9c3; }
       .sup-total-wrap { background: #dcfce7; padding: 2px 5px; border-radius: 3px; font-size: 0.72rem; color: #14532d; white-space: nowrap; }
       .sup-total-wrap strong { color: #14532d; }
-
-      /* ===== CAMPO PROG. OBRIGATÓRIO ===== */
       .grupo-data.campo-obrigatorio { background: #fef2f2; border: 1.5px solid #fca5a5; }
       .grupo-data.campo-obrigatorio label { color: #991b1b; }
       .grupo-data.campo-obrigatorio label::after { content: " *"; color: #dc2626; font-weight: 900; }
@@ -408,14 +405,12 @@
       #programadosDia.campo-preenchido { border-color: #16a34a !important; background: #f0fdf4; }
       .aviso-prog-obrigatorio { display: none; background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; font-weight: 700; margin-bottom: 10px; }
       .aviso-prog-obrigatorio.ativo { display: block; }
-
-      /* ===== DASHBOARD ===== */
-      .dash-container { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+      .dash-container { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
       .dash-barra { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; }
       .dash-filtros { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
       .dash-filtros label { font-weight: 700; font-size: 0.82rem; color: #14532d; }
       .dash-filtros select, .dash-filtros input { padding: 5px 9px; border: 1.5px solid #16a34a; border-radius: 6px; font-weight: 700; color: #14532d; font-size: 0.82rem; outline: none; }
-      .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+      .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
       .dash-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,.05); border-top: 4px solid #16a34a; display: flex; flex-direction: column; gap: 4px; }
       .dash-card.azul { border-top-color: #0284c7; } .dash-card.ambar { border-top-color: #d97706; }
       .dash-card.roxo { border-top-color: #7c3aed; } .dash-card.vermelho { border-top-color: #dc2626; }
@@ -426,8 +421,6 @@
       .dash-card .dash-sub b { color: #166534; }
       .dash-painel { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
       .dash-painel h3 { font-size: 0.95rem; color: #14532d; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-      .dash-duas-colunas { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; }
-      @media (max-width: 860px) { .dash-duas-colunas { grid-template-columns: 1fr; } }
       .dash-tabela { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
       .dash-tabela th, .dash-tabela td { border: 1px solid #e2e8f0; padding: 6px 8px; text-align: center; }
       .dash-tabela th { background: #f0fdf4; color: #14532d; font-weight: 800; font-size: 0.74rem; }
@@ -438,11 +431,20 @@
       .dash-barra-progresso > div.alerta { background: linear-gradient(90deg, #f59e0b, #d97706); }
       .dash-barra-progresso > div.critico { background: linear-gradient(90deg, #f87171, #dc2626); }
       .dash-legenda { font-size: 0.72rem; color: #64748b; margin-top: 4px; }
-      .dash-svg-wrap { width: 100%; overflow-x: auto; }
+      .dash-svg-wrap { width: 100%; overflow-x: auto; padding-bottom: 6px; }
+      .dash-svg-wrap svg { display: block; }
       .dash-tag { display: inline-flex; align-items: center; gap: 4px; padding: 2px 8px; border-radius: 9999px; font-size: 0.7rem; font-weight: 800; }
       .dash-tag.ok { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
       .dash-tag.atencao { background: #fef3c7; color: #92400e; border: 1px solid #fde047; }
       .dash-tag.critico { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+      .qd-checkbox { width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; }
+      .qd-linha-concluida td { background: #dcfce7 !important; }
+      .qd-linha-revisao td { background: #fef3c7 !important; }
+      .qd-badge-revisao { display: inline-flex; align-items: center; gap: 3px; font-size: 0.68rem; font-weight: 800; color: #92400e; background: #fef3c7; border: 1px solid #fde047; border-radius: 9999px; padding: 1px 6px; margin-left: 4px; }
+      .qd-total-card { background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+      .qd-total-card .qd-total-item { display: flex; flex-direction: column; align-items: flex-start; }
+      .qd-total-card .qd-total-item .qd-total-label { font-size: 0.72rem; font-weight: 700; color: #475569; text-transform: uppercase; }
+      .qd-total-card .qd-total-item .qd-total-valor { font-size: 1.15rem; font-weight: 900; color: #14532d; }
     </style>
   </head>
   <body class="fonte-merriweather">
@@ -451,7 +453,7 @@
         <h1>🌿 Lançamentos de Campo</h1>
         <span id="dataHoje"></span>
         <span id="statusNuvem" class="badge-nuvem offline">🔄 Conectando...</span>
-        <span style="font-size:0.75rem; background:#dcfce7; color:#14532d; font-weight:700; padding:2px 8px; border-radius:9999px; border:1px solid #86efac;">v5.0</span>
+        <span style="font-size:0.75rem; background:#dcfce7; color:#14532d; font-weight:700; padding:2px 8px; border-radius:9999px; border:1px solid #86efac;">v5.5</span>
         <button onclick="recarregarAppCompleto()" style="background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; padding:3px 8px; font-size:0.75rem; cursor:pointer; color:#334155; font-weight:600;">🔄 Atualizar Versão</button>
       </div>
       <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
@@ -531,10 +533,8 @@
             <span id="dashStatus" class="dash-tag ok">Pronto</span>
           </div>
           <div class="dash-grid" id="dashKpis"></div>
-          <div class="dash-duas-colunas">
-            <div class="dash-painel"><h3>📊 Produção por semana do ciclo</h3><div class="dash-svg-wrap" id="dashGraficoSemanas"></div></div>
-            <div class="dash-painel"><h3>🧪 Depósitos por tipo</h3><div class="dash-svg-wrap" id="dashGraficoDepositos"></div></div>
-          </div>
+          <div class="dash-grid" id="dashKpisQuarteiroes"></div>
+          <div class="dash-painel"><h3>📊 Produção por semana do ciclo</h3><div class="dash-svg-wrap" id="dashGraficoSemanas"></div></div>
           <div class="dash-painel"><h3>📅 Resumo por semana</h3><div class="tabela-agentes-config-wrap"><table class="dash-tabela" id="dashTabelaSemanas"></table></div></div>
         </div>
       </section>
@@ -788,6 +788,7 @@
             <div class="titulo-doc">PROGRAMA MUNICIPAL DE CONTROLE DA DENGUE - PMCD</div>
             <div class="subtitulo-doc">QUARTEIRÕES DESIGNADOS POR AGENTE (CICLO VIGENTE)</div>
           </div>
+          <div id="qdResumoCards"></div>
           <div class="resumo-wrapper" id="qdWrapper"></div>
         </div>
       </section>
@@ -1149,13 +1150,12 @@
               <p style="font-size: 0.8rem; color: #475569; text-align: center; margin-top: 4px;">Levantamento territorial, controle de quarteirões e segurança operacional para equipes de campo.</p>
             </div>
 
-            <!-- Card 1: Localização e Identificação do Estrato -->
             <div class="config-card" style="margin-bottom: 16px; border: 1.5px solid #cbd5e1;">
               <div class="config-card-header">
                 <h3>🏛️ Localização e Identificação do Estrato</h3>
-                <p>Identificação do município, distrito sanitário, bairro e número do estrato trabalhado.</p>
+                <p>Identificação do município, distrito sanitário, bairro e número do estrato.</p>
               </div>
-              <div class="config-grid-campos" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));">
+              <div class="config-grid-campos" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
                 <div class="config-grupo">
                   <label for="estratoCidade">🏙️ Cidade:</label>
                   <input type="text" id="estratoCidade" data-estrato="cidade" placeholder="Ex: Salvador" />
@@ -1175,19 +1175,17 @@
               </div>
             </div>
 
-            <!-- Card 2: Levantamento e Classificação de Quarteirões -->
             <div class="config-card" style="margin-bottom: 16px; border: 1.5px solid #cbd5e1;">
               <div class="config-card-header">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                   <div>
                     <h3>🧱 Quarteirões do Estrato</h3>
-                    <p>Total de quarteirões e classificação quanto às condições de segurança e acesso.</p>
+                    <p>Total de quarteirões, classificação de segurança e imóveis estimados por categoria.</p>
                   </div>
                   <div id="badgeValidaQuart" class="badge-contagem-agentes" style="font-size: 0.8rem;">—</div>
                 </div>
               </div>
 
-              <!-- Quarteirões Total -->
               <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 14px 16px; margin-bottom: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                   <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
@@ -1195,10 +1193,12 @@
                     <input type="number" min="0" id="estratoQuartTotal" data-estrato="quarteiroesTotal" placeholder="0" style="width: 100px; padding: 6px 10px; border: 2px solid #16a34a; border-radius: 6px; font-weight: 800; font-size: 1rem; color: #14532d; text-align: center;" />
                     <button type="button" class="btn btn-mini" id="btnAutoSomarQuart" style="padding: 6px 12px; font-size: 0.78rem;">⚡ Somar Categorias para o Total</button>
                   </div>
+                  <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: #fff; border: 1.5px solid #16a34a; border-radius: 6px; padding: 6px 12px;">
+                    <label for="estratoTotalImoveis" style="font-weight: 800; color: #14532d; font-size: 0.9rem;">🏠 Total de imóveis:</label>
+                    <input type="number" min="0" id="estratoTotalImoveis" readonly placeholder="0" title="Calculado automaticamente: Livres + Parciais + Conflagrados" style="width: 110px; border: none; background: transparent; font-weight: 900; font-size: 1.1rem; color: #14532d; text-align: center; cursor: not-allowed;" />
+                  </div>
                   <div style="font-size: 0.8rem; color: #475569;" id="txtSomaCategorias">Soma das categorias: 0</div>
                 </div>
-
-                <!-- Barra visual de distribuição -->
                 <div style="margin-top: 12px;">
                   <div style="display: flex; justify-content: space-between; font-size: 0.74rem; font-weight: 700; color: #475569; margin-bottom: 4px;">
                     <span>Distribuição de Acesso:</span>
@@ -1212,9 +1212,7 @@
                 </div>
               </div>
 
-              <!-- Grid dos 3 tipos de quarteirões com seus respectivos campos -->
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
-                <!-- 1. Quarteirões Livres -->
                 <div class="estrato-card-seguranca livres">
                   <div class="estrato-card-header-seg">
                     <span class="estrato-card-titulo-seg livres">🟢 Quarteirões Livres</span>
@@ -1224,6 +1222,10 @@
                     <label for="estratoQuartLivresQtd" style="font-size: 0.78rem; font-weight: 700; color: #166534;">Quantidade:</label>
                     <input type="number" min="0" id="estratoQuartLivresQtd" data-estrato="quarteiroesLivresQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="estratoImoveisLivres" style="font-size: 0.78rem; font-weight: 700; color: #166534;">🏠 Imóveis Estimados:</label>
+                    <input type="number" min="0" id="estratoImoveisLivres" data-estrato="imoveisEstimadosLivres" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                  </div>
                   <div>
                     <label for="estratoQuartLivresLista" style="font-size: 0.75rem; font-weight: 700; color: #166534; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
                     <textarea id="estratoQuartLivresLista" data-estrato="quarteiroesLivresLista" placeholder="Ex: 001, 002, 003, 005 a 015..." style="width: 100%; min-height: 70px; padding: 6px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-size: 0.78rem; resize: vertical; outline: none; background: #fff; font-family: inherit;"></textarea>
@@ -1231,7 +1233,6 @@
                   <span style="font-size: 0.7rem; color: #15803d;">Quarteirões com livre acesso e circulação segura da equipe.</span>
                 </div>
 
-                <!-- 2. Quarteirões Parcialmente Conflagrados -->
                 <div class="estrato-card-seguranca parciais">
                   <div class="estrato-card-header-seg">
                     <span class="estrato-card-titulo-seg parciais">🟡 Parcialmente Conflagrados</span>
@@ -1241,6 +1242,10 @@
                     <label for="estratoQuartParciaisQtd" style="font-size: 0.78rem; font-weight: 700; color: #92400e;">Quantidade:</label>
                     <input type="number" min="0" id="estratoQuartParciaisQtd" data-estrato="quarteiroesParciaisQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="estratoImoveisParciais" style="font-size: 0.78rem; font-weight: 700; color: #92400e;">🏠 Imóveis Estimados:</label>
+                    <input type="number" min="0" id="estratoImoveisParciais" data-estrato="imoveisEstimadosParciais" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                  </div>
                   <div>
                     <label for="estratoQuartParciaisLista" style="font-size: 0.75rem; font-weight: 700; color: #92400e; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
                     <textarea id="estratoQuartParciaisLista" data-estrato="quarteiroesParciaisLista" placeholder="Ex: 016, 017, 020, 021..." style="width: 100%; min-height: 70px; padding: 6px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-size: 0.78rem; resize: vertical; outline: none; background: #fff; font-family: inherit;"></textarea>
@@ -1248,7 +1253,6 @@
                   <span style="font-size: 0.7rem; color: #b45309;">Acesso com atenção, exigindo horários específicos ou acompanhamento.</span>
                 </div>
 
-                <!-- 3. Quarteirões Conflagrados -->
                 <div class="estrato-card-seguranca conflagrados">
                   <div class="estrato-card-header-seg">
                     <span class="estrato-card-titulo-seg conflagrados">🔴 Quarteirões Conflagrados</span>
@@ -1257,6 +1261,10 @@
                   <div style="display: flex; align-items: center; gap: 8px;">
                     <label for="estratoQuartConflagradosQtd" style="font-size: 0.78rem; font-weight: 700; color: #991b1b;">Quantidade:</label>
                     <input type="number" min="0" id="estratoQuartConflagradosQtd" data-estrato="quarteiroesConflagradosQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <label for="estratoImoveisConflagrados" style="font-size: 0.78rem; font-weight: 700; color: #991b1b;">🏠 Imóveis Estimados:</label>
+                    <input type="number" min="0" id="estratoImoveisConflagrados" data-estrato="imoveisEstimadosConflagrados" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
                   <div>
                     <label for="estratoQuartConflagradosLista" style="font-size: 0.75rem; font-weight: 700; color: #991b1b; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
@@ -1267,7 +1275,6 @@
               </div>
             </div>
 
-            <!-- Card 3: Observações e Assinatura -->
             <div class="config-card" style="border: 1.5px solid #cbd5e1;">
               <div class="config-card-header">
                 <h3>📝 Observações Operacionais e Responsável</h3>
@@ -1374,6 +1381,7 @@
       const NOMES_DIAS = { segunda: "Segunda-feira", terca: "Terça-feira", quarta: "Quarta-feira", quinta: "Quinta-feira", sexta: "Sexta-feira" };
       const DIAS_SEMANA_PT = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"];
       const NOMES_MESES = ["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+      const CAMPOS_SUPERVISAO = new Set(["supSimNao","supDireta","supIndireta","supTotal"]);
       const TABELA_BTI_GRAMAS = [
         0.5,1,1.5,1.5,2,2.5,3,3.5,3.5,4,4.5,5,5.5,6,6,6.5,7,7.5,7.5,8,
         8.5,9,9.5,9.5,10,10.5,11,11.5,11.5,12,12.5,13,13.5,14,14,14.5,15,15.5,15.5,16,
@@ -1430,7 +1438,8 @@
         cicloFiltroConsolidado: "1", semanas: {}, semanasLiraa: {},
         programacao: [], ciclosConfig: {}, ciclo: { cabecalho: {}, rodape: {} }, configEquipe: null,
         configEstrato: null,
-        relatoriosCampo: [], _migracaoObsCiclo: false
+        relatoriosCampo: [], _migracaoObsCiclo: false,
+        quarteiroesConcluidos: {}
       };
       if (typeof window !== "undefined") window.estado = estado;
       function pad2(v) { if (v === undefined || v === null || v === "") return ""; const n = Number(v); if (!isFinite(n)) return String(v); return (n < 0 ? "-" : "") + String(Math.abs(Math.trunc(n))).padStart(2, "0"); }
@@ -1854,6 +1863,7 @@
             }
             estado = d;
             if (estado._migracaoObsCiclo === undefined) estado._migracaoObsCiclo = false;
+            if (!estado.quarteiroesConcluidos) estado.quarteiroesConcluidos = {};
             try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
             carregar();
             sincronizarPeriodosSemanasCiclo();
@@ -1893,6 +1903,7 @@
         if (!estado.ciclo) estado.ciclo = { cabecalho: {}, rodape: {} };
         if (!estado.ciclo.rodape) estado.ciclo.rodape = {};
         if (!Array.isArray(estado.relatoriosCampo)) estado.relatoriosCampo = [];
+        if (!estado.quarteiroesConcluidos || typeof estado.quarteiroesConcluidos !== "object") estado.quarteiroesConcluidos = {};
         if (estado._migracaoObsCiclo === undefined) estado._migracaoObsCiclo = false;
         if (!estado.configEquipe) estado.configEquipe = obterConfigEquipePadrao();
         else if (!Array.isArray(estado.configEquipe.agentes)) estado.configEquipe.agentes = NOMES_AGENTES_PADRAO.map(nome => ({ id: "ag_" + Date.now() + "_" + Math.random().toString(36).slice(2,6), nome, ativo: true }));
@@ -1945,7 +1956,6 @@
       function setResumoValor(ch, v) { const s = semana(); if (!s.resumo) s.resumo = { valores: {} }; if (!s.resumo.valores) s.resumo.valores = {}; s.resumo.valores[ch] = v; salvar(); }
       function diaEstaConfirmado() { const d = diaAtual(); if (!d || !d.data) return false; return d._dataConfirmada === d.data; }
 
-      /* ===== VALIDAÇÃO: PROG. OBRIGATÓRIO ===== */
       function progDiaPreenchido(dia) {
         if (!dia) return false;
         const v = String(dia.programados ?? "").trim();
@@ -1961,29 +1971,39 @@
         inp.classList.toggle("campo-invalido", !ok);
         if (aviso) aviso.classList.toggle("ativo", !ok);
       }
-      function semanasComProgPendente(repo) {
+      function temDadosProducaoReais(dia) {
+        if (!dia || !Array.isArray(dia.agentes)) return false;
+        return dia.agentes.some(a => {
+          if (!a || !a.valores) return false;
+          return Object.keys(a.valores).some(k => {
+            if (CAMPOS_SUPERVISAO.has(k)) return false;
+            const v = a.valores[k];
+            return v !== undefined && v !== null && String(v).trim() !== "";
+          });
+        });
+      }
+      function semanaTemProgPendente(s) {
+        if (!s || !s.dias) return false;
+        let temDados = false;
+        let algumSemProg = false;
+        DIAS_SEMANA.forEach(d => {
+          const dd = s.dias[d]; if (!dd) return;
+          if (temDadosProducaoReais(dd)) {
+            temDados = true;
+            if (!progDiaPreenchido(dd)) algumSemProg = true;
+          }
+        });
+        return temDados && algumSemProg;
+      }
+      function semanasComProgPendente(repo, filtroChaves = null) {
         const col = repo || repoAtivo();
         const pend = [];
         Object.keys(col || {}).forEach(k => {
-          const s = col[k];
-          if (!s || !s.dias) return;
-          const temDados = DIAS_SEMANA.some(d => {
-            const dd = s.dias[d];
-            if (!dd || !dd.agentes) return false;
-            return dd.agentes.some(a => a && a.valores && Object.values(a.valores).some(v => String(v ?? "").trim() !== ""));
-          });
-          if (!temDados) return;
-          const algumVazio = DIAS_SEMANA.some(d => {
-            const dd = s.dias[d];
-            if (!dd) return false;
-            const temAgenteComDado = dd.agentes && dd.agentes.some(a => a && a.valores && Object.values(a.valores).some(v => String(v ?? "").trim() !== ""));
-            return temAgenteComDado && !progDiaPreenchido(dd);
-          });
-          if (algumVazio) pend.push(k);
+          if (filtroChaves && !filtroChaves.includes(k)) return;
+          if (semanaTemProgPendente(col[k])) pend.push(k);
         });
         return pend;
       }
-      /* Função para chamar sempre que um agente for renderizado */
       function aplicarProgObrigatorioNoDia() {
         const d = diaAtual();
         if (!d) return;
@@ -2016,7 +2036,100 @@
       function fecharModalConfirmacaoData() { document.getElementById("modalConfirmacaoData").classList.remove("ativo"); }
       function confirmarDataDia() { const d = diaAtual(); if (!d || !d.data) return; d._dataConfirmada = d.data; salvar(); fecharModalConfirmacaoData(); renderizar(); atualizarTotais(); }
 
-      /* ============================ DASHBOARD ============================ */
+      // ============ QUARTEIRÕES: MAPEAMENTO E STATUS ============
+      function chaveQuarteiraoConcluido(q) { return `ciclo_${estado.atividadeAtiva}_${q}`; }
+      function extrairQuarteiroesCiclo() {
+        const mapa = new Map();
+        const repo = repoAtivo();
+        const ctx = obterContextoCicloVigente();
+        const dc = obterDatasCicloEfetivas(ctx.ano, ctx.ciclo, ctx.atividade);
+        const iniCiclo = dc.inicio || "";
+        const fimCiclo = dc.termino || "";
+        Object.keys(repo).forEach(sk => {
+          const sem = repo[sk]; if (!sem) return;
+          const sCiclo = normalizarNumeroCiclo(sem.cabecalho?.ciclo || "1");
+          const sAno = obterAnoSemana(sem);
+          if (sCiclo !== ctx.ciclo || sAno !== ctx.ano) return;
+          DIAS_SEMANA.forEach(dk => {
+            const dia = sem.dias?.[dk]; if (!dia) return;
+            const iso = dia.data || ""; if (!iso) return;
+            if (iniCiclo && iso < iniCiclo) return;
+            if (fimCiclo && iso > fimCiclo) return;
+            const agentes = (dia.agentes || []).filter(a => a && a.ativo !== false && a.nome);
+            agentes.forEach(ag => {
+              const v = ag.valores || {};
+              for (let c = 1; c <= 7; c++) {
+                const rawQ = v[`b1-r0-c${c}`];
+                if (rawQ === undefined || rawQ === null) continue;
+                const concluido = v[`b1-r1-c${c}`] === "Sim";
+                extrairQuarteiroesDeTexto(rawQ).forEach(qRaw => {
+                  const q = normalizarQuarteirao(qRaw); if (!q) return;
+                  const nome = (ag.nome || "").trim(); if (!nome) return;
+                  const atual = mapa.get(q);
+                  if (!atual) mapa.set(q, { quarteirao: q, agentes: new Set([nome]), primeira: iso, ultima: iso, temConcluido: concluido });
+                  else {
+                    atual.agentes.add(nome);
+                    if (iso < atual.primeira) atual.primeira = iso;
+                    if (iso > atual.ultima) atual.ultima = iso;
+                    if (concluido) atual.temConcluido = true;
+                  }
+                });
+              }
+            });
+          });
+        });
+        return mapa;
+      }
+      // Calcula status; respeita _desmarcadoManual (permite desmarcar quarteirões que vieram auto-concluídos)
+      function calcularStatusQuarteiroes() {
+        const mapa = extrairQuarteiroesCiclo();
+        if (!estado.quarteiroesConcluidos) estado.quarteiroesConcluidos = {};
+        const programados = num(estado.configEstrato?.quarteiroesLivresQtd) + num(estado.configEstrato?.quarteiroesParciaisQtd);
+        let concluidos = 0, emAndamento = 0, precisaRevisao = 0;
+        const detalhes = [];
+        mapa.forEach((info, q) => {
+          const chave = chaveQuarteiraoConcluido(q);
+          const reg = estado.quarteiroesConcluidos[chave] || {};
+          const marcadoManual = !!reg.concluido;
+          const marcadoAuto = !!info.temConcluido;
+          const foiDesmarcadoManual = !!reg._desmarcadoManual;
+          const concluido = foiDesmarcadoManual ? false : (marcadoManual || marcadoAuto);
+          const ultimaOcorrencia = info.ultima;
+          let revisao = false;
+          if (concluido && reg.dataConclusao && ultimaOcorrencia && ultimaOcorrencia > reg.dataConclusao) revisao = true;
+          if (concluido) {
+            concluidos++;
+            if (revisao) precisaRevisao++;
+            estado.quarteiroesConcluidos[chave] = { ...reg, concluido: true, _desmarcadoManual: false, dataConclusao: reg.dataConclusao || ultimaOcorrencia || hojeISO(), ultimaOcorrencia, precisaRevisao: revisao };
+          } else {
+            emAndamento++;
+            estado.quarteiroesConcluidos[chave] = { ...reg, concluido: false, ultimaOcorrencia, precisaRevisao: false };
+          }
+          detalhes.push({ quarteirao: q, agentes: Array.from(info.agentes), primeira: info.primeira, ultima: ultimaOcorrencia, concluido, revisao, auto: marcadoAuto });
+        });
+        const restantes = Math.max(0, programados - concluidos);
+        return { programados, concluidos, emAndamento, restantes, precisaRevisao, detalhes, totalTrabalhados: mapa.size };
+      }
+      function marcarQuarteiraoConcluido(q, marcado) {
+        if (!estado.quarteiroesConcluidos) estado.quarteiroesConcluidos = {};
+        const chave = chaveQuarteiraoConcluido(q);
+        const reg = estado.quarteiroesConcluidos[chave] || {};
+        const info = extrairQuarteiroesCiclo().get(q) || {};
+        if (marcado) {
+          estado.quarteiroesConcluidos[chave] = { ...reg, concluido: true, _desmarcadoManual: false, dataConclusao: hojeISO(), ultimaOcorrencia: info.ultima || hojeISO(), precisaRevisao: false };
+        } else {
+          estado.quarteiroesConcluidos[chave] = { ...reg, concluido: false, _desmarcadoManual: true, dataConclusao: "", precisaRevisao: false };
+        }
+        salvar();
+        renderizarQuarteiroesDesignados();
+        renderizarDashboard();
+      }
+      // Total de quarteirões = Livres + Parciais + Conflagrados
+      function calcularTotalQuarteiroes() {
+        const est = estado.configEstrato || {};
+        return num(est.quarteiroesLivresQtd) + num(est.quarteiroesParciaisQtd) + num(est.quarteiroesConflagradosQtd);
+      }
+
       function dashObterFiltros() {
         const ano = Number(document.getElementById("dashAno")?.value) || new Date().getFullYear();
         const ciclo = normalizarNumeroCiclo(document.getElementById("dashCiclo")?.value || "1");
@@ -2072,14 +2185,36 @@
         const cls = p >= 90 ? "" : p >= 60 ? "alerta" : "critico";
         return `<div class="dash-barra-progresso"><div class="${cls}" style="width:${p.toFixed(1)}%"></div></div><div class="dash-legenda">${rotulo}: <b>${p.toFixed(1).replace(".", ",")}%</b></div>`;
       }
-      function dashGraficoBarras(dados) {
-        const largura = Math.max(520, dados.length * 46);
-        const altura = 200, padL = 46, padB = 42, padT = 14;
+      function dashGraficoLinhas(dados) {
+        const largura = Math.max(560, dados.length * 64 + 80);
+        const altura = 240, padL = 60, padB = 56, padT = 24, padR = 24;
         const max = Math.max(1, ...dados.map(d => d.valor));
-        const bw = (largura - padL - 10) / Math.max(1, dados.length);
-        let svg = `<svg viewBox="0 0 ${largura} ${altura}" width="100%" height="${altura}" role="img">`;
-        for (let i = 0; i <= 4; i++) { const y = padT + (altura - padT - padB) * (i / 4); const v = Math.round(max * (1 - i / 4)); svg += `<line x1="${padL}" y1="${y}" x2="${largura - 6}" y2="${y}" stroke="#e2e8f0" stroke-width="1"/>`; svg += `<text x="${padL - 6}" y="${y + 4}" font-size="10" fill="#64748b" text-anchor="end">${v}</text>`; }
-        dados.forEach((d, i) => { const h = (altura - padT - padB) * (d.valor / max); const x = padL + i * bw + bw * 0.15; const y = altura - padB - h; const cor = d.cor || "#16a34a"; svg += `<rect x="${x}" y="${y}" width="${bw * 0.7}" height="${h}" fill="${cor}" rx="3"><title>${d.rotulo}: ${d.valor}</title></rect>`; svg += `<text x="${x + bw * 0.35}" y="${altura - padB + 14}" font-size="10" fill="#475569" text-anchor="middle">${d.rotulo}</text>`; });
+        const innerW = largura - padL - padR;
+        const innerH = altura - padT - padB;
+        const n = dados.length;
+        const xAt = (i) => padL + (n <= 1 ? innerW / 2 : (i * innerW) / (n - 1));
+        const yAt = (v) => padT + innerH * (1 - v / max);
+        let svg = `<svg viewBox="0 0 ${largura} ${altura}" width="100%" height="${altura}" role="img" preserveAspectRatio="xMidYMid meet">`;
+        for (let i = 0; i <= 4; i++) {
+          const y = padT + innerH * (i / 4);
+          const v = Math.round(max * (1 - i / 4));
+          svg += `<line x1="${padL}" y1="${y}" x2="${largura - padR}" y2="${y}" stroke="#e2e8f0" stroke-width="1"/>`;
+          svg += `<text x="${padL - 8}" y="${y + 4}" font-size="12" fill="#64748b" text-anchor="end" font-weight="600">${v}</text>`;
+        }
+        let areaPath = `M ${xAt(0)} ${padT + innerH}`;
+        dados.forEach((d, i) => { areaPath += ` L ${xAt(i)} ${yAt(d.valor)}`; });
+        areaPath += ` L ${xAt(n - 1)} ${padT + innerH} Z`;
+        svg += `<path d="${areaPath}" fill="rgba(22,163,74,0.12)" stroke="none"/>`;
+        let linePath = "";
+        dados.forEach((d, i) => { linePath += (i === 0 ? "M" : " L") + ` ${xAt(i)} ${yAt(d.valor)}`; });
+        svg += `<path d="${linePath}" fill="none" stroke="#16a34a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`;
+        dados.forEach((d, i) => {
+          const cx = xAt(i), cy = yAt(d.valor);
+          svg += `<circle cx="${cx}" cy="${cy}" r="5" fill="#16a34a" stroke="#ffffff" stroke-width="2"><title>${d.rotulo}: ${d.valor}</title></circle>`;
+          const ty = cy - 12 < padT ? cy + 22 : cy - 12;
+          svg += `<text x="${cx}" y="${ty}" font-size="12" fill="#14532d" text-anchor="middle" font-weight="800">${d.valor}</text>`;
+          svg += `<text x="${cx}" y="${altura - padB + 20}" font-size="11" fill="#475569" text-anchor="middle" font-weight="600">${d.rotulo}</text>`;
+        });
         svg += `</svg>`;
         return svg;
       }
@@ -2089,25 +2224,44 @@
         if (statusEl) statusEl.textContent = "Calculando...";
         try {
           const agg = dashAgregarCiclo(ano, ciclo);
-          const semAtual = calcularTotaisSemana(String(semRef), estado.semanas);
+          // ===== Imóveis =====
+          const imoveisEstimados = num(estado.configEstrato?.imoveisEstimados);
+          // Imóveis programados = Livres + Parciais (sem Conflagrados)
+          const imoveisProgramados = num(estado.configEstrato?.imoveisEstimadosLivres) + num(estado.configEstrato?.imoveisEstimadosParciais);
+          // Restam = Programados − Informados
+          const restamImoveis = imoveisProgramados > 0 ? Math.max(0, imoveisProgramados - agg.INFORMADOS) : null;
+          const pctCobertura = imoveisProgramados > 0 ? Math.min(100, (100 * agg.INFORMADOS / imoveisProgramados)) : null;
           const kpis = document.getElementById("dashKpis");
           if (kpis) {
             kpis.innerHTML = [
-              dashCard("Total do ciclo", fmtIntCell(agg.TOTAL), `${agg.semanas} semana(s) · ${agg.diasProd} dia(s) produtivos`, ""),
-              dashCard("Trabalhados", fmtIntCell(agg.TRABALHADO), `Programados: <b>${fmtIntCell(agg.PROGRAMADOS)}</b>`, "azul"),
-              dashCard("Rendimento", fmtRendimento(agg.rendimento), "Imóveis trabalhados / dia", "ambar"),
-              dashCard("Cobertura prog.", agg.coberturaProg != null ? agg.coberturaProg.toFixed(1).replace(".", ",") + "%" : "—", dashBarra(agg.coberturaProg, "Trab. sobre prog."), "roxo"),
-              dashCard("Informados", fmtIntCell(agg.INFORMADOS), `Pendentes: <b>${fmtIntCell(agg.PENDENCIAS)}</b>`, "teal"),
-              dashCard("Índice pendência (IP)", fmtPct(agg.ip), "100 × Pend / Inform.", "vermelho"),
-              dashCard("Supervisão", fmtIntCell(agg.SUPERVISAO), "Total supervisionado", "rosa"),
-              dashCard("Depósitos tratados", fmtIntCell(agg.DEP_TRATADOS), `Total dep.: <b>${fmtIntCell(agg.DEP_TOTAL)}</b> · Bti: <b>${fmtDecCell(agg.DEP_GRAMAS)}g</b>`, ""),
-              dashCard(`Semana ${pad2(semRef)}`, semAtual ? fmtIntCell(semAtual.TOTAL) : "—", semAtual ? `Inf.: ${fmtIntCell(semAtual.INFORMADOS)} · IP: ${fmtPct(semAtual.IP)}` : "Sem lançamentos", "azul")
+              dashCard("Total de imóveis estimados", imoveisEstimados > 0 ? fmtIntCell(imoveisEstimados) : "—", "Livres + Parciais + Conflagrados", "azul"),
+              dashCard("Imóveis programados", imoveisProgramados > 0 ? fmtIntCell(imoveisProgramados) : "—", "Livres + Parciais", ""),
+              dashCard("Informados", fmtIntCell(agg.INFORMADOS), `Pendentes: <b>${fmtIntCell(agg.PENDENCIAS)}</b>`, "vermelho"),
+              dashCard("Restam", restamImoveis == null ? "—" : fmtIntCell(restamImoveis), imoveisProgramados > 0 ? dashBarra(pctCobertura, "Cobertura sobre programados") : "Defina os imóveis programados", "ambar"),
+              dashCard("Inspecionados", fmtIntCell(agg.TOTAL), "Imóveis inspecionados no ciclo", "roxo"),
+              dashCard("Rendimento", fmtRendimento(agg.rendimento), "Imóveis trabalhados / dia", "teal"),
+              dashCard("Pendência", fmtIntCell(agg.PENDENCIAS), "Fechados + Recusados + Abandonados − Recuperados", "vermelho"),
+              dashCard("Índice de Pendência (IP)", fmtPct(agg.ip), "100 × Pend / Inform.", "rosa")
+            ].join("");
+          }
+          // ===== Quarteirões =====
+          const qs = calcularStatusQuarteiroes();
+          const totalQuarteiroes = calcularTotalQuarteiroes();
+          const kq = document.getElementById("dashKpisQuarteiroes");
+          if (kq) {
+            kq.innerHTML = [
+              dashCard("Quarteirões Total", fmtIntCell(totalQuarteiroes), "Livres + Parciais + Conflagrados", "azul"),
+              dashCard("Quarteirões programados", fmtIntCell(qs.programados), "Livres + Parciais", ""),
+              dashCard("Quarteirões concluídos", fmtIntCell(qs.concluidos), qs.precisaRevisao > 0 ? `⚠️ ${qs.precisaRevisao} p/ revisão` : "Marcados como concluídos", "teal"),
+              dashCard("Quarteirões em andamento", fmtIntCell(qs.emAndamento), "Iniciados, não concluídos", "ambar"),
+              dashCard("Quarteirões restantes", fmtIntCell(qs.restantes), "Programados − Concluídos", "roxo")
             ].join("");
           }
           const gS = document.getElementById("dashGraficoSemanas");
-          if (gS) { if (!agg.porSemana.length) gS.innerHTML = `<p class="dash-legenda">Sem lançamentos no ciclo.</p>`; else gS.innerHTML = dashGraficoBarras(agg.porSemana.map(x => ({ rotulo: "SE" + pad2(x.semana), valor: x.total }))); }
-          const gD = document.getElementById("dashGraficoDepositos");
-          if (gD) { const cores = { A1: "#16a34a", A2: "#22c55e", B: "#0284c7", C: "#7c3aed", D1: "#d97706", D2: "#e11d48", E: "#0d9488" }; const dados = TIPOS_DEPOSITOS.map(t => ({ rotulo: t, valor: agg.DEP[t] || 0, cor: cores[t] })); gD.innerHTML = dashGraficoBarras(dados); }
+          if (gS) {
+            if (!agg.porSemana.length) gS.innerHTML = `<p class="dash-legenda">Sem lançamentos no ciclo.</p>`;
+            else gS.innerHTML = dashGraficoLinhas(agg.porSemana.map(x => ({ rotulo: "SE" + pad2(x.semana), valor: x.total })));
+          }
           const tS = document.getElementById("dashTabelaSemanas");
           if (tS) {
             if (!agg.porSemana.length) tS.innerHTML = `<thead><tr><th>Semana</th><th>Total</th></tr></thead><tbody><tr><td colspan="2" style="text-align:center;color:#64748b;padding:16px;">Nenhuma semana.</td></tr></tbody>`;
@@ -2127,7 +2281,6 @@
         const b = document.getElementById("btnDashAtualizar"); if (b) b.addEventListener("click", renderizarDashboard);
         ["dashAno", "dashCiclo", "dashSemanaRef"].forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener("change", renderizarDashboard); });
       }
-      /* ========================== fim DASHBOARD ========================== */
       function aplicarBloqueiosAgente(ag, dia) {
         if (!ag || !dia) return;
         const v = valoresDoDia(ag); const c = dia._dataConfirmada === dia.data;
@@ -2456,7 +2609,6 @@
         const s = Number(sN);
         if (isNaN(s)) return false;
         const an = Number(ano) || new Date().getFullYear();
-        // 1. Programação oficial no SUGARBO: se a semana estiver cadastrada para LIRAa, ela é dedicada ao LIRAa
         const progLiraa = (estado.programacao || []).some(p => {
           if (!p || p.atividade !== "liraa") return false;
           if (p.ano && Number(p.ano) !== an) return false;
@@ -2465,7 +2617,6 @@
           return !isNaN(i) && !isNaN(f) && s >= i && s <= f;
         });
         if (progLiraa) return true;
-        // 2. Ou se a semana possui produção EFETIVA lançada em LIRAa e nenhuma produção em ciclo
         const totLiraa = calcularTotaisSemana(String(s), estado.semanasLiraa);
         if (totLiraa && (totLiraa.TOTAL > 0 || totLiraa.TRABALHADO > 0)) {
           const totCiclo = calcularTotaisSemana(String(s), estado.semanas);
@@ -2473,9 +2624,7 @@
         }
         return false;
       }
-      function semanaEhExclusivaLiraa(sN, ano, cN) {
-        return semanaEhDedicadaLiraa(sN, ano);
-      }
+      function semanaEhExclusivaLiraa(sN, ano, cN) { return semanaEhDedicadaLiraa(sN, ano); }
       function renderizarCiclo() {
         const w = document.getElementById("cicloWrapper"); if (!w) return;
         w.innerHTML = "";
@@ -2594,7 +2743,6 @@
         });
         tA.appendChild(tbA); w.appendChild(tA);
       }
-      /* ============ ABA: QUARTEIRÕES DESIGNADOS ============ */
       function obterContextoCicloVigente() {
         const s = semana(); if (!s) return { ano: new Date().getFullYear(), ciclo: "1", atividade: estado.atividadeAtiva };
         const ano = obterAnoSemana(s);
@@ -2610,70 +2758,75 @@
           if (dc.inicio && dc.termino) { info.className = "badge-aviso-atividade ciclo"; info.textContent = `${formatarCicloTexto(ctx.ciclo)} • ${formatarDataBR(dc.inicio)} a ${formatarDataBR(dc.termino)}`; }
           else { info.className = "badge-aviso-atividade alerta"; info.textContent = `${formatarCicloTexto(ctx.ciclo)} • sem programação cadastrada`; }
         }
-        const repo = repoAtivo();
-        const dc = obterDatasCicloEfetivas(ctx.ano, ctx.ciclo, ctx.atividade);
-        const iniCiclo = dc.inicio || "";
-        const fimCiclo = dc.termino || "";
-        const anoCiclo = ctx.ano;
-        const cicloStr = ctx.ciclo;
-        const mapa = new Map();
-        Object.keys(repo).forEach(sk => {
-          const sem = repo[sk]; if (!sem) return;
-          const sCiclo = normalizarNumeroCiclo(sem.cabecalho?.ciclo || "1");
-          const sAno = obterAnoSemana(sem);
-          if (sCiclo !== cicloStr || sAno !== anoCiclo) return;
-          DIAS_SEMANA.forEach(dk => {
-            const dia = sem.dias?.[dk]; if (!dia) return;
-            const iso = dia.data || ""; if (!iso) return;
-            if (iniCiclo && iso < iniCiclo) return;
-            if (fimCiclo && iso > fimCiclo) return;
-            const agentes = (dia.agentes || []).filter(a => a && a.ativo !== false && a.nome);
-            agentes.forEach(ag => {
-              const v = ag.valores || {};
-              const partes = [];
-              for (let c = 1; c <= 7; c++) {
-                const raw = v[`b1-r0-c${c}`];
-                if (raw === undefined || raw === null) continue;
-                extrairQuarteiroesDeTexto(raw).forEach(q => partes.push(q));
-              }
-              partes.forEach(qRaw => {
-                const q = normalizarQuarteirao(qRaw); if (!q) return;
-                const nome = (ag.nome || "").trim(); if (!nome) return;
-                const chave = q + "|" + nome.toLowerCase();
-                const atual = mapa.get(chave);
-                if (!atual) mapa.set(chave, { quarteirao: q, agente: nome, primeira: iso, ultima: iso });
-                else { if (iso < atual.primeira) atual.primeira = iso; if (iso > atual.ultima) atual.ultima = iso; }
-              });
-            });
-          });
-        });
-        const linhas = Array.from(mapa.values());
-        linhas.sort((a, b) => {
-          const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
-          const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
-          if (qa !== qb) return qa - qb;
-          if (a.quarteirao !== b.quarteirao) return String(a.quarteirao).localeCompare(String(b.quarteirao));
-          return a.agente.localeCompare(b.agente, "pt-BR", { sensitivity: "base" });
-        });
+        const st = calcularStatusQuarteiroes();
+        const cardsEl = document.getElementById("qdResumoCards");
+        if (cardsEl) {
+          const pct = st.programados > 0 ? Math.min(100, (100 * st.concluidos) / st.programados) : 0;
+          cardsEl.innerHTML = `
+            <div class="qd-total-card">
+              <div class="qd-total-item"><span class="qd-total-label">Programados</span><span class="qd-total-valor">${fmtIntCell(st.programados)}</span></div>
+              <div class="qd-total-item"><span class="qd-total-label">Concluídos</span><span class="qd-total-valor" style="color:#166534">${fmtIntCell(st.concluidos)}</span></div>
+              <div class="qd-total-item"><span class="qd-total-label">Em andamento</span><span class="qd-total-valor" style="color:#b45309">${fmtIntCell(st.emAndamento)}</span></div>
+              <div class="qd-total-item"><span class="qd-total-label">Restantes</span><span class="qd-total-valor" style="color:#7c3aed">${fmtIntCell(st.restantes)}</span></div>
+              <div class="qd-total-item"><span class="qd-total-label">Trabalhados</span><span class="qd-total-valor">${fmtIntCell(st.totalTrabalhados)}</span></div>
+              <div class="qd-total-item"><span class="qd-total-label">Progresso</span><span class="qd-total-valor">${pct.toFixed(1).replace(".", ",")}%</span></div>
+              ${st.precisaRevisao > 0 ? `<div class="qd-total-item"><span class="qd-total-label">⚠️ Revisão</span><span class="qd-total-valor" style="color:#b45309">${fmtIntCell(st.precisaRevisao)}</span></div>` : ""}
+            </div>
+          `;
+        }
         const t = document.createElement("table");
         t.className = "resumo-tabela";
-        t.style.minWidth = "720px";
+        t.style.minWidth = "820px";
         t.style.width = "100%";
         t.style.tableLayout = "fixed";
         const cg = document.createElement("colgroup");
-        ["140px","320px","180px","180px"].forEach(x => { const c = document.createElement("col"); c.style.width = x; cg.appendChild(c); });
+        ["80px","160px","260px","140px","140px","120px"].forEach(x => { const c = document.createElement("col"); c.style.width = x; cg.appendChild(c); });
         t.appendChild(cg);
         const th = document.createElement("thead");
         const trH = document.createElement("tr");
-        ["Quarteirão","Agente","Primeira Ocorrência","Última Ocorrência"].forEach(x => { const e = document.createElement("th"); e.className = "cabecalho-titulo"; e.textContent = x; trH.appendChild(e); });
+        ["Concluído","Quarteirão","Agente(s)","Primeira Ocorrência","Última Ocorrência","Status"].forEach(x => { const e = document.createElement("th"); e.className = "cabecalho-titulo"; e.textContent = x; trH.appendChild(e); });
         th.appendChild(trH); t.appendChild(th);
         const tb = document.createElement("tbody");
-        if (linhas.length === 0) {
-          tb.innerHTML = `<tr><td colspan="4" style="padding:18px;color:#64748b;font-weight:600;text-align:center;">Nenhum quarteirão identificado no ciclo vigente com os lançamentos atuais.</td></tr>`;
+        if (st.detalhes.length === 0) {
+          tb.innerHTML = `<tr><td colspan="6" style="padding:18px;color:#64748b;font-weight:600;text-align:center;">Nenhum quarteirão identificado no ciclo vigente com os lançamentos atuais.</td></tr>`;
         } else {
-          linhas.forEach(l => {
+          st.detalhes.sort((a, b) => {
+            const qa = isNaN(Number(a.quarteirao)) ? Infinity : Number(a.quarteirao);
+            const qb = isNaN(Number(b.quarteirao)) ? Infinity : Number(b.quarteirao);
+            if (qa !== qb) return qa - qb;
+            return String(a.quarteirao).localeCompare(String(b.quarteirao));
+          });
+          st.detalhes.forEach(l => {
             const tr = document.createElement("tr");
-            tr.innerHTML = `<td style="font-weight:800;color:#14532d;">${l.quarteirao}</td><td style="text-align:left;padding-left:10px;font-weight:700;color:#14532d;">${l.agente}</td><td>${formatarDataBR(l.primeira)}</td><td>${formatarDataBR(l.ultima)}</td>`;
+            if (l.concluido && l.revisao) tr.className = "qd-linha-revisao";
+            else if (l.concluido) tr.className = "qd-linha-concluida";
+            const tdCheck = document.createElement("td");
+            const cb = document.createElement("input");
+            cb.type = "checkbox"; cb.className = "qd-checkbox"; cb.checked = !!l.concluido;
+            cb.title = l.concluido
+              ? (l.auto ? "Desmarcar (veio marcado pelo lançamento 'Concluído? = Sim')" : "Desmarcar conclusão")
+              : "Marcar como concluído";
+            cb.addEventListener("change", () => {
+              if (confirm(l.concluido ? `Desmarcar conclusão do quarteirão ${l.quarteirao}?` : `Marcar o quarteirão ${l.quarteirao} como concluído?`)) {
+                marcarQuarteiraoConcluido(l.quarteirao, cb.checked);
+              } else { cb.checked = !cb.checked; }
+            });
+            tdCheck.appendChild(cb); tr.appendChild(tdCheck);
+            const tdQ = document.createElement("td"); tdQ.style.fontWeight = "800"; tdQ.style.color = "#14532d"; tdQ.textContent = l.quarteirao; tr.appendChild(tdQ);
+            const tdA = document.createElement("td"); tdA.style.textAlign = "left"; tdA.style.paddingLeft = "10px"; tdA.textContent = l.agentes.join(", "); tr.appendChild(tdA);
+            const tdP = document.createElement("td"); tdP.textContent = formatarDataBR(l.primeira); tr.appendChild(tdP);
+            const tdU = document.createElement("td"); tdU.textContent = formatarDataBR(l.ultima); tr.appendChild(tdU);
+            const tdS = document.createElement("td");
+            if (l.concluido && l.revisao) {
+              tdS.innerHTML = `<span style="color:#92400e; font-weight:800">⚠️ Revisar</span><span class="qd-badge-revisao">nova ocorrência</span>`;
+            } else if (l.concluido && l.auto) {
+              tdS.innerHTML = `<span style="color:#166534; font-weight:800">✓ Concluído</span> <small style="color:#64748b">(auto)</small>`;
+            } else if (l.concluido) {
+              tdS.innerHTML = `<span style="color:#166534; font-weight:800">✓ Concluído</span>`;
+            } else {
+              tdS.innerHTML = `<span style="color:#b45309; font-weight:700">⏳ Em andamento</span>`;
+            }
+            tr.appendChild(tdS);
             tb.appendChild(tr);
           });
         }
@@ -2741,6 +2894,10 @@
           distrito: "",
           bairro: cEq.bairro || "",
           estrato: cEq.estrato || "",
+          imoveisEstimados: "",
+          imoveisEstimadosLivres: "",
+          imoveisEstimadosParciais: "",
+          imoveisEstimadosConflagrados: "",
           quarteiroesTotal: "",
           quarteiroesLivresQtd: "",
           quarteiroesLivresLista: "",
@@ -2756,39 +2913,40 @@
       function recalcularIndicadoresEstrato() {
         if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
         const est = estado.configEstrato;
+        const imvLiv = num(est.imoveisEstimadosLivres);
+        const imvPar = num(est.imoveisEstimadosParciais);
+        const imvCon = num(est.imoveisEstimadosConflagrados);
+        const imvTotal = imvLiv + imvPar + imvCon;
+        est.imoveisEstimados = String(imvTotal);
+        const inImvTotal = document.getElementById("estratoTotalImoveis");
+        if (inImvTotal) inImvTotal.value = imvTotal > 0 ? String(imvTotal) : "";
         const tot = num(est.quarteiroesTotal);
         const liv = num(est.quarteiroesLivresQtd);
         const par = num(est.quarteiroesParciaisQtd);
         const con = num(est.quarteiroesConflagradosQtd);
         const soma = liv + par + con;
-
         const txtSoma = document.getElementById("txtSomaCategorias");
         if (txtSoma) txtSoma.textContent = `Soma das categorias: ${fmtIntCell(soma)}`;
-
         const base = tot > 0 ? tot : (soma > 0 ? soma : 0);
         const pLiv = base > 0 ? (liv / base) * 100 : 0;
         const pPar = base > 0 ? (par / base) * 100 : 0;
         const pCon = base > 0 ? (con / base) * 100 : 0;
-
         const elPLiv = document.getElementById("pctQuartLivres");
         const elPPar = document.getElementById("pctQuartParciais");
         const elPCon = document.getElementById("pctQuartConflagrados");
         if (elPLiv) elPLiv.textContent = `${pLiv.toFixed(1).replace(".", ",")}%`;
         if (elPPar) elPPar.textContent = `${pPar.toFixed(1).replace(".", ",")}%`;
         if (elPCon) elPCon.textContent = `${pCon.toFixed(1).replace(".", ",")}%`;
-
         const bLiv = document.getElementById("barraLivres");
         const bPar = document.getElementById("barraParciais");
         const bCon = document.getElementById("barraConflagrados");
         if (bLiv) bLiv.style.width = `${pLiv.toFixed(1)}%`;
         if (bPar) bPar.style.width = `${pPar.toFixed(1)}%`;
         if (bCon) bCon.style.width = `${pCon.toFixed(1)}%`;
-
         const txtDist = document.getElementById("txtDistribuicaoPct");
         if (txtDist) {
           txtDist.textContent = `${pLiv.toFixed(1).replace(".", ",")}% Livres • ${pPar.toFixed(1).replace(".", ",")}% Parciais • ${pCon.toFixed(1).replace(".", ",")}% Conflagrados`;
         }
-
         const bdg = document.getElementById("badgeValidaQuart");
         if (bdg) {
           if (tot <= 0 && soma === 0) {
@@ -2820,12 +2978,20 @@
             inp.value = (est[k] !== undefined && est[k] !== null) ? est[k] : "";
           }
         });
+        const inImvTotal = document.getElementById("estratoTotalImoveis");
+        if (inImvTotal) {
+          const liv = num(est.imoveisEstimadosLivres);
+          const par = num(est.imoveisEstimadosParciais);
+          const con = num(est.imoveisEstimadosConflagrados);
+          inImvTotal.value = (liv + par + con) > 0 ? String(liv + par + con) : "";
+        }
         recalcularIndicadoresEstrato();
       }
       function configurarListenersConfigEstrato() {
         if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
         document.querySelectorAll("[data-estrato]").forEach(inp => {
           const k = inp.dataset.estrato;
+          if (k === "imoveisEstimados") return;
           const handler = () => {
             if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
             estado.configEstrato[k] = inp.value;
@@ -2840,11 +3006,11 @@
             }
             salvar();
             recalcularIndicadoresEstrato();
+            renderizarDashboard();
           };
           inp.addEventListener("input", handler);
           inp.addEventListener("change", handler);
         });
-
         const bSalvar = document.getElementById("btnSalvarEstrato");
         if (bSalvar) {
           bSalvar.addEventListener("click", () => {
@@ -2856,7 +3022,6 @@
             }
           });
         }
-
         const bAutoSoma = document.getElementById("btnAutoSomarQuart");
         if (bAutoSoma) {
           bAutoSoma.addEventListener("click", () => {
@@ -2870,9 +3035,9 @@
             if (inTot) inTot.value = String(soma);
             salvar();
             recalcularIndicadoresEstrato();
+            renderizarDashboard();
           });
         }
-
         const bSinc = document.getElementById("btnSincronizarEstrato");
         if (bSinc) {
           bSinc.addEventListener("click", () => {
@@ -2894,7 +3059,6 @@
             }
           });
         }
-
         const bPdf = document.getElementById("btnImprimirPDFEstrato");
         if (bPdf) {
           bPdf.addEventListener("click", () => {
@@ -3096,26 +3260,34 @@
           const bDl = document.getElementById("btnBaixarCodigo"); if (bDl) bDl.addEventListener("click", () => { const b = new Blob(["<!doctype html>\n" + document.documentElement.outerHTML], { type: "text/html;charset=utf-8" }); const u = URL.createObjectURL(b); const a = document.createElement("a"); a.href = u; a.download = "index.html"; document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(u); });
           const bP1 = document.getElementById("btnImprimirPDF");
           if (bP1) bP1.addEventListener("click", () => {
-            if (haInformadosExcedidosSemana()) { alert("⚠️ Corrija 'Informados' > 19 antes do PDF."); return; }
-            const pend = semanasComProgPendente();
-            if (pend.length > 0) { alert("⚠️ Semanas com 👥 Prog. pendente: " + pend.map(p => pad2(p)).join(", ") + ". Preencha antes de gerar o PDF."); return; }
-            const s = semana(); const nS = s?.cabecalho?.semana || estado.semanaAtiva || "1";
-            gerarPDF("areaImpressao", `PMCD_Resumo_Semana_${pad2(nS)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e)));
+            const sAtiva = semana(); const chaveAtiva = String(estado.semanaAtiva);
+            if (haInformadosExcedidosSemana(sAtiva)) { alert("⚠️ Corrija 'Informados' > 19 antes do PDF."); return; }
+            if (sAtiva && semanaTemProgPendente(sAtiva)) {
+              const dias = DIAS_SEMANA.filter(d => { const dd = sAtiva.dias?.[d]; return dd && temDadosProducaoReais(dd) && !progDiaPreenchido(dd); }).map(d => NOMES_DIAS[d]);
+              alert(`⚠️ A semana ${pad2(chaveAtiva)} tem produção lançada sem 👥 Prog. nos dias: ${dias.join(", ")}. Preencha antes de gerar o PDF.`);
+              return;
+            }
+            gerarPDF("areaImpressao", `PMCD_Resumo_Semana_${pad2(chaveAtiva)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e)));
           });
           const bP2 = document.getElementById("btnImprimirPDFCiclo");
           if (bP2) bP2.addEventListener("click", () => {
             if (haInformadosExcedidosGlobal()) { alert("⚠️ Corrija 'Informados' > 19 antes do PDF."); return; }
-            const pend = semanasComProgPendente(estado.semanas);
-            if (pend.length > 0) { alert("⚠️ Semanas com 👥 Prog. pendente: " + pend.map(p => pad2(p)).join(", ") + ". Preencha antes de gerar o PDF."); return; }
             const c = estado.cicloFiltroConsolidado || "1";
+            const semanasDoCiclo = dashSemanasDoCiclo(obterAnoSemana(semana()), c);
+            const pend = semanasComProgPendente(estado.semanas, semanasDoCiclo);
+            if (pend.length > 0) {
+              const detalhes = pend.map(k => { const s = estado.semanas[k]; const dias = DIAS_SEMANA.filter(d => { const dd = s?.dias?.[d]; return dd && temDadosProducaoReais(dd) && !progDiaPreenchido(dd); }).map(d => NOMES_DIAS[d]); return `SE ${pad2(k)} (${dias.join(", ")})`; });
+              alert("⚠️ Semanas com 👥 Prog. pendente:\n" + detalhes.join("\n") + "\n\nPreencha antes de gerar o PDF.");
+              return;
+            }
             gerarPDF("areaImpressaoCiclo", `PMCD_Resumo_Ciclo_${pad2(c)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e)));
           });
           const bPA = document.getElementById("btnSemanaAnteriorProdInd"); if (bPA) bPA.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) - 1); renderizarProducaoIndividual(); });
           const bPP = document.getElementById("btnSemanaProximaProdInd"); if (bPP) bPP.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) + 1); renderizarProducaoIndividual(); });
           const bPPI = document.getElementById("btnImprimirPDFProdInd");
           if (bPPI) bPPI.addEventListener("click", () => {
-            const pend = semanasComProgPendente();
-            if (pend.length > 0) { alert("⚠️ Semanas com 👥 Prog. pendente: " + pend.map(p => pad2(p)).join(", ") + ". Preencha antes de gerar o PDF."); return; }
+            const sAtiva = semana();
+            if (sAtiva && semanaTemProgPendente(sAtiva)) { alert("⚠️ Preencha o campo 👥 Prog. antes de gerar o PDF desta semana."); return; }
             gerarPDF("areaProducaoIndividual", `PMCD_Producao_Individual_SE${pad2(estado.semanaAtiva)}_${hojeISO()}.pdf`).catch(e => alert("❌ " + (e?.message || e)));
           });
           const bQdPdf = document.getElementById("btnImprimirPDFQuarteiroes"); if (bQdPdf) bQdPdf.addEventListener("click", () => gerarPDF("areaQuarteiroesDesignados", `PMCD_Quarteiroes_Designados_${hojeISO()}.pdf`, { orientacao: "portrait" }).catch(e => alert("❌ " + (e?.message || e))));
@@ -3165,6 +3337,7 @@
                 card.querySelector("button").addEventListener("click", () => {
                   if (confirm(`Restaurar os ${item.qtd} lançamentos da chave "${item.chave}"?`)) {
                     estado = item.dados;
+                    if (!estado.quarteiroesConcluidos) estado.quarteiroesConcluidos = {};
                     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
                     salvarNuvem();
                     renderizar();
