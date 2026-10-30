@@ -153,13 +153,46 @@
       .coluna-agente.inativo { background: #f8fafc; border: 1px dashed #cbd5e1; opacity: 0.95; padding: 8px 12px; }
       .coluna-agente.inativo .cabecalho-agente { border-bottom: none; padding-bottom: 0; }
       .coluna-agente.inativo .corpo-tabelas-agente, .coluna-agente.inativo .bloco-tabela, .coluna-agente.inativo .separador-bloco { display: none !important; }
-      .coluna-agente.tema-0 { border-top: 4px solid #059669; }
-      .coluna-agente.tema-1 { border-top: 4px solid #0284c7; }
-      .coluna-agente.tema-2 { border-top: 4px solid #d97706; }
-      .coluna-agente.tema-3 { border-top: 4px solid #7c3aed; }
-      .coluna-agente.tema-4 { border-top: 4px solid #e11d48; }
-      .coluna-agente.tema-5 { border-top: 4px solid #0d9488; }
-      .coluna-agente.total { border: 2px solid #16a34a; border-top: 4px solid #15803d; background: #f0fdf4; }
+      .coluna-agente.tema-0 { border: 2px solid #86efac; border-top: 5px solid #16a34a; background: #ffffff; }
+      .coluna-agente.tema-0 .cabecalho-agente { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 6px 6px 0 0; padding: 6px 10px; border-bottom: 2px solid #bbf7d0; }
+      .coluna-agente.tema-0 .cabecalho-agente h3 { color: #14532d; }
+      .coluna-agente.tema-0 .linha-identificacao th { background: #dcfce7 !important; color: #14532d !important; }
+      .coluna-agente.tema-0 .titulo-producao, .coluna-agente.tema-0 .titulo-depositos { background: #dcfce7 !important; color: #14532d !important; }
+
+      .coluna-agente.tema-1 { border: 2px solid #fde047; border-top: 5px solid #d97706; background: #ffffff; }
+      .coluna-agente.tema-1 .cabecalho-agente { background: linear-gradient(135deg, #fefce8 0%, #fef08a 100%); border-radius: 6px 6px 0 0; padding: 6px 10px; border-bottom: 2px solid #fde68a; }
+      .coluna-agente.tema-1 .cabecalho-agente h3 { color: #854d0e; }
+      .coluna-agente.tema-1 .linha-identificacao th { background: #fef9c3 !important; color: #713f12 !important; }
+      .coluna-agente.tema-1 .titulo-producao, .coluna-agente.tema-1 .titulo-depositos { background: #fef9c3 !important; color: #713f12 !important; }
+
+      .coluna-agente.tema-2 { border: 2px solid #93c5fd; border-top: 5px solid #0284c7; background: #ffffff; }
+      .coluna-agente.tema-2 .cabecalho-agente { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 6px 6px 0 0; padding: 6px 10px; border-bottom: 2px solid #bfdbfe; }
+      .coluna-agente.tema-2 .cabecalho-agente h3 { color: #0369a1; }
+      .coluna-agente.tema-2 .linha-identificacao th { background: #dbeafe !important; color: #0c4a6e !important; }
+      .coluna-agente.tema-2 .titulo-producao, .coluna-agente.tema-2 .titulo-depositos { background: #dbeafe !important; color: #0c4a6e !important; }
+
+      .coluna-agente.tema-3 { border: 2px solid #fca5a5; border-top: 5px solid #dc2626; background: #ffffff; }
+      .coluna-agente.tema-3 .cabecalho-agente { background: linear-gradient(135deg, #fff1f2 0%, #fecdd3 100%); border-radius: 6px 6px 0 0; padding: 6px 10px; border-bottom: 2px solid #fecaca; }
+      .coluna-agente.tema-3 .cabecalho-agente h3 { color: #9f1239; }
+      .coluna-agente.tema-3 .linha-identificacao th { background: #fee2e2 !important; color: #991b1b !important; }
+      .coluna-agente.tema-3 .titulo-producao, .coluna-agente.tema-3 .titulo-depositos { background: #fee2e2 !important; color: #991b1b !important; }
+
+      .coluna-agente.tema-4 { border: 2px solid #cbd5e1; border-top: 5px solid #475569; background: #ffffff; }
+      .coluna-agente.tema-4 .cabecalho-agente { background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%); border-radius: 6px 6px 0 0; padding: 6px 10px; border-bottom: 2px solid #e2e8f0; }
+      .coluna-agente.tema-4 .cabecalho-agente h3 { color: #1e293b; }
+      .coluna-agente.tema-4 .linha-identificacao th { background: #f8fafc !important; color: #1e293b !important; }
+      .coluna-agente.tema-4 .titulo-producao, .coluna-agente.tema-4 .titulo-depositos { background: #f8fafc !important; color: #1e293b !important; }
+
+      .badge-tema-agente { font-size: 0.7rem; font-weight: 800; padding: 2px 7px; border-radius: 12px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.06); }
+      .coluna-agente.tema-0 .badge-tema-agente { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+      .coluna-agente.tema-1 .badge-tema-agente { background: #fef3c7; color: #854d0e; border: 1px solid #fde047; }
+      .coluna-agente.tema-2 .badge-tema-agente { background: #dbeafe; color: #0369a1; border: 1px solid #93c5fd; }
+      .coluna-agente.tema-3 .badge-tema-agente { background: #fee2e2; color: #9f1239; border: 1px solid #fca5a5; }
+      .coluna-agente.tema-4 .badge-tema-agente { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }
+
+      .coluna-agente.total { border: 2px solid #16a34a; border-top: 5px solid #15803d; background: #f0fdf4; box-shadow: 0 4px 12px rgba(22,163,74,0.12); }
+      .coluna-agente.total .cabecalho-agente { background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border-radius: 6px 6px 0 0; padding: 8px 12px; border-bottom: 2px solid #86efac; }
+      .coluna-agente.total .cabecalho-agente h3 { color: #14532d; font-size: 1.05rem; }
       .coluna-agente.coluna-invalida { border: 2px solid #dc2626 !important; border-top: 4px solid #b91c1c !important; }
       .coluna-agente.coluna-invalida::after { content: "⚠️ Coluna com Informados acima de 19 — revise os valores"; display: block; background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; padding: 6px 10px; border-radius: 6px; font-size: 0.78rem; font-weight: 700; text-align: center; margin-top: 8px; }
       @keyframes piscarErroInformados { 0%, 100% { box-shadow: inset 0 0 0 9999px #dc2626; color: #ffffff; } 50% { box-shadow: inset 0 0 0 9999px #fde047; color: #7f1d1d; } }
@@ -316,11 +349,23 @@
       .fad7-resumo-campo-bloco { display: flex; flex-wrap: nowrap; gap: 8px; padding: 0; overflow-x: auto; align-items: stretch; }
       .fad7-resumo-campo-card { border: 1.5px solid #475569; border-radius: 6px; overflow: hidden; background: #fff; display: flex; flex-direction: column; min-width: 0; }
       .fad7-resumo-campo-card.quart { flex: 1 1 0; min-width: 100px; }
-      .fad7-resumo-campo-card.trabalhados { flex: 5 1 0; min-width: 320px; }
-      .fad7-resumo-campo-card.imoveis { flex: 3 1 0; min-width: 260px; }
+      .fad7-resumo-campo-card.trabalhados { flex: 6 1 0; min-width: 440px; }
+      .fad7-resumo-campo-card.imoveis { flex: 3 1 0; min-width: 250px; }
       .fad7-resumo-campo-card.indices { flex: 2 1 0; min-width: 180px; }
+      .fad7-tabela th.fad7-subth, .fad7-tabela tr.fad7-linha-subcabecalho th { background: #f1f5f9; color: #1e293b; font-weight: 700; font-size: 0.65rem; padding: 2px 2px; text-transform: uppercase; letter-spacing: 0.2px; border-top: 1px solid #94a3b8; border-bottom: 1px solid #94a3b8; }
+      .fad7-tabela th.fad7-subth.fad7-total, .fad7-tabela tr.fad7-linha-subcabecalho th.fad7-total { background: #fef3c7; color: #92400e; }
       .fad7-card-titulo { background: #e2e8f0; color: #14532d; font-weight: 800; font-size: 0.68rem; padding: 4px 4px; border-bottom: 1.5px solid #475569; text-align: center; text-transform: uppercase; letter-spacing: 0.2px; line-height: 1.2; }
       .fad7-resumo-campo-card .fad7-tabela { flex: 1 1 auto; }
+      .fad7-linha-dupla { display: flex; gap: 8px; align-items: stretch; }
+      .fad7-secao-depositos { flex: 1 1 0; min-width: 0; }
+      .fad7-secao-eliminados { flex: 0 0 180px; min-width: 150px; display: flex; flex-direction: column; }
+      .fad7-secao-eliminados .fad7-tabela { flex: 1 1 auto; height: 100%; }
+      .fad7-secao-eliminados .fad7-tabela tbody td { height: 100%; vertical-align: middle; }
+      .fad7-secao-eliminados .fad7-tabela input { font-size: 0.95rem; font-weight: 800; }
+      @media (max-width: 768px) {
+        .fad7-linha-dupla { flex-direction: column; }
+        .fad7-secao-eliminados { flex: 1 1 auto; width: 100%; }
+      }
       .rc-form { display: flex; flex-direction: column; gap: 10px; }
       .rc-cabecalho { text-align: center; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1.5px solid #475569; }
       .rc-titulo { font-size: 1.2rem; font-weight: 900; color: #14532d; text-transform: uppercase; letter-spacing: 1px; }
@@ -437,6 +482,29 @@
       .dash-tag.ok { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
       .dash-tag.atencao { background: #fef3c7; color: #92400e; border: 1px solid #fde047; }
       .dash-tag.critico { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+      .dash-duas-colunas { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 14px; }
+      @media (max-width: 640px) { .dash-duas-colunas { grid-template-columns: 1fr; } }
+      .dash-painel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+      .dash-painel-header h3 { margin-bottom: 0; font-size: 0.95rem; color: #14532d; display: flex; align-items: center; gap: 6px; }
+      .dash-painel-badge { font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 9999px; }
+      .dash-painel-badge.verde { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+      .dash-painel-badge.azul { background: #dbeafe; color: #0369a1; border: 1px solid #93c5fd; }
+      .dash-painel-badge.ambar { background: #fef3c7; color: #92400e; border: 1px solid #fde047; }
+      .dash-painel-badge.vermelho { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+      .dash-pizza-container { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 220px; }
+      .dash-legenda-pizza-2d { display: flex; justify-content: center; align-items: stretch; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 8px; }
+      .legenda-item-2d { display: flex; flex-direction: column; gap: 6px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 10px 14px; min-width: 170px; flex: 1; max-width: 290px; }
+      .legenda-item-topo { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+      .swatch-2d { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
+      .legenda-nome { font-size: 0.78rem; font-weight: 700; color: #1e293b; flex: 1; }
+      .badge-pct-2d { font-size: 0.72rem; font-weight: 800; padding: 2px 7px; border-radius: 9999px; }
+      .legenda-item-corpo { display: flex; flex-direction: column; gap: 2px; }
+      .legenda-valor-grande { font-size: 1.3rem; font-weight: 900; color: #0f172a; }
+      .legenda-sub { font-size: 0.7rem; color: #64748b; font-weight: 600; line-height: 1.25; }
+      .grafico-svg-2d { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.04)); }
+      .dash-legenda-pizza-3d { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; width: 100%; margin-top: 6px; }
+      .legenda-item-3d { display: flex; align-items: center; gap: 8px; background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 6px 12px; }
+      .grafico-svg-3d { filter: drop-shadow(0 2px 4px rgba(0,0,0,0.04)); }
       .qd-checkbox { width: 20px; height: 20px; cursor: pointer; accent-color: #16a34a; }
       .qd-linha-concluida td { background: #dcfce7 !important; }
       .qd-linha-revisao td { background: #fef3c7 !important; }
@@ -534,8 +602,53 @@
           </div>
           <div class="dash-grid" id="dashKpis"></div>
           <div class="dash-grid" id="dashKpisQuarteiroes"></div>
-          <div class="dash-painel"><h3>📊 Produção por semana do ciclo</h3><div class="dash-svg-wrap" id="dashGraficoSemanas"></div></div>
-          <div class="dash-painel"><h3>📅 Resumo por semana</h3><div class="tabela-agentes-config-wrap"><table class="dash-tabela" id="dashTabelaSemanas"></table></div></div>
+
+          <!-- Gráficos de Linhas: Produção & Pendências -->
+          <div class="dash-duas-colunas">
+            <div class="dash-painel">
+              <div class="dash-painel-header">
+                <h3>📊 Produção de Imóveis por Semana</h3>
+                <span class="dash-painel-badge verde">Visitas / Ciclo</span>
+              </div>
+              <div class="dash-svg-wrap" id="dashGraficoSemanas"></div>
+            </div>
+            <div class="dash-painel">
+              <div class="dash-painel-header">
+                <h3>📉 Evolução das Pendências por Semana</h3>
+                <span class="dash-painel-badge vermelho">Pendências / Ciclo</span>
+              </div>
+              <div class="dash-svg-wrap" id="dashGraficoPendencias"></div>
+            </div>
+          </div>
+
+          <!-- Gráficos de Pizza: Situação dos Imóveis & Quarteirões -->
+          <div class="dash-duas-colunas">
+            <div class="dash-painel">
+              <div class="dash-painel-header">
+                <h3>🏠 Situação dos Imóveis</h3>
+                <span class="dash-painel-badge azul">Informados vs Restantes</span>
+              </div>
+              <div class="dash-pizza-container" id="dashGraficoPizzaImoveis"></div>
+            </div>
+            <div class="dash-painel">
+              <div class="dash-painel-header">
+                <h3>🧱 Situação dos Quarteirões</h3>
+                <span class="dash-painel-badge ambar">Designados vs Restantes</span>
+              </div>
+              <div class="dash-pizza-container" id="dashGraficoPizzaQuarteiroes"></div>
+            </div>
+          </div>
+
+          <!-- Tabela Resumo por Semana com Quarteirões Concluídos -->
+          <div class="dash-painel">
+            <div class="dash-painel-header">
+              <h3>📅 Resumo por semana</h3>
+              <span class="dash-painel-badge verde">Quarteirões Concluídos & Indicadores</span>
+            </div>
+            <div class="tabela-agentes-config-wrap">
+              <table class="dash-tabela" id="dashTabelaSemanas"></table>
+            </div>
+          </div>
         </div>
       </section>
       <section id="aba-sugarbo" class="conteudo-aba">
@@ -851,14 +964,58 @@
                 <div class="fad7-resumo-campo-card trabalhados">
                   <div class="fad7-card-titulo">Nº de Imóveis Trabalhados Por Tipo</div>
                   <table class="fad7-tabela">
-                    <thead><tr><th>Residência</th><th>TB</th><th>PE</th><th>Outros</th><th>Total</th></tr></thead>
-                    <tbody><tr>
-                      <td><input type="text" data-fad7="residencia" /></td>
-                      <td><input type="text" data-fad7="tb" /></td>
-                      <td><input type="text" data-fad7="pe" /></td>
-                      <td><input type="text" data-fad7="outros" /></td>
-                      <td><input type="text" data-fad7="totalImoveisTrab" /></td>
-                    </tr></tbody>
+                    <thead>
+                      <tr>
+                        <th>Residência</th>
+                        <th>Comércio</th>
+                        <th>TB</th>
+                        <th>PE</th>
+                        <th>Outros</th>
+                        <th class="fad7-total">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input type="text" inputmode="numeric" data-fad7="residencia" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="comercio" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="tb" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="pe" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="outros" /></td>
+                        <td class="fad7-total"><input type="text" inputmode="numeric" data-fad7="totalImoveisTrab" /></td>
+                      </tr>
+                      <tr class="fad7-linha-subcabecalho">
+                        <th class="fad7-subth">Tratados</th>
+                        <th class="fad7-subth">Tratados</th>
+                        <th class="fad7-subth">Tratados</th>
+                        <th class="fad7-subth">Tratados</th>
+                        <th class="fad7-subth">Tratados</th>
+                        <th class="fad7-subth fad7-total">Tratados</th>
+                      </tr>
+                      <tr>
+                        <td><input type="text" inputmode="numeric" data-fad7="residenciaTratados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="comercioTratados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="tbTratados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="peTratados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="outrosTratados" /></td>
+                        <td class="fad7-total"><input type="text" inputmode="numeric" data-fad7="totalImoveisTratados" /></td>
+                      </tr>
+                      <tr class="fad7-linha-subcabecalho">
+                        <th class="fad7-subth">Focados</th>
+                        <th class="fad7-subth">Focados</th>
+                        <th class="fad7-subth">Focados</th>
+                        <th class="fad7-subth">Focados</th>
+                        <th class="fad7-subth">Focados</th>
+                        <th class="fad7-subth fad7-total">Focados</th>
+                      </tr>
+                      <tr>
+                        <td><input type="text" inputmode="numeric" data-fad7="residenciaFocados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="comercioFocados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="tbFocados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="peFocados" /></td>
+                        <td><input type="text" inputmode="numeric" data-fad7="outrosFocados" /></td>
+                        <td class="fad7-total"><input type="text" inputmode="numeric" data-fad7="totalImoveisFocados" /></td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
                 <div class="fad7-resumo-campo-card imoveis">
@@ -884,22 +1041,91 @@
                 </div>
               </div>
             </div>
-            <div class="fad7-secao">
-              <div class="fad7-secao-titulo">Nº de Depósitos Inspecionados por Tipo</div>
-              <table class="fad7-tabela">
-                <thead><tr><th>A1</th><th>A2</th><th>B</th><th>C</th><th>D1</th><th>D2</th><th>E</th><th class="fad7-total">TOTAL</th><th>Eliminados</th></tr></thead>
-                <tbody><tr>
-                  <td><input type="text" data-fad7="depA1" /></td>
-                  <td><input type="text" data-fad7="depA2" /></td>
-                  <td><input type="text" data-fad7="depB" /></td>
-                  <td><input type="text" data-fad7="depC" /></td>
-                  <td><input type="text" data-fad7="depD1" /></td>
-                  <td><input type="text" data-fad7="depD2" /></td>
-                  <td><input type="text" data-fad7="depE" /></td>
-                  <td class="fad7-total"><input type="text" data-fad7="depTotal" /></td>
-                  <td><input type="text" data-fad7="depEliminados" /></td>
-                </tr></tbody>
-              </table>
+            <div class="fad7-linha-dupla">
+              <div class="fad7-secao fad7-secao-depositos">
+                <div class="fad7-secao-titulo">Nº de Depósitos Inspecionados por Tipo</div>
+                <table class="fad7-tabela">
+                  <thead>
+                    <tr>
+                      <th>A1</th>
+                      <th>A2</th>
+                      <th>B</th>
+                      <th>C</th>
+                      <th>D1</th>
+                      <th>D2</th>
+                      <th>E</th>
+                      <th class="fad7-total">TOTAL</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="text" inputmode="numeric" data-fad7="depA1" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depA2" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depB" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depC" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depD1" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depD2" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depE" /></td>
+                      <td class="fad7-total"><input type="text" inputmode="numeric" data-fad7="depTotal" /></td>
+                    </tr>
+                    <tr class="fad7-linha-subcabecalho">
+                      <th class="fad7-subth">Tratados</th>
+                      <th class="fad7-subth">Tratados</th>
+                      <th class="fad7-subth">Tratados</th>
+                      <th class="fad7-subth">Tratados</th>
+                      <th class="fad7-subth">Tratados</th>
+                      <th class="fad7-subth">Tratados</th>
+                      <th class="fad7-subth">Tratados</th>
+                      <th class="fad7-subth fad7-total">Tratados</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" inputmode="numeric" data-fad7="depTratA1" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depTratA2" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depTratB" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depTratC" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depTratD1" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depTratD2" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depTratE" /></td>
+                      <td class="fad7-total"><input type="text" inputmode="numeric" data-fad7="depTratTotal" /></td>
+                    </tr>
+                    <tr class="fad7-linha-subcabecalho">
+                      <th class="fad7-subth">Focados</th>
+                      <th class="fad7-subth">Focados</th>
+                      <th class="fad7-subth">Focados</th>
+                      <th class="fad7-subth">Focados</th>
+                      <th class="fad7-subth">Focados</th>
+                      <th class="fad7-subth">Focados</th>
+                      <th class="fad7-subth">Focados</th>
+                      <th class="fad7-subth fad7-total">Focados</th>
+                    </tr>
+                    <tr>
+                      <td><input type="text" inputmode="numeric" data-fad7="depFocA1" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depFocA2" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depFocB" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depFocC" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depFocD1" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depFocD2" /></td>
+                      <td><input type="text" inputmode="numeric" data-fad7="depFocE" /></td>
+                      <td class="fad7-total"><input type="text" inputmode="numeric" data-fad7="depFocTotal" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="fad7-secao fad7-secao-eliminados">
+                <div class="fad7-secao-titulo">Eliminados</div>
+                <table class="fad7-tabela">
+                  <thead>
+                    <tr>
+                      <th>Nº de Depósitos Eliminados</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="text" inputmode="numeric" data-fad7="depEliminados" placeholder="0" /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <div class="fad7-secao">
               <div class="fad7-secao-titulo">Índice por Tipo de Recipiente</div>
@@ -1190,12 +1416,12 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
                   <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
                     <label for="estratoQuartTotal" style="font-weight: 800; color: #14532d; font-size: 0.95rem;">🧱 Quarteirões Total:</label>
-                    <input type="number" min="0" id="estratoQuartTotal" data-estrato="quarteiroesTotal" placeholder="0" style="width: 100px; padding: 6px 10px; border: 2px solid #16a34a; border-radius: 6px; font-weight: 800; font-size: 1rem; color: #14532d; text-align: center;" />
+                    <input type="text" inputmode="numeric" id="estratoQuartTotal" data-estrato="quarteiroesTotal" placeholder="0" style="width: 100px; padding: 6px 10px; border: 2px solid #16a34a; border-radius: 6px; font-weight: 800; font-size: 1rem; color: #14532d; text-align: center;" />
                     <button type="button" class="btn btn-mini" id="btnAutoSomarQuart" style="padding: 6px 12px; font-size: 0.78rem;">⚡ Somar Categorias para o Total</button>
                   </div>
                   <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: #fff; border: 1.5px solid #16a34a; border-radius: 6px; padding: 6px 12px;">
                     <label for="estratoTotalImoveis" style="font-weight: 800; color: #14532d; font-size: 0.9rem;">🏠 Total de imóveis:</label>
-                    <input type="number" min="0" id="estratoTotalImoveis" readonly placeholder="0" title="Calculado automaticamente: Livres + Parciais + Conflagrados" style="width: 110px; border: none; background: transparent; font-weight: 900; font-size: 1.1rem; color: #14532d; text-align: center; cursor: not-allowed;" />
+                    <input type="text" id="estratoTotalImoveis" readonly placeholder="0" title="Calculado automaticamente: Livres + Parciais + Conflagrados" style="width: 110px; border: none; background: transparent; font-weight: 900; font-size: 1.1rem; color: #14532d; text-align: center; cursor: not-allowed;" />
                   </div>
                   <div style="font-size: 0.8rem; color: #475569;" id="txtSomaCategorias">Soma das categorias: 0</div>
                 </div>
@@ -1220,11 +1446,11 @@
                   </div>
                   <div style="display: flex; align-items: center; gap: 8px;">
                     <label for="estratoQuartLivresQtd" style="font-size: 0.78rem; font-weight: 700; color: #166534;">Quantidade:</label>
-                    <input type="number" min="0" id="estratoQuartLivresQtd" data-estrato="quarteiroesLivresQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                    <input type="text" inputmode="numeric" id="estratoQuartLivresQtd" data-estrato="quarteiroesLivresQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
                   <div style="display: flex; align-items: center; gap: 8px;">
                     <label for="estratoImoveisLivres" style="font-size: 0.78rem; font-weight: 700; color: #166534;">🏠 Imóveis Estimados:</label>
-                    <input type="number" min="0" id="estratoImoveisLivres" data-estrato="imoveisEstimadosLivres" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                    <input type="text" inputmode="numeric" id="estratoImoveisLivres" data-estrato="imoveisEstimadosLivres" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #86efac; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
                   <div>
                     <label for="estratoQuartLivresLista" style="font-size: 0.75rem; font-weight: 700; color: #166534; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
@@ -1240,11 +1466,11 @@
                   </div>
                   <div style="display: flex; align-items: center; gap: 8px;">
                     <label for="estratoQuartParciaisQtd" style="font-size: 0.78rem; font-weight: 700; color: #92400e;">Quantidade:</label>
-                    <input type="number" min="0" id="estratoQuartParciaisQtd" data-estrato="quarteiroesParciaisQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                    <input type="text" inputmode="numeric" id="estratoQuartParciaisQtd" data-estrato="quarteiroesParciaisQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
                   <div style="display: flex; align-items: center; gap: 8px;">
                     <label for="estratoImoveisParciais" style="font-size: 0.78rem; font-weight: 700; color: #92400e;">🏠 Imóveis Estimados:</label>
-                    <input type="number" min="0" id="estratoImoveisParciais" data-estrato="imoveisEstimadosParciais" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                    <input type="text" inputmode="numeric" id="estratoImoveisParciais" data-estrato="imoveisEstimadosParciais" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #fde68a; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
                   <div>
                     <label for="estratoQuartParciaisLista" style="font-size: 0.75rem; font-weight: 700; color: #92400e; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
@@ -1260,11 +1486,11 @@
                   </div>
                   <div style="display: flex; align-items: center; gap: 8px;">
                     <label for="estratoQuartConflagradosQtd" style="font-size: 0.78rem; font-weight: 700; color: #991b1b;">Quantidade:</label>
-                    <input type="number" min="0" id="estratoQuartConflagradosQtd" data-estrato="quarteiroesConflagradosQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                    <input type="text" inputmode="numeric" id="estratoQuartConflagradosQtd" data-estrato="quarteiroesConflagradosQtd" placeholder="0" style="width: 80px; padding: 5px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
                   <div style="display: flex; align-items: center; gap: 8px;">
                     <label for="estratoImoveisConflagrados" style="font-size: 0.78rem; font-weight: 700; color: #991b1b;">🏠 Imóveis Estimados:</label>
-                    <input type="number" min="0" id="estratoImoveisConflagrados" data-estrato="imoveisEstimadosConflagrados" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
+                    <input type="text" inputmode="numeric" id="estratoImoveisConflagrados" data-estrato="imoveisEstimadosConflagrados" placeholder="0" style="width: 110px; padding: 5px 8px; border: 1.5px solid #fca5a5; border-radius: 5px; font-weight: 800; text-align: center; font-size: 0.88rem; background: #fff;" />
                   </div>
                   <div>
                     <label for="estratoQuartConflagradosLista" style="font-size: 0.75rem; font-weight: 700; color: #991b1b; display: block; margin-bottom: 3px;">Relação / Números dos Quarteirões:</label>
@@ -1442,10 +1668,56 @@
         quarteiroesConcluidos: {}
       };
       if (typeof window !== "undefined") window.estado = estado;
+      function formatarNumeroMilhar(v) {
+        if (v === undefined || v === null) return "";
+        const s = String(v).trim();
+        if (s === "" || s === "—" || s === "-") return s;
+        const n = num(s);
+        if (!isFinite(n)) return s;
+        const r = Math.round(n);
+        const sinal = r < 0 ? "-" : "";
+        const abs = Math.abs(r);
+        return sinal + String(abs).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
       function pad2(v) { if (v === undefined || v === null || v === "") return ""; const n = Number(v); if (!isFinite(n)) return String(v); return (n < 0 ? "-" : "") + String(Math.abs(Math.trunc(n))).padStart(2, "0"); }
-      function fmtIntCell(v) { if (v === undefined || v === null) return ""; const s = String(v).trim(); if (s === "") return ""; if (/^-?\d+$/.test(s)) { const n = parseInt(s, 10); return (n < 0 ? "-" : "") + String(Math.abs(n)).padStart(2, "0"); } return s; }
-      function fmtDecCell(v) { if (v === undefined || v === null || v === "") return "0,0"; return num(v).toFixed(1).replace(".", ","); }
-      function num(v) { if (v === undefined || v === null || v === "") return 0; if (typeof v === "number") return isNaN(v) ? 0 : v; const s = String(v).trim().replace(",", "."); const l = s.replace(/[^0-9.-]/g, ""); if (!l || l === "-" || l === ".") return 0; const n = parseFloat(l); return isNaN(n) ? 0 : n; }
+      function fmtIntCell(v) {
+        if (v === undefined || v === null) return "";
+        const s = String(v).trim();
+        if (s === "" || s === "—" || s === "-") return "";
+        const n = num(s);
+        if (isFinite(n)) {
+          const r = Math.round(n);
+          const sinal = r < 0 ? "-" : "";
+          const abs = Math.abs(r);
+          if (abs < 10) return sinal + String(abs).padStart(2, "0");
+          return sinal + String(abs).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+        return s;
+      }
+      function fmtDecCell(v) {
+        if (v === undefined || v === null || v === "") return "0,0";
+        const n = num(v);
+        const p = n.toFixed(1).split(".");
+        const intPart = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return intPart + "," + p[1];
+      }
+      function num(v) {
+        if (v === undefined || v === null || v === "") return 0;
+        if (typeof v === "number") return isNaN(v) ? 0 : v;
+        let s = String(v).trim();
+        if (!s || s === "-" || s === "—" || s === ".") return 0;
+        if (s.includes(",") && s.includes(".")) {
+          s = s.replace(/\./g, "").replace(",", ".");
+        } else if (s.includes(",")) {
+          s = s.replace(",", ".");
+        } else if (/^\d{1,3}(\.\d{3})+$/.test(s) || /^\d+\.\d{3}$/.test(s)) {
+          s = s.replace(/\./g, "");
+        }
+        const l = s.replace(/[^0-9.-]/g, "");
+        if (!l || l === "-" || l === ".") return 0;
+        const n = parseFloat(l);
+        return isNaN(n) ? 0 : n;
+      }
       const LOCAL_PADRAO_PMCD = "Salvador/BA";
       let _locCache = LOCAL_PADRAO_PMCD, _locPromise = null;
       function obterLocalizacao() {
@@ -1653,7 +1925,7 @@
       function autoDetectarProgramacaoPorData(iso, persistir = true) {
         if (!iso) return false;
         const ps = consultarProgramacaoPorData(iso); if (ps.length !== 1) return false;
-        const p = ps[0]; const se = obterSemanaEpidemiologicaDeISO(iso) || String(p.cicloSemanaInicio || p.semana || 1);
+        const p = ps[0]; const se = identificarSemanaDaData(iso, p.ano, p.ciclo) || obterSemanaEpidemiologicaDeISO(iso) || String(p.cicloSemanaInicio || p.semana || 1);
         const sk = String(se); const at = p.atividade || "ciclo"; const repo = at === "liraa" ? estado.semanasLiraa : estado.semanas;
         if (!repo[sk]) { const pd = obterPeriodoDaSemana(sk, p.ano, p.ciclo, at); repo[sk] = criarSemana(pd.inicioISO, sk, at, p.ciclo, p.mes); }
         const s = repo[sk]; if (!s.cabecalho) s.cabecalho = criarCabecalhoVazio();
@@ -1676,17 +1948,19 @@
         const sI = obterSemanaEpidemiologicaDeISO(ini), sF = obterSemanaEpidemiologicaDeISO(fim);
         if (sI && eSI && (!eSI.value || eSI.dataset.auto === "true")) { eSI.value = sI; eSI.dataset.auto = "true"; }
         if (sF && eSF && (!eSF.value || eSF.dataset.auto === "true")) { eSF.value = sF; eSF.dataset.auto = "true"; }
+        const semIni = (eSI && eSI.value) ? eSI.value : sI;
+        const semFim = (eSF && eSF.value) ? eSF.value : sF;
         const ds = listarDatasEntre(ini, fim); if (ds.length === 0) { box.style.display = "none"; return; }
         const du = ds.filter(d => { const dt = new Date(d.iso.split("-")[0], Number(d.iso.split("-")[1])-1, Number(d.iso.split("-")[2])); const dd = dt.getDay(); return dd >= 1 && dd <= 5; });
         box.style.display = "block";
-        txt.innerHTML = `<strong>${formatarDataBR(ini)}</strong> até <strong>${formatarDataBR(fim)}</strong><br>${ds.length} dia(s) corridos | ${du.length} dia(s) úteis<br>SE: <strong>${sI ? pad2(sI) : "—"}</strong> a <strong>${sF ? pad2(sF) : "—"}</strong>`;
+        txt.innerHTML = `<strong>${formatarDataBR(ini)}</strong> até <strong>${formatarDataBR(fim)}</strong><br>${ds.length} dia(s) corridos | ${du.length} dia(s) úteis<br>SE: <strong>${semIni ? pad2(semIni) : "—"}</strong> a <strong>${semFim ? pad2(semFim) : "—"}</strong>`;
         lst.innerHTML = ds.map(d => { const u = ["Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira"].includes(d.diaSemana); return `<span style="background:${u ? "#dcfce7" : "#fee2e2"}; color:${u ? "#14532d" : "#991b1b"}; border:1px solid #cbd5e1; border-radius:4px; padding:2px 6px; font-size:0.72rem; font-weight:600;">${d.br} ${d.diaSemana.substring(0,3)}</span>`; }).join("");
       }
       function resetarFormularioProg() {
         const e = document.getElementById("progEditId"); if (e) e.value = "";
         const b1 = document.getElementById("btnSalvarProg"); if (b1) b1.textContent = "+ Salvar Programação";
         const b2 = document.getElementById("btnCancelarEdicaoProg"); if (b2) b2.style.display = "none";
-        ["progCicloSemanaInicio","progCicloSemanaTermino","progCicloDataInicio","progCicloDataTermino"].forEach(id => { const el = document.getElementById(id); if (el) el.value = ""; });
+        ["progCicloSemanaInicio","progCicloSemanaTermino","progCicloDataInicio","progCicloDataTermino"].forEach(id => { const el = document.getElementById(id); if (el) { el.value = ""; el.dataset.auto = "true"; } });
         const p = document.getElementById("previewPeriodoCiclo"); if (p) p.style.display = "none";
       }
       function editarProgramacao(id) {
@@ -1696,8 +1970,10 @@
         atualizarLimitesSemanas(p.ano);
         document.getElementById("progCiclo").value = normalizarNumeroCiclo(p.ciclo);
         document.getElementById("progAtividade").value = p.atividade || "ciclo";
-        document.getElementById("progCicloSemanaInicio").value = p.cicloSemanaInicio || "";
-        document.getElementById("progCicloSemanaTermino").value = p.cicloSemanaTermino || "";
+        const inSI = document.getElementById("progCicloSemanaInicio");
+        if (inSI) { inSI.value = p.cicloSemanaInicio || ""; inSI.dataset.auto = "false"; }
+        const inSF = document.getElementById("progCicloSemanaTermino");
+        if (inSF) { inSF.value = p.cicloSemanaTermino || ""; inSF.dataset.auto = "false"; }
         document.getElementById("progCicloDataInicio").value = p.cicloDataInicio || p.dataInicio || "";
         document.getElementById("progCicloDataTermino").value = p.cicloDataTermino || p.dataTermino || "";
         document.getElementById("btnSalvarProg").textContent = "💾 Atualizar Programação";
@@ -1705,7 +1981,7 @@
         atualizarPreviewPeriodoCiclo();
       }
       let idProgramacaoParaExcluir = null;
-      function solicitarExclusaoProgramacao(id) { idProgramacaoParaExcluir = id; const p = (estado.programacao || []).find(x => x && x.id === id); const d = document.getElementById("detalhesExclusaoProg"); if (d) { if (p) d.innerHTML = `<strong>Ano:</strong> ${p.ano || "—"}<br><strong>Atividade:</strong> ${p.atividade === "liraa" ? "LIRAa" : "Ciclo"}<br><strong>Ciclo:</strong> ${formatarCicloTexto(p.ciclo)}<br><strong>Período:</strong> ${formatarDataBR(p.cicloDataInicio || p.dataInicio)} a ${formatarDataBR(p.cicloDataTermino || p.dataTermino)}`; else d.textContent = "—"; } document.getElementById("modalConfirmarExclusaoProg").classList.add("ativo"); }
+      function solicitarExclusaoProgramacao(id) { idProgramacaoParaExcluir = id; const p = (estado.programacao || []).find(x => x && x.id === id); const d = document.getElementById("detalhesExclusaoProg"); if (d) { if (p) d.innerHTML = `<strong>Ano:</strong> ${p.ano || "—"}<br><strong>Atividade:</strong> ${p.atividade === "liraa" ? "LIRAa" : "Ciclo"}<br><strong>Ciclo:</strong> ${formatarCicloTexto(p.ciclo)}<br><strong>Período:</strong> ${formatarDataBR(p.cicloDataInicio || p.dataInicio)} a ${formatarDataBR(p.cicloDataTermino || p.dataTermino)}<br><strong>Semanas:</strong> SE ${pad2(p.cicloSemanaInicio || p.semana)} a SE ${pad2(p.cicloSemanaTermino || p.semana)}`; else d.textContent = "—"; } document.getElementById("modalConfirmarExclusaoProg").classList.add("ativo"); }
       function fecharModalExclusaoProg() { idProgramacaoParaExcluir = null; document.getElementById("modalConfirmarExclusaoProg").classList.remove("ativo"); }
       function executarExclusaoProgramacaoConfirmada() { if (!idProgramacaoParaExcluir) { fecharModalExclusaoProg(); return; } const id = idProgramacaoParaExcluir; estado.programacao = (estado.programacao || []).filter(x => x && x.id !== id); salvar(); fecharModalExclusaoProg(); renderizarTabelaProgramacao(); sincronizarPeriodosSemanasCiclo(); try { verificarEAtualizarBadgeAtividade(); } catch(e) {} try { atualizarPreviewPeriodoCiclo(); } catch(e) {} try { renderizarQuarteiroesDesignados(); } catch(e) {} }
       function renderizarTabelaProgramacao() {
@@ -1716,7 +1992,8 @@
         ord.forEach(p => {
           const tr = document.createElement("tr");
           const t = p.atividade === "liraa" ? `<span style="background:#ffedd5; color:#9a3412; font-weight:700; padding:2px 6px; border-radius:4px;">LIRAa</span>` : `<span style="background:#dcfce7; color:#14532d; font-weight:700; padding:2px 6px; border-radius:4px;">Ciclo</span>`;
-          tr.innerHTML = `<td><strong>${p.ano}</strong></td><td>${t}</td><td>${formatarCicloTexto(p.ciclo)}</td><td>${formatarDataBR(p.cicloDataInicio || p.dataInicio)} a ${formatarDataBR(p.cicloDataTermino || p.dataTermino)}</td><td style="display:flex; justify-content:center; gap:4px;"><button class="btn btn-cinza btn-editar-prog" data-id="${p.id}" style="padding: 4px 8px; color: #0284c7;">✏️</button><button class="btn btn-cinza btn-remover-prog" data-id="${p.id}" style="padding: 4px 8px; color: #dc2626; background:#fee2e2;">🗑️</button></td>`;
+          const sFaixa = (p.cicloSemanaInicio || p.semana) ? `<br><small style="color:#166534; font-weight:700;">SE: ${pad2(p.cicloSemanaInicio || p.semana)} a ${pad2(p.cicloSemanaTermino || p.semana)}</small>` : "";
+          tr.innerHTML = `<td><strong>${p.ano}</strong></td><td>${t}</td><td>${formatarCicloTexto(p.ciclo)}</td><td>${formatarDataBR(p.cicloDataInicio || p.dataInicio)} a ${formatarDataBR(p.cicloDataTermino || p.dataTermino)}${sFaixa}</td><td style="display:flex; justify-content:center; gap:4px;"><button class="btn btn-cinza btn-editar-prog" data-id="${p.id}" style="padding: 4px 8px; color: #0284c7;">✏️</button><button class="btn btn-cinza btn-remover-prog" data-id="${p.id}" style="padding: 4px 8px; color: #dc2626; background:#fee2e2;">🗑️</button></td>`;
           c.appendChild(tr);
         });
         c.querySelectorAll(".btn-editar-prog").forEach(b => b.addEventListener("click", () => editarProgramacao(b.dataset.id)));
@@ -2185,39 +2462,293 @@
         const cls = p >= 90 ? "" : p >= 60 ? "alerta" : "critico";
         return `<div class="dash-barra-progresso"><div class="${cls}" style="width:${p.toFixed(1)}%"></div></div><div class="dash-legenda">${rotulo}: <b>${p.toFixed(1).replace(".", ",")}%</b></div>`;
       }
-      function dashGraficoLinhas(dados) {
-        const largura = Math.max(560, dados.length * 64 + 80);
-        const altura = 240, padL = 60, padB = 56, padT = 24, padR = 24;
-        const max = Math.max(1, ...dados.map(d => d.valor));
+      function identificarSemanaDaData(iso, ano, ciclo) {
+        if (!iso) return "";
+        const y = Number(ano) || new Date().getFullYear();
+        const c = normalizarNumeroCiclo(ciclo || "1");
+        // 1. Programação cadastrada na aba SUGARBO (referência primária de semanas)
+        let p = (estado.programacao || []).find(x => x && Number(x.ano) === y && normalizarNumeroCiclo(x.ciclo) === c && (!x.atividade || x.atividade === "ciclo"));
+        if (!p) p = (estado.programacao || []).find(x => x && Number(x.ano) === y && normalizarNumeroCiclo(x.ciclo) === c);
+        if (!p) p = (estado.programacao || []).find(x => x && Number(x.ano) === y && (x.cicloSemanaInicio || x.semana) && (x.cicloDataInicio || x.dataInicio));
+        if (p && (p.cicloDataInicio || p.dataInicio) && (p.cicloSemanaInicio || p.semana)) {
+          const dIni = p.cicloDataInicio || p.dataInicio;
+          const sIni = Number(p.cicloSemanaInicio || p.semana);
+          const sFim = Number(p.cicloSemanaTermino || p.semana || (sIni + 12));
+          const p1 = String(dIni).split("-").map(Number);
+          const p2 = String(iso).split("-").map(Number);
+          if (p1.length === 3 && p2.length === 3 && !p1.some(isNaN) && !p2.some(isNaN)) {
+            const dt1 = new Date(p1[0], p1[1] - 1, p1[2]);
+            const dt2 = new Date(p2[0], p2[1] - 1, p2[2]);
+            const diffDias = Math.floor((dt2.getTime() - dt1.getTime()) / 86400000);
+            const diffSemanas = Math.floor(diffDias / 7);
+            const sCalc = sIni + diffSemanas;
+            if (sCalc >= sIni && sCalc <= sFim) return String(sCalc);
+            if (sCalc >= 1 && sCalc <= 53) return String(sCalc);
+          }
+        }
+        // 2. Verificar correspondência direta de data nos dias das semanas lançadas
+        const col = estado.semanas || {};
+        for (const sk of Object.keys(col)) {
+          const s = col[sk];
+          if (!s || !s.dias) continue;
+          if (normalizarNumeroCiclo(s.cabecalho?.ciclo) !== c) continue;
+          for (const dk of DIAS_SEMANA) {
+            if (s.dias[dk]?.data === iso) return String(sk);
+          }
+        }
+        // 3. Intervalo da semana pelo obterPeriodoDaSemana
+        const semanasCiclo = dashSemanasDoCiclo(y, c);
+        for (const sk of semanasCiclo) {
+          const per = obterPeriodoDaSemana(sk, y, c, "ciclo");
+          if (per && per.inicioISO) {
+            const fimSem = adicionarDiasISO(per.inicioISO, 6);
+            if (iso >= per.inicioISO && iso <= fimSem) return String(sk);
+          }
+        }
+        // 4. Fallback padrão
+        return obterSemanaEpidemiologicaDeISO(iso) || "";
+      }
+
+      function obterMapaQuarteiroesConcluidosPorSemana(ano, ciclo) {
+        const y = Number(ano) || new Date().getFullYear();
+        const c = normalizarNumeroCiclo(ciclo || "1");
+        const mapa = new Map();
+        const st = calcularStatusQuarteiroes();
+        const concluidos = (st.detalhes || []).filter(d => d && d.concluido === true);
+        concluidos.forEach(item => {
+          const dUltima = item.ultima;
+          if (!dUltima) return;
+          const sem = identificarSemanaDaData(dUltima, y, c);
+          if (!sem) return;
+          if (!mapa.has(sem)) mapa.set(sem, new Set());
+          mapa.get(sem).add(item.quarteirao);
+        });
+        return mapa;
+      }
+
+      function obterQuarteiroesConcluidosDaSemana(sk, ano, cN, mapaCache = null) {
+        const skStr = String(sk);
+        const mapa = mapaCache || obterMapaQuarteiroesConcluidosPorSemana(ano, cN);
+        const setQ = mapa.get(skStr) || new Set();
+        const lista = Array.from(setQ).sort((a, b) => {
+          const na = parseInt(a, 10), nb = parseInt(b, 10);
+          if (!isNaN(na) && !isNaN(nb)) return na - nb;
+          return String(a).localeCompare(String(b), undefined, { numeric: true });
+        });
+        return {
+          qtd: lista.length,
+          lista: lista,
+          texto: lista.length > 0 ? lista.join(", ") : "—"
+        };
+      }
+
+      function dashGraficoLinhas2D(dados, opcoes = {}) {
+        const corTema = opcoes.corTema || "verde";
+        const paletas = {
+          verde: {
+            linha: "#16a34a",
+            gradTopo: "#22c55e",
+            gradBase: "#dcfce7",
+            ponto: "#15803d",
+            badgeBorda: "#16a34a",
+            badgeTexto: "#14532d",
+            badgeFundo: "#ffffff"
+          },
+          vermelho: {
+            linha: "#dc2626",
+            gradTopo: "#ef4444",
+            gradBase: "#fee2e2",
+            ponto: "#b91c1c",
+            badgeBorda: "#dc2626",
+            badgeTexto: "#991b1b",
+            badgeFundo: "#ffffff"
+          },
+          azul: {
+            linha: "#0284c7",
+            gradTopo: "#38bdf8",
+            gradBase: "#e0f2fe",
+            ponto: "#0369a1",
+            badgeBorda: "#0284c7",
+            badgeTexto: "#075985",
+            badgeFundo: "#ffffff"
+          }
+        };
+        const pal = paletas[corTema] || paletas.verde;
+        const n = dados.length;
+        if (!n) {
+          return `<div style="padding:48px 16px;text-align:center;color:#64748b;font-weight:600;font-size:0.88rem;">📊 Sem dados registrados no ciclo.</div>`;
+        }
+        const maxVal = Math.max(1, ...dados.map(d => Number(d.valor) || 0));
+        const largura = Math.max(540, n * 70 + 80);
+        const altura = 230;
+        const padL = 50, padR = 28, padT = 28, padB = 40;
         const innerW = largura - padL - padR;
         const innerH = altura - padT - padB;
-        const n = dados.length;
         const xAt = (i) => padL + (n <= 1 ? innerW / 2 : (i * innerW) / (n - 1));
-        const yAt = (v) => padT + innerH * (1 - v / max);
-        let svg = `<svg viewBox="0 0 ${largura} ${altura}" width="100%" height="${altura}" role="img" preserveAspectRatio="xMidYMid meet">`;
+        const yAt = (v) => padT + innerH * (1 - Math.max(0, v) / maxVal);
+        const yBase = padT + innerH;
+        const uid = "g2d_" + Math.random().toString(36).slice(2, 8);
+
+        let svg = `<svg viewBox="0 0 ${largura} ${altura}" width="100%" height="${altura}" role="img" preserveAspectRatio="xMidYMid meet" class="grafico-svg-2d" style="overflow:visible;">`;
+        svg += `<defs>
+          <linearGradient id="${uid}_area" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="${pal.gradTopo}" stop-opacity="0.32"/>
+            <stop offset="100%" stop-color="${pal.gradBase}" stop-opacity="0.03"/>
+          </linearGradient>
+          <filter id="${uid}_drop" x="-15%" y="-15%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#0f172a" flood-opacity="0.12"/>
+          </filter>
+        </defs>`;
+
+        // Linhas de grade horizontais e valores do eixo Y
         for (let i = 0; i <= 4; i++) {
-          const y = padT + innerH * (i / 4);
-          const v = Math.round(max * (1 - i / 4));
-          svg += `<line x1="${padL}" y1="${y}" x2="${largura - padR}" y2="${y}" stroke="#e2e8f0" stroke-width="1"/>`;
-          svg += `<text x="${padL - 8}" y="${y + 4}" font-size="12" fill="#64748b" text-anchor="end" font-weight="600">${v}</text>`;
+          const frac = i / 4;
+          const y = padT + innerH * frac;
+          const v = Math.round(maxVal * (1 - frac));
+          svg += `<line x1="${padL}" y1="${y}" x2="${largura - padR}" y2="${y}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="3,3"/>`;
+          svg += `<text x="${padL - 10}" y="${y + 4}" font-size="11" fill="#64748b" text-anchor="end" font-weight="700">${formatarNumeroMilhar(v)}</text>`;
         }
-        let areaPath = `M ${xAt(0)} ${padT + innerH}`;
-        dados.forEach((d, i) => { areaPath += ` L ${xAt(i)} ${yAt(d.valor)}`; });
-        areaPath += ` L ${xAt(n - 1)} ${padT + innerH} Z`;
-        svg += `<path d="${areaPath}" fill="rgba(22,163,74,0.12)" stroke="none"/>`;
-        let linePath = "";
-        dados.forEach((d, i) => { linePath += (i === 0 ? "M" : " L") + ` ${xAt(i)} ${yAt(d.valor)}`; });
-        svg += `<path d="${linePath}" fill="none" stroke="#16a34a" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`;
+
+        // Linha base do eixo X
+        svg += `<line x1="${padL}" y1="${yBase}" x2="${largura - padR}" y2="${yBase}" stroke="#cbd5e1" stroke-width="1.2"/>`;
+
+        // Área 2D com gradiente
+        let dArea = `M ${xAt(0)} ${yBase}`;
+        dados.forEach((d, i) => { dArea += ` L ${xAt(i)} ${yAt(d.valor)}`; });
+        dArea += ` L ${xAt(n - 1)} ${yBase} Z`;
+        svg += `<path d="${dArea}" fill="url(#${uid}_area)" stroke="none"/>`;
+
+        // Linhas verticais guia
+        dados.forEach((d, i) => {
+          const x = xAt(i), y = yAt(d.valor);
+          svg += `<line x1="${x}" y1="${y}" x2="${x}" y2="${yBase}" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2,2"/>`;
+        });
+
+        // Linha 2D principal
+        let dLinha = "";
+        dados.forEach((d, i) => { dLinha += (i === 0 ? "M " : " L ") + `${xAt(i)} ${yAt(d.valor)}`; });
+        svg += `<path d="${dLinha}" fill="none" stroke="${pal.linha}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>`;
+
+        // Pontos 2D e badges de valor
         dados.forEach((d, i) => {
           const cx = xAt(i), cy = yAt(d.valor);
-          svg += `<circle cx="${cx}" cy="${cy}" r="5" fill="#16a34a" stroke="#ffffff" stroke-width="2"><title>${d.rotulo}: ${d.valor}</title></circle>`;
-          const ty = cy - 12 < padT ? cy + 22 : cy - 12;
-          svg += `<text x="${cx}" y="${ty}" font-size="12" fill="#14532d" text-anchor="middle" font-weight="800">${d.valor}</text>`;
-          svg += `<text x="${cx}" y="${altura - padB + 20}" font-size="11" fill="#475569" text-anchor="middle" font-weight="600">${d.rotulo}</text>`;
+          const txtVal = formatarNumeroMilhar(d.valor);
+          svg += `<circle cx="${cx}" cy="${cy}" r="5.5" fill="${pal.linha}" stroke="#ffffff" stroke-width="2.2" filter="url(#${uid}_drop)"><title>${d.rotulo}: ${txtVal}</title></circle>`;
+
+          const badgeY = cy - 18 < padT ? cy + 18 : cy - 15;
+          const badgeW = Math.max(30, txtVal.length * 8 + 12);
+          svg += `<g transform="translate(${cx}, ${badgeY})" filter="url(#${uid}_drop)">
+            <rect x="${-badgeW/2}" y="-10" width="${badgeW}" height="18" rx="5" fill="${pal.badgeFundo}" stroke="${pal.badgeBorda}" stroke-width="1.4"/>
+            <text x="0" y="0" font-size="11" font-weight="800" fill="${pal.badgeTexto}" text-anchor="middle" dominant-baseline="central">${txtVal}</text>
+          </g>`;
+
+          svg += `<text x="${cx}" y="${yBase + 18}" font-size="11" fill="#334155" text-anchor="middle" font-weight="700">${d.rotulo}</text>`;
         });
+
         svg += `</svg>`;
         return svg;
       }
+
+      function dashPizza2D(fatias, opcoes = {}) {
+        const total = fatias.reduce((acc, f) => acc + (Number(f.valor) || 0), 0);
+        if (!total || total <= 0) {
+          return `<div style="padding:48px 16px;text-align:center;color:#64748b;font-weight:600;font-size:0.88rem;">📊 Defina os valores na configuração do estrato para visualizar o gráfico.</div>`;
+        }
+        const largura = 320, altura = 200;
+        const cx = 160, cy = 95;
+        const raioExterno = 78, raioInterno = 44;
+        const uid = "p2d_" + Math.random().toString(36).slice(2, 8);
+
+        let angAcumulado = -Math.PI / 2;
+        const itens = fatias.map(f => {
+          const val = Math.max(0, Number(f.valor) || 0);
+          const pct = total > 0 ? (val / total) : 0;
+          const angInicio = angAcumulado;
+          const angFim = angAcumulado + pct * 2 * Math.PI;
+          angAcumulado = angFim;
+          return {
+            ...f,
+            val,
+            pct,
+            pctStr: (pct * 100).toFixed(1).replace(".", ",") + "%",
+            angInicio,
+            angFim,
+            angMeio: (angInicio + angFim) / 2
+          };
+        });
+
+        let svg = `<svg viewBox="0 0 ${largura} ${altura}" width="100%" height="${altura}" role="img" preserveAspectRatio="xMidYMid meet" class="grafico-svg-2d" style="overflow:visible;">`;
+        svg += `<defs>
+          <filter id="${uid}_shadow" x="-15%" y="-15%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.1"/>
+          </filter>
+        </defs>`;
+
+        // Fatias do Donut 2D
+        itens.forEach(it => {
+          if (it.pct <= 0) return;
+          if (it.pct >= 0.999) {
+            svg += `<path d="M ${cx} ${cy - raioExterno} A ${raioExterno} ${raioExterno} 0 1 1 ${cx} ${cy + raioExterno} A ${raioExterno} ${raioExterno} 0 1 1 ${cx} ${cy - raioExterno} M ${cx} ${cy - raioInterno} A ${raioInterno} ${raioInterno} 0 1 0 ${cx} ${cy + raioInterno} A ${raioInterno} ${raioInterno} 0 1 0 ${cx} ${cy - raioInterno} Z" fill="${it.cor}" stroke="#ffffff" stroke-width="2" filter="url(#${uid}_shadow)"/>`;
+          } else {
+            const x1 = cx + raioExterno * Math.cos(it.angInicio);
+            const y1 = cy + raioExterno * Math.sin(it.angInicio);
+            const x2 = cx + raioExterno * Math.cos(it.angFim);
+            const y2 = cy + raioExterno * Math.sin(it.angFim);
+            const xi1 = cx + raioInterno * Math.cos(it.angInicio);
+            const yi1 = cy + raioInterno * Math.sin(it.angInicio);
+            const xi2 = cx + raioInterno * Math.cos(it.angFim);
+            const yi2 = cy + raioInterno * Math.sin(it.angFim);
+            const largeArc = (it.angFim - it.angInicio) > Math.PI ? 1 : 0;
+            const dDonut = `M ${x1} ${y1} A ${raioExterno} ${raioExterno} 0 ${largeArc} 1 ${x2} ${y2} L ${xi2} ${yi2} A ${raioInterno} ${raioInterno} 0 ${largeArc} 0 ${xi1} ${yi1} Z`;
+            svg += `<path d="${dDonut}" fill="${it.cor}" stroke="#ffffff" stroke-width="2" filter="url(#${uid}_shadow)"><title>${it.rotulo}: ${formatarNumeroMilhar(it.val)} (${it.pctStr})</title></path>`;
+          }
+        });
+
+        // Badges com porcentagem nas fatias relevantes
+        itens.forEach(it => {
+          if (it.pct < 0.10) return;
+          const rRotulo = (raioExterno + raioInterno) / 2;
+          const lx = cx + rRotulo * Math.cos(it.angMeio);
+          const ly = cy + rRotulo * Math.sin(it.angMeio);
+          const txt = it.pctStr;
+          const bw = Math.max(38, txt.length * 7 + 10);
+          svg += `<g transform="translate(${lx}, ${ly})" filter="url(#${uid}_shadow)">
+            <rect x="${-bw/2}" y="-9" width="${bw}" height="18" rx="9" fill="#ffffff" stroke="${it.corBorda || it.cor}" stroke-width="1.4"/>
+            <text x="0" y="0" font-size="10.5" font-weight="900" fill="#0f172a" text-anchor="middle" dominant-baseline="central">${txt}</text>
+          </g>`;
+        });
+
+        // Centro do Donut: Total em destaque
+        svg += `<g transform="translate(${cx}, ${cy})">
+          <text x="0" y="-4" font-size="16" font-weight="900" fill="#14532d" text-anchor="middle" dominant-baseline="central">${formatarNumeroMilhar(total)}</text>
+          <text x="0" y="14" font-size="10" font-weight="700" fill="#64748b" text-anchor="middle" dominant-baseline="central">TOTAL</text>
+        </g>`;
+
+        svg += `</svg>`;
+
+        // Legenda 2D limpa e elegante abaixo
+        let html = `<div class="dash-pizza-container">`;
+        html += svg;
+        html += `<div class="dash-legenda-pizza-2d">`;
+        itens.forEach(it => {
+          html += `
+            <div class="legenda-item-2d">
+              <div class="legenda-item-topo">
+                <span class="swatch-2d" style="background:${it.cor}; border: 1.5px solid ${it.corBorda || it.cor};"></span>
+                <span class="legenda-nome">${it.rotulo}</span>
+                <span class="badge-pct-2d" style="background:${it.cor}; color:#fff;">${it.pctStr}</span>
+              </div>
+              <div class="legenda-item-corpo">
+                <span class="legenda-valor-grande">${formatarNumeroMilhar(it.val)}</span>
+                ${it.subrotulo ? `<span class="legenda-sub">${it.subrotulo}</span>` : ""}
+              </div>
+            </div>
+          `;
+        });
+        html += `</div></div>`;
+        return html;
+      }
+
       function renderizarDashboard() {
         const { ano, ciclo, semRef } = dashObterFiltros();
         const statusEl = document.getElementById("dashStatus");
@@ -2226,47 +2757,111 @@
           const agg = dashAgregarCiclo(ano, ciclo);
           // ===== Imóveis =====
           const imoveisEstimados = num(estado.configEstrato?.imoveisEstimados);
-          // Imóveis programados = Livres + Parciais (sem Conflagrados)
           const imoveisProgramados = num(estado.configEstrato?.imoveisEstimadosLivres) + num(estado.configEstrato?.imoveisEstimadosParciais);
-          // Restam = Programados − Informados
-          const restamImoveis = imoveisProgramados > 0 ? Math.max(0, imoveisProgramados - agg.INFORMADOS) : null;
+          const baseImoveisProgramados = imoveisProgramados > 0 ? imoveisProgramados : imoveisEstimados;
+          const restamImoveis = baseImoveisProgramados > 0 ? Math.max(0, baseImoveisProgramados - agg.INFORMADOS) : null;
           const pctCobertura = imoveisProgramados > 0 ? Math.min(100, (100 * agg.INFORMADOS / imoveisProgramados)) : null;
+
           const kpis = document.getElementById("dashKpis");
           if (kpis) {
             kpis.innerHTML = [
-              dashCard("Total de imóveis estimados", imoveisEstimados > 0 ? fmtIntCell(imoveisEstimados) : "—", "Livres + Parciais + Conflagrados", "azul"),
-              dashCard("Imóveis programados", imoveisProgramados > 0 ? fmtIntCell(imoveisProgramados) : "—", "Livres + Parciais", ""),
-              dashCard("Informados", fmtIntCell(agg.INFORMADOS), `Pendentes: <b>${fmtIntCell(agg.PENDENCIAS)}</b>`, "vermelho"),
-              dashCard("Restam", restamImoveis == null ? "—" : fmtIntCell(restamImoveis), imoveisProgramados > 0 ? dashBarra(pctCobertura, "Cobertura sobre programados") : "Defina os imóveis programados", "ambar"),
-              dashCard("Inspecionados", fmtIntCell(agg.TOTAL), "Imóveis inspecionados no ciclo", "roxo"),
+              dashCard("Total de imóveis estimados", imoveisEstimados > 0 ? formatarNumeroMilhar(imoveisEstimados) : "—", "Livres + Parciais + Conflagrados", "azul"),
+              dashCard("Imóveis programados", imoveisProgramados > 0 ? formatarNumeroMilhar(imoveisProgramados) : "—", "Livres + Parciais", ""),
+              dashCard("Informados", formatarNumeroMilhar(agg.INFORMADOS), `Pendentes: <b>${formatarNumeroMilhar(agg.PENDENCIAS)}</b>`, "vermelho"),
+              dashCard("Restam", restamImoveis == null ? "—" : formatarNumeroMilhar(restamImoveis), imoveisProgramados > 0 ? dashBarra(pctCobertura, "Cobertura sobre programados") : "Defina os imóveis programados", "ambar"),
+              dashCard("Inspecionados", formatarNumeroMilhar(agg.TOTAL), "Imóveis inspecionados no ciclo", "roxo"),
               dashCard("Rendimento", fmtRendimento(agg.rendimento), "Imóveis trabalhados / dia", "teal"),
-              dashCard("Pendência", fmtIntCell(agg.PENDENCIAS), "Fechados + Recusados + Abandonados − Recuperados", "vermelho"),
+              dashCard("Pendência", formatarNumeroMilhar(agg.PENDENCIAS), "Fechados + Recusados + Abandonados − Recuperados", "vermelho"),
               dashCard("Índice de Pendência (IP)", fmtPct(agg.ip), "100 × Pend / Inform.", "rosa")
             ].join("");
           }
+
           // ===== Quarteirões =====
           const qs = calcularStatusQuarteiroes();
           const totalQuarteiroes = calcularTotalQuarteiroes();
           const kq = document.getElementById("dashKpisQuarteiroes");
           if (kq) {
             kq.innerHTML = [
-              dashCard("Quarteirões Total", fmtIntCell(totalQuarteiroes), "Livres + Parciais + Conflagrados", "azul"),
-              dashCard("Quarteirões programados", fmtIntCell(qs.programados), "Livres + Parciais", ""),
-              dashCard("Quarteirões concluídos", fmtIntCell(qs.concluidos), qs.precisaRevisao > 0 ? `⚠️ ${qs.precisaRevisao} p/ revisão` : "Marcados como concluídos", "teal"),
-              dashCard("Quarteirões em andamento", fmtIntCell(qs.emAndamento), "Iniciados, não concluídos", "ambar"),
-              dashCard("Quarteirões restantes", fmtIntCell(qs.restantes), "Programados − Concluídos", "roxo")
+              dashCard("Quarteirões Total", formatarNumeroMilhar(totalQuarteiroes), "Livres + Parciais + Conflagrados", "azul"),
+              dashCard("Quarteirões programados", formatarNumeroMilhar(qs.programados), "Livres + Parciais", ""),
+              dashCard("Quarteirões concluídos", formatarNumeroMilhar(qs.concluidos), qs.precisaRevisao > 0 ? `⚠️ ${formatarNumeroMilhar(qs.precisaRevisao)} p/ revisão` : "Marcados como concluídos", "teal"),
+              dashCard("Quarteirões em andamento", formatarNumeroMilhar(qs.emAndamento), "Iniciados, não concluídos", "ambar"),
+              dashCard("Quarteirões restantes", formatarNumeroMilhar(qs.restantes), "Programados − Concluídos", "roxo")
             ].join("");
           }
+
+          // 1. Gráfico de Linha 2D — Produção por Semana
           const gS = document.getElementById("dashGraficoSemanas");
           if (gS) {
-            if (!agg.porSemana.length) gS.innerHTML = `<p class="dash-legenda">Sem lançamentos no ciclo.</p>`;
-            else gS.innerHTML = dashGraficoLinhas(agg.porSemana.map(x => ({ rotulo: "SE" + pad2(x.semana), valor: x.total })));
+            if (!agg.porSemana.length) gS.innerHTML = `<div style="padding:48px 16px;text-align:center;color:#64748b;font-weight:600;">📊 Sem lançamentos no ciclo.</div>`;
+            else gS.innerHTML = dashGraficoLinhas2D(agg.porSemana.map(x => ({ rotulo: "SE " + pad2(x.semana), valor: x.total })), { corTema: "verde" });
           }
+
+          // 2. Gráfico de Linha 2D — Evolução das Pendências
+          const gPend = document.getElementById("dashGraficoPendencias");
+          if (gPend) {
+            if (!agg.porSemana.length) gPend.innerHTML = `<div style="padding:48px 16px;text-align:center;color:#64748b;font-weight:600;">📉 Sem pendências registradas.</div>`;
+            else gPend.innerHTML = dashGraficoLinhas2D(agg.porSemana.map(x => ({ rotulo: "SE " + pad2(x.semana), valor: x.pend })), { corTema: "vermelho" });
+          }
+
+          // 3. Gráfico de Pizza 2D — Situação dos Imóveis (Informados vs Restantes dos Imóveis Programados)
+          const gPizzaImov = document.getElementById("dashGraficoPizzaImoveis");
+          if (gPizzaImov) {
+            const valRestam = restamImoveis != null ? restamImoveis : Math.max(0, baseImoveisProgramados - agg.INFORMADOS);
+            const fatiasImov = [
+              { rotulo: "Imóveis informados", valor: agg.INFORMADOS, cor: "#16a34a", corBorda: "#15803d", subrotulo: "Imóveis visitados e informados" },
+              { rotulo: "Imóveis restantes", valor: valRestam, cor: "#eab308", corBorda: "#ca8a04", subrotulo: baseImoveisProgramados > 0 ? "Restantes sobre os imóveis programados" : "Aguardando cadastro de estimativa" }
+            ];
+            gPizzaImov.innerHTML = dashPizza2D(fatiasImov);
+          }
+
+          // 4. Gráfico de Pizza 2D — Situação dos Quarteirões (Designados vs Restantes)
+          const gPizzaQuart = document.getElementById("dashGraficoPizzaQuarteiroes");
+          if (gPizzaQuart) {
+            const designados = qs.concluidos + qs.emAndamento;
+            const restantesQ = Math.max(0, qs.programados - designados);
+            const fatiasQuart = [
+              { rotulo: "Quarteirões designados", valor: designados, cor: "#0284c7", corBorda: "#0369a1", subrotulo: `${formatarNumeroMilhar(qs.concluidos)} concluídos + ${formatarNumeroMilhar(qs.emAndamento)} em andamento` },
+              { rotulo: "Quarteirões restantes", valor: restantesQ, cor: "#f97316", corBorda: "#ea580c", subrotulo: "Programados ainda não designados" }
+            ];
+            gPizzaQuart.innerHTML = dashPizza2D(fatiasQuart);
+          }
+
+          // 5. Tabela do Bloco "📅 Resumo por semana" (dados extraídos diretamente de Quarteirões Designados mapeados pela última ocorrência segundo a programação)
           const tS = document.getElementById("dashTabelaSemanas");
           if (tS) {
-            if (!agg.porSemana.length) tS.innerHTML = `<thead><tr><th>Semana</th><th>Total</th></tr></thead><tbody><tr><td colspan="2" style="text-align:center;color:#64748b;padding:16px;">Nenhuma semana.</td></tr></tbody>`;
-            else tS.innerHTML = `<thead><tr><th>Semana</th><th>Total</th><th>Prog.</th><th>Trab.</th><th>Rend.</th><th>IP</th><th>Pend.</th></tr></thead><tbody>${agg.porSemana.map(x => `<tr><td>SE ${pad2(x.semana)}</td><td>${fmtIntCell(x.total)}</td><td>${x.programados ? fmtIntCell(x.programados) : "—"}</td><td>${fmtIntCell(x.trabalhado)}</td><td>${fmtRendimento(x.rendimento)}</td><td>${fmtPct(x.ip)}</td><td>${fmtIntCell(x.pend)}</td></tr>`).join("")}</tbody>`;
+            if (!agg.porSemana.length) {
+              tS.innerHTML = `<thead><tr><th>Semana</th><th>Total</th><th>Quarteirões concluídos</th><th>Quarteirões</th><th>Rend.</th><th>IP</th><th>Pend.</th></tr></thead><tbody><tr><td colspan="7" style="text-align:center;color:#64748b;padding:24px;">Nenhuma semana registrada no ciclo.</td></tr></tbody>`;
+            } else {
+              const mapaQuartConcluidos = obterMapaQuarteiroesConcluidosPorSemana(ano, ciclo);
+              tS.innerHTML = `<thead>
+                <tr>
+                  <th style="min-width:70px;">Semana</th>
+                  <th style="min-width:75px;">Total</th>
+                  <th style="min-width:110px;text-align:center;">Quarteirões concluídos</th>
+                  <th style="min-width:140px;text-align:left;">Quarteirões</th>
+                  <th style="min-width:75px;">Rend.</th>
+                  <th style="min-width:75px;">IP</th>
+                  <th style="min-width:75px;">Pend.</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${agg.porSemana.map(x => {
+                  const infoQ = obterQuarteiroesConcluidosDaSemana(x.semana, ano, ciclo, mapaQuartConcluidos);
+                  return `<tr>
+                    <td><strong>SE ${pad2(x.semana)}</strong></td>
+                    <td style="font-weight:700;">${formatarNumeroMilhar(x.total)}</td>
+                    <td style="text-align:center;font-weight:800;color:#14532d;"><span style="display:inline-block;padding:2px 8px;border-radius:12px;background:#dcfce7;border:1px solid #86efac;">${formatarNumeroMilhar(infoQ.qtd)}</span></td>
+                    <td style="text-align:left;font-size:0.8rem;color:#334155;max-width:320px;word-break:break-word;" title="${infoQ.texto}">${infoQ.texto}</td>
+                    <td>${fmtRendimento(x.rendimento)}</td>
+                    <td>${fmtPct(x.ip)}</td>
+                    <td style="color:${x.pend > 0 ? '#dc2626' : '#14532d'};font-weight:800;">${formatarNumeroMilhar(x.pend)}</td>
+                  </tr>`;
+                }).join("")}
+              </tbody>`;
+            }
           }
+
           if (statusEl) {
             const pend = semanasComProgPendente(estado.semanas);
             if (pend.length) { statusEl.className = "dash-tag atencao"; statusEl.textContent = `⚠️ ${pend.length} semana(s) sem 👥 Prog.`; }
@@ -2355,11 +2950,21 @@
           if (k === "responsavel") { const f = cr.fontResponsavel || ""; if (f) { el.style.setProperty("font-family", f, "important"); el.style.setProperty("font-size", "1.35rem", "important"); } else { el.style.removeProperty("font-family"); el.style.removeProperty("font-size"); } }
         });
       }
+      const TEMAS_CORES_AGENTES = [
+        { nome: "Verde", icone: "🟢" },
+        { nome: "Amarelo", icone: "🟡" },
+        { nome: "Azul", icone: "🔵" },
+        { nome: "Vermelho", icone: "🔴" },
+        { nome: "Branco", icone: "⚪" }
+      ];
       function criarColunaAgente(ag, idx = 0) {
-        const t = idx % 6;
+        const t = idx % 5;
         const col = document.createElement("div"); col.className = `coluna-agente tema-${t}` + (ag.ativo ? "" : " inativo"); col.dataset.agenteId = ag.id;
         const cab = document.createElement("div"); cab.className = "cabecalho-agente";
-        const info = document.createElement("div"); info.style.display = "flex"; info.style.alignItems = "center"; info.style.gap = "8px"; info.style.flexWrap = "wrap"; info.innerHTML = `<h3>${ag.nome || "Agente"}</h3>`; if (!ag.ativo) info.innerHTML += `<span class="tag-inativo">🔒 INATIVO</span>`;
+        const tm = TEMAS_CORES_AGENTES[t];
+        const info = document.createElement("div"); info.style.display = "flex"; info.style.alignItems = "center"; info.style.gap = "8px"; info.style.flexWrap = "wrap";
+        info.innerHTML = `<h3>${ag.nome || "Agente"}</h3><span class="badge-tema-agente" title="Identificação visual do agente">${tm.icone} ${tm.nome}</span>`;
+        if (!ag.ativo) info.innerHTML += `<span class="tag-inativo">🔒 INATIVO</span>`;
         cab.appendChild(info);
         const ac = document.createElement("div"); ac.className = "acoes";
         const bt = document.createElement("button"); bt.className = ag.ativo ? "btn-cinza" : "btn-verde"; bt.textContent = ag.ativo ? "Inativar" : "Reativar"; bt.addEventListener("click", () => toggleAgente(ag.id));
@@ -2574,8 +3179,22 @@
         if (t.TRABALHADO !== 0) t.RENDIMENTO = t.TOTAL / t.TRABALHADO;
         return t;
       }
-      function fmtRendimento(v) { return (v === null || isNaN(v)) ? "—" : Number(v).toFixed(1).replace(".", ","); }
-      function fmtPct(v) { return (v === null || isNaN(v)) ? "—" : Number(v).toFixed(1).replace(".", ",") + "%"; }
+      function fmtRendimento(v) {
+        if (v === null || v === undefined || isNaN(Number(v))) return "—";
+        const n = Number(v);
+        if (!isFinite(n)) return "—";
+        const p = n.toFixed(1).split(".");
+        const intPart = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return intPart + "," + p[1];
+      }
+      function fmtPct(v) {
+        if (v === null || v === undefined || isNaN(Number(v))) return "—";
+        const n = Number(v);
+        if (!isFinite(n)) return "—";
+        const p = n.toFixed(1).split(".");
+        const intPart = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        return intPart + "," + p[1] + "%";
+      }
       function renderizarResumo() {
         const w = document.getElementById("resumoWrapper"); if (!w) return;
         w.innerHTML = ""; const t = document.createElement("table"); t.className = "resumo-tabela";
@@ -2919,14 +3538,14 @@
         const imvTotal = imvLiv + imvPar + imvCon;
         est.imoveisEstimados = String(imvTotal);
         const inImvTotal = document.getElementById("estratoTotalImoveis");
-        if (inImvTotal) inImvTotal.value = imvTotal > 0 ? String(imvTotal) : "";
+        if (inImvTotal) inImvTotal.value = imvTotal > 0 ? formatarNumeroMilhar(imvTotal) : "";
         const tot = num(est.quarteiroesTotal);
         const liv = num(est.quarteiroesLivresQtd);
         const par = num(est.quarteiroesParciaisQtd);
         const con = num(est.quarteiroesConflagradosQtd);
         const soma = liv + par + con;
         const txtSoma = document.getElementById("txtSomaCategorias");
-        if (txtSoma) txtSoma.textContent = `Soma das categorias: ${fmtIntCell(soma)}`;
+        if (txtSoma) txtSoma.textContent = `Soma das categorias: ${formatarNumeroMilhar(soma)}`;
         const base = tot > 0 ? tot : (soma > 0 ? soma : 0);
         const pLiv = base > 0 ? (liv / base) * 100 : 0;
         const pPar = base > 0 ? (par / base) * 100 : 0;
@@ -2956,26 +3575,32 @@
             bdg.className = "tag-status-cfg ativo";
             bdg.style.background = "#dcfce7";
             bdg.style.color = "#14532d";
-            bdg.innerHTML = `✓ Total confere (${fmtIntCell(tot)} quart.)`;
+            bdg.innerHTML = `✓ Total confere (${formatarNumeroMilhar(tot)} quart.)`;
           } else if (tot > 0 && soma !== tot) {
             const dif = Math.abs(tot - soma);
             bdg.className = "tag-status-cfg inativo";
             bdg.style.background = "#fee2e2";
             bdg.style.color = "#991b1b";
-            bdg.innerHTML = `⚠️ Soma (${fmtIntCell(soma)}) difere do total (${fmtIntCell(tot)}) [Dif: ${dif}]`;
+            bdg.innerHTML = `⚠️ Soma (${formatarNumeroMilhar(soma)}) difere do total (${formatarNumeroMilhar(tot)}) [Dif: ${formatarNumeroMilhar(dif)}]`;
           } else {
             bdg.className = "badge-contagem-agentes";
-            bdg.innerHTML = `Total estimado: <strong>${fmtIntCell(soma)}</strong>`;
+            bdg.innerHTML = `Total estimado: <strong>${formatarNumeroMilhar(soma)}</strong>`;
           }
         }
       }
       function renderizarConfigEstrato() {
         if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
         const est = estado.configEstrato;
+        const camposNumericos = ["quarteiroesTotal", "quarteiroesLivresQtd", "quarteiroesParciaisQtd", "quarteiroesConflagradosQtd", "imoveisEstimadosLivres", "imoveisEstimadosParciais", "imoveisEstimadosConflagrados"];
         document.querySelectorAll("[data-estrato]").forEach(inp => {
           const k = inp.dataset.estrato;
           if (document.activeElement !== inp) {
-            inp.value = (est[k] !== undefined && est[k] !== null) ? est[k] : "";
+            const raw = (est[k] !== undefined && est[k] !== null) ? est[k] : "";
+            if (camposNumericos.includes(k) && raw !== "") {
+              inp.value = formatarNumeroMilhar(raw);
+            } else {
+              inp.value = raw;
+            }
           }
         });
         const inImvTotal = document.getElementById("estratoTotalImoveis");
@@ -2983,12 +3608,14 @@
           const liv = num(est.imoveisEstimadosLivres);
           const par = num(est.imoveisEstimadosParciais);
           const con = num(est.imoveisEstimadosConflagrados);
-          inImvTotal.value = (liv + par + con) > 0 ? String(liv + par + con) : "";
+          const totalImov = liv + par + con;
+          inImvTotal.value = totalImov > 0 ? formatarNumeroMilhar(totalImov) : "";
         }
         recalcularIndicadoresEstrato();
       }
       function configurarListenersConfigEstrato() {
         if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+        const camposNumericos = ["quarteiroesTotal", "quarteiroesLivresQtd", "quarteiroesParciaisQtd", "quarteiroesConflagradosQtd", "imoveisEstimadosLivres", "imoveisEstimadosParciais", "imoveisEstimadosConflagrados"];
         document.querySelectorAll("[data-estrato]").forEach(inp => {
           const k = inp.dataset.estrato;
           if (k === "imoveisEstimados") return;
@@ -3010,6 +3637,13 @@
           };
           inp.addEventListener("input", handler);
           inp.addEventListener("change", handler);
+          if (camposNumericos.includes(k)) {
+            inp.addEventListener("blur", () => {
+              if (inp.value && inp.value.trim() !== "") {
+                inp.value = formatarNumeroMilhar(inp.value);
+              }
+            });
+          }
         });
         const bSalvar = document.getElementById("btnSalvarEstrato");
         if (bSalvar) {
@@ -3032,7 +3666,7 @@
             const soma = liv + par + con;
             estado.configEstrato.quarteiroesTotal = String(soma);
             const inTot = document.getElementById("estratoQuartTotal");
-            if (inTot) inTot.value = String(soma);
+            if (inTot) inTot.value = formatarNumeroMilhar(soma);
             salvar();
             recalcularIndicadoresEstrato();
             renderizarDashboard();
@@ -3093,7 +3727,27 @@
           if (melhor) { e.preventDefault(); melhor.focus(); if (melhor.tagName === "INPUT" && melhor.type === "text") { try { melhor.select(); } catch(_) {} } }
         });
       }
-      function criarFad7Vazio() { return { municipio: "", localidade: "", categoria: "", tipo: "", cicloAno: "", concluido: "", semana: "", dataInicio: "", dataFinal: "", quartConc: "", residencia: "", tb: "", pe: "", outros: "", totalImoveisTrab: "", tratFocal: "", tratPerifocal: "", inspecionados: "", amostras: "", recusa: "", fechado: "", recuperado: "", indiceInfestacao: "", indiceBreteau: "", depA1: "", depA2: "", depB: "", depC: "", depD1: "", depD2: "", depE: "", depTotal: "", depEliminados: "", idxA1: "", idxA2: "", idxB: "", idxC: "", idxD1: "", idxD2: "", idxE: "", idxTotal: "", larv1Tipo: "", larv1Gramas: "", larv1DepTrat: "", larv2Tipo: "", larv2Gramas: "", larv2DepTrat: "", adultTipo: "", adultCargas: "", agentesDia: "", nomeResp: "", assinatura: "", dataAssinatura: "", atv1: false, atv2: false, atv3: false, atv4: false, atv5: false, atv6: false }; }
+      function criarFad7Vazio() {
+        return {
+          municipio: "", localidade: "", categoria: "", tipo: "", cicloAno: "", concluido: "", semana: "", dataInicio: "", dataFinal: "", quartConc: "",
+          residencia: "", comercio: "", tb: "", pe: "", outros: "", totalImoveisTrab: "",
+          residenciaTratados: "", residenciaFocados: "",
+          comercioTratados: "", comercioFocados: "",
+          tbTratados: "", tbFocados: "",
+          peTratados: "", peFocados: "",
+          outrosTratados: "", outrosFocados: "",
+          totalImoveisTratados: "", totalImoveisFocados: "",
+          tratFocal: "", tratPerifocal: "", inspecionados: "", amostras: "", recusa: "", fechado: "", recuperado: "", indiceInfestacao: "", indiceBreteau: "",
+          depA1: "", depA2: "", depB: "", depC: "", depD1: "", depD2: "", depE: "", depTotal: "",
+          depTratA1: "", depTratA2: "", depTratB: "", depTratC: "", depTratD1: "", depTratD2: "", depTratE: "", depTratTotal: "",
+          depFocA1: "", depFocA2: "", depFocB: "", depFocC: "", depFocD1: "", depFocD2: "", depFocE: "", depFocTotal: "",
+          depEliminados: "",
+          idxA1: "", idxA2: "", idxB: "", idxC: "", idxD1: "", idxD2: "", idxE: "", idxTotal: "",
+          larv1Tipo: "", larv1Gramas: "", larv1DepTrat: "", larv2Tipo: "", larv2Gramas: "", larv2DepTrat: "", adultTipo: "", adultCargas: "",
+          agentesDia: "", nomeResp: "", assinatura: "", dataAssinatura: "",
+          atv1: false, atv2: false, atv3: false, atv4: false, atv5: false, atv6: false
+        };
+      }
       function obterSemanaLiraaAtual() { if (!estado.semanasLiraa) estado.semanasLiraa = {}; const k = String(estado.semanaAtiva); if (!estado.semanasLiraa[k]) { const sc = (estado.semanas && estado.semanas[k]) || null; const an = sc ? obterAnoSemana(sc) : new Date().getFullYear(); const c = normalizarNumeroCiclo(sc?.cabecalho?.ciclo || "1"); const p = obterPeriodoDaSemana(k, an, c, "liraa"); estado.semanasLiraa[k] = criarSemana(p.inicioISO, k, "liraa", c); } if (!estado.semanasLiraa[k].fad7) estado.semanasLiraa[k].fad7 = criarFad7Vazio(); return estado.semanasLiraa[k]; }
       function renderizarFad7() {
         const s = obterSemanaLiraaAtual(); const f = s.fad7;
@@ -3104,7 +3758,24 @@
         document.querySelectorAll("[data-fad7]").forEach(inp => { const k = inp.dataset.fad7; if (inp.type === "checkbox") inp.checked = !!f[k]; else inp.value = (f[k] !== undefined && f[k] !== null) ? f[k] : ""; });
       }
       function configurarListenersFad7() {
-        document.querySelectorAll("[data-fad7]").forEach(inp => { const k = inp.dataset.fad7; const ev = (inp.tagName === "SELECT" || inp.type === "checkbox") ? "change" : "input"; inp.addEventListener(ev, () => { const s = obterSemanaLiraaAtual(); if (!s.fad7) s.fad7 = criarFad7Vazio(); if (inp.type === "checkbox") s.fad7[k] = !!inp.checked; else s.fad7[k] = inp.value; salvar(); }); });
+        document.querySelectorAll("[data-fad7]").forEach(inp => {
+          const k = inp.dataset.fad7;
+          const ev = (inp.tagName === "SELECT" || inp.type === "checkbox") ? "change" : "input";
+          inp.addEventListener(ev, () => {
+            const s = obterSemanaLiraaAtual();
+            if (!s.fad7) s.fad7 = criarFad7Vazio();
+            if (inp.type === "checkbox") s.fad7[k] = !!inp.checked;
+            else s.fad7[k] = inp.value;
+            salvar();
+          });
+          inp.addEventListener("blur", () => {
+            if (inp.type === "text" && inp.value && /^\d+$/.test(inp.value.trim())) {
+              inp.value = formatarNumeroMilhar(inp.value);
+              const s = obterSemanaLiraaAtual();
+              if (s?.fad7) { s.fad7[k] = inp.value; salvar(); }
+            }
+          });
+        });
         const bA = document.getElementById("btnSemanaAnteriorFad7"), bP = document.getElementById("btnSemanaProximaFad7"), bPdf = document.getElementById("btnImprimirFad7");
         if (bA) bA.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) - 1); renderizarFad7(); });
         if (bP) bP.addEventListener("click", () => { irParaSemana(Number(estado.semanaAtiva) + 1); renderizarFad7(); });
@@ -3212,8 +3883,8 @@
           const bCP = document.getElementById("btnCancelarEdicaoProg"); if (bCP) bCP.addEventListener("click", resetarFormularioProg);
           const eICI = document.getElementById("progCicloDataInicio"); if (eICI) { eICI.addEventListener("change", () => { if (eICI.value && inPA) { inPA.value = anoDeISO(eICI.value); atualizarLimitesSemanas(inPA.value); } atualizarPreviewPeriodoCiclo(); }); eICI.addEventListener("input", atualizarPreviewPeriodoCiclo); }
           const eICF = document.getElementById("progCicloDataTermino"); if (eICF) { eICF.addEventListener("change", atualizarPreviewPeriodoCiclo); eICF.addEventListener("input", atualizarPreviewPeriodoCiclo); }
-          const eISI = document.getElementById("progCicloSemanaInicio"); if (eISI) eISI.addEventListener("input", () => { eISI.dataset.auto = "false"; });
-          const eISF = document.getElementById("progCicloSemanaTermino"); if (eISF) eISF.addEventListener("input", () => { eISF.dataset.auto = "false"; });
+          const eISI = document.getElementById("progCicloSemanaInicio"); if (eISI) { eISI.addEventListener("input", () => { eISI.dataset.auto = "false"; atualizarPreviewPeriodoCiclo(); }); eISI.addEventListener("change", () => { eISI.dataset.auto = "false"; atualizarPreviewPeriodoCiclo(); }); }
+          const eISF = document.getElementById("progCicloSemanaTermino"); if (eISF) { eISF.addEventListener("input", () => { eISF.dataset.auto = "false"; atualizarPreviewPeriodoCiclo(); }); eISF.addEventListener("change", () => { eISF.dataset.auto = "false"; atualizarPreviewPeriodoCiclo(); }); }
           if (inPA) inPA.addEventListener("change", e => { atualizarLimitesSemanas(e.target.value); const c = document.getElementById("progCiclo"); preencherDadosCicloNoModalProg(e.target.value, c ? c.value : "1"); });
           const iPc = document.getElementById("progCiclo"); if (iPc) iPc.addEventListener("change", e => preencherDadosCicloNoModalProg(inPA ? inPA.value : new Date().getFullYear(), e.target.value));
           const iPa = document.getElementById("progAtividade"); if (iPa) iPa.addEventListener("change", () => preencherDadosCicloNoModalProg(inPA ? inPA.value : new Date().getFullYear(), iPc ? iPc.value : "1"));
