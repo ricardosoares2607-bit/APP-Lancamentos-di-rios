@@ -513,6 +513,48 @@
       .qd-total-card .qd-total-item { display: flex; flex-direction: column; align-items: flex-start; }
       .qd-total-card .qd-total-item .qd-total-label { font-size: 0.72rem; font-weight: 700; color: #475569; text-transform: uppercase; }
       .qd-total-card .qd-total-item .qd-total-valor { font-size: 1.15rem; font-weight: 900; color: #14532d; }
+      /* Resumo de Reconhecimento */
+      .reconhecimento-container { display: flex; flex-direction: column; gap: 12px; }
+      .reconhecimento-cabecalho-card { background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
+      .reconhecimento-cabecalho-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px 12px; }
+      .reconhecimento-cabecalho-grid .rc-item { display: flex; flex-direction: column; gap: 3px; }
+      .reconhecimento-cabecalho-grid .rc-item label { font-size: 0.72rem; font-weight: 800; color: #166534; text-transform: uppercase; letter-spacing: 0.3px; }
+      .reconhecimento-cabecalho-grid .rc-item input { padding: 5px 8px; border: 1.5px solid #cbd5e1; border-radius: 5px; font-size: 0.8rem; font-weight: 600; color: #1e293b; outline: none; background: #ffffff; transition: border-color 0.15s ease, background 0.15s ease; }
+      .reconhecimento-cabecalho-grid .rc-item input:focus { border-color: #16a34a; background: #f0fdf4; }
+      .reconhecimento-consolidado-card { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 1.5px solid #86efac; border-radius: 8px; padding: 10px 16px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+      .reconhecimento-consolidado-titulo { font-size: 0.85rem; font-weight: 800; color: #14532d; display: flex; align-items: center; gap: 6px; }
+      .reconhecimento-consolidado-itens { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+      .reconhecimento-consolidado-item { display: flex; flex-direction: column; align-items: center; }
+      .reconhecimento-consolidado-item .rc-lbl { font-size: 0.68rem; font-weight: 700; color: #475569; }
+      .reconhecimento-consolidado-item .rc-val { font-size: 1.1rem; font-weight: 900; color: #14532d; }
+      .reconhecimento-consolidado-item.destaque { background: #dcfce7; border: 1px solid #86efac; border-radius: 6px; padding: 4px 10px; }
+      .reconhecimento-consolidado-item.destaque .rc-lbl { color: #14532d; }
+      .reconhecimento-consolidado-item.destaque .rc-val { font-size: 1.3rem; color: #047857; }
+      .reconhecimento-tabelas-wrap { display: flex; flex-direction: row; gap: 14px; justify-content: space-between; align-items: flex-start; width: 100%; }
+      .reconhecimento-tabela-bloco { flex: 1; min-width: 0; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+      .reconhecimento-tabela-titulo { background: #f1f5f9; color: #14532d; font-size: 0.76rem; font-weight: 800; padding: 5px 10px; border-bottom: 1.5px solid #cbd5e1; text-align: center; letter-spacing: 0.5px; text-transform: uppercase; }
+      .reconhecimento-tabela { width: 100%; border-collapse: collapse; font-size: 0.74rem; }
+      .reconhecimento-tabela th, .reconhecimento-tabela td { border: 1px solid #cbd5e1; padding: 2px 3px; text-align: center; }
+      .reconhecimento-tabela th { background: #f0fdf4; color: #14532d; font-weight: 800; font-size: 0.72rem; padding: 4px 2px; }
+      .reconhecimento-tabela th.th-total { background: #dcfce7; color: #14532d; }
+      .reconhecimento-tabela tr:nth-child(even) td { background: #fbfcfe; }
+      .reconhecimento-tabela tr:hover td { background: #f0fdf4; }
+      .reconhecimento-tabela input { width: 100%; border: none; background: transparent; text-align: center; font-size: 0.75rem; font-weight: 700; color: #1e293b; padding: 3px 0; outline: none; box-sizing: border-box; }
+      .reconhecimento-tabela input:focus { background: #ffffff; box-shadow: inset 0 0 0 1.5px #16a34a; border-radius: 3px; }
+      .reconhecimento-tabela input.input-quarteirao { color: #14532d; font-weight: 800; }
+      .reconhecimento-tabela td.td-total { background: #f0fdf4; font-weight: 800; color: #14532d; font-size: 0.74rem; }
+      .reconhecimento-tabela tfoot td { background: #dcfce7; font-weight: 900; color: #14532d; font-size: 0.76rem; padding: 5px 2px; border-top: 2px solid #16a34a; }
+      .reconhecimento-tabela tfoot td.total-label { text-align: center; letter-spacing: 0.5px; }
+      @media (max-width: 900px) {
+        .reconhecimento-tabelas-wrap { flex-direction: column; }
+      }
+      @media print {
+        .reconhecimento-tabelas-wrap { display: flex !important; flex-direction: row !important; gap: 8px !important; page-break-inside: avoid !important; }
+        .reconhecimento-tabela-bloco { flex: 1 !important; min-width: 0 !important; page-break-inside: avoid !important; }
+        .reconhecimento-tabela th, .reconhecimento-tabela td { padding: 1.5px 2px !important; font-size: 0.68rem !important; }
+        .reconhecimento-cabecalho-card { padding: 6px 10px !important; margin-bottom: 6px !important; }
+        .reconhecimento-consolidado-card { padding: 6px 10px !important; margin-bottom: 6px !important; }
+      }
     </style>
   </head>
   <body class="fonte-merriweather">
@@ -569,6 +611,7 @@
               <button type="button" class="menu-dropdown-opcao" data-aba="ciclo" role="menuitem"><span class="opcao-icone">🔄</span><div class="opcao-textos"><span class="opcao-titulo">Resumo do Ciclo</span><span class="opcao-sub">Relatório consolidado do ciclo e PDF</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="producao-individual" role="menuitem"><span class="opcao-icone">👤</span><div class="opcao-textos"><span class="opcao-titulo">Produção Individual</span><span class="opcao-sub">Produção diária por agente</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="quarteiroes-designados" role="menuitem"><span class="opcao-icone">🧱</span><div class="opcao-textos"><span class="opcao-titulo">Quarteirões Designados</span><span class="opcao-sub">Quarteirões trabalhados por agente no ciclo vigente</span></div><span class="opcao-marcador">✓</span></button>
+              <button type="button" class="menu-dropdown-opcao" data-aba="resumo-reconhecimento" role="menuitem"><span class="opcao-icone">🗺️</span><div class="opcao-textos"><span class="opcao-titulo">Resumo de reconhecimento</span><span class="opcao-sub">Reconhecimento geográfico por quarteirão e imóveis</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="fad7" role="menuitem"><span class="opcao-icone">📋</span><div class="opcao-textos"><span class="opcao-titulo">FAD 7</span><span class="opcao-sub">Resumo semanal do serviço antivetorial (LIRAa)</span></div><span class="opcao-marcador">✓</span></button>
               <button type="button" class="menu-dropdown-opcao" data-aba="relatorio-campo" role="menuitem"><span class="opcao-icone">📄</span><div class="opcao-textos"><span class="opcao-titulo">Relatório de Campo</span><span class="opcao-sub">Relatório detalhado de atividade de campo</span></div><span class="opcao-marcador">✓</span></button>
             </div>
@@ -757,7 +800,7 @@
           <button id="btnAdicionarAgente" class="btn btn-verde">+ Adicionar agente</button>
         </div>
         <div class="aviso-prog-obrigatorio" id="avisoProgObrigatorio">
-          ⚠️ Preencha o campo <strong>👥 Prog. (programados)</strong> antes de confirmar a data ou gerar relatórios desta semana.
+          ⚠️ Confirme a <strong>📅 Data</strong> no banner acima antes de preencher o campo 👥 Prog. e realizar os lançamentos desta semana.
         </div>
         <div class="area-tabelas" id="areaTabelas"></div>
       </section>
@@ -903,6 +946,106 @@
           </div>
           <div id="qdResumoCards"></div>
           <div class="resumo-wrapper" id="qdWrapper"></div>
+        </div>
+      </section>
+      <section id="aba-resumo-reconhecimento" class="conteudo-aba">
+        <h2>🗺️ Resumo de reconhecimento</h2>
+        <div class="barra-semanas" style="margin-bottom: 0;">
+          <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span style="font-weight: 700; color: #166534;">🗺️ Reconhecimento Geográfico</span>
+            <span id="badgeReconhecimentoStatus" class="badge-aviso-atividade ciclo" style="font-size: 0.78rem;">💾 Salvo automaticamente</span>
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <button type="button" class="btn btn-verde" id="btnSincronizarAndamentoApp" style="background:#0284c7; border-color:#0284c7;">🔄 Sincronizar c/ "Andamento dos quarteirões"</button>
+            <button type="button" class="btn btn-cinza" id="btnSincronizarReconhecimento">🔄 Sincronizar com Equipe</button>
+            <button type="button" class="btn btn-cinza" id="btnLimparReconhecimento" style="color: #dc2626;">🧹 Limpar Tabela</button>
+            <button type="button" class="btn btn-pdf" id="btnImprimirPDFReconhecimento">🖨️ Baixar PDF</button>
+          </div>
+        </div>
+
+        <div class="area-impressao" id="areaResumoReconhecimento" style="padding: 18px 20px;">
+          <div class="cabecalho-resumo" style="margin-bottom: 12px; padding-bottom: 10px;">
+            <div class="titulo-doc">PROGRAMA MUNICIPAL DE CONTROLE DA DENGUE - PMCD</div>
+            <div class="subtitulo-doc">RESUMO DE RECONHECIMENTO</div>
+          </div>
+
+          <!-- Cabeçalho com os campos solicitados -->
+          <div class="reconhecimento-cabecalho-card">
+            <div class="reconhecimento-cabecalho-grid">
+              <div class="rc-item">
+                <label for="recUf">Unidade Federal:</label>
+                <input type="text" id="recUf" data-rec-cab="uf" placeholder="Ex: BA" />
+              </div>
+              <div class="rc-item">
+                <label for="recDistrito">Distrito:</label>
+                <input type="text" id="recDistrito" data-rec-cab="distrito" placeholder="Ex: DS Cabula / Beiru" />
+              </div>
+              <div class="rc-item">
+                <label for="recMunicipio">Município:</label>
+                <input type="text" id="recMunicipio" data-rec-cab="municipio" placeholder="Ex: Salvador" />
+              </div>
+              <div class="rc-item">
+                <label for="recLocalidade">Localidade:</label>
+                <input type="text" id="recLocalidade" data-rec-cab="localidade" placeholder="Ex: Trobogy" />
+              </div>
+              <div class="rc-item">
+                <label for="recSubdistrito">Subdistrito:</label>
+                <input type="text" id="recSubdistrito" data-rec-cab="subdistrito" placeholder="Ex: 01" />
+              </div>
+              <div class="rc-item">
+                <label for="recSublocal">Sublocal:</label>
+                <input type="text" id="recSublocal" data-rec-cab="sublocal" placeholder="Ex: Área 02" />
+              </div>
+              <div class="rc-item">
+                <label for="recCategoria">Categoria:</label>
+                <input type="text" id="recCategoria" data-rec-cab="categoria" placeholder="Ex: Urbano" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Card de Totais Consolidados -->
+          <div class="reconhecimento-consolidado-card" id="reconhecimentoConsolidadoCard"></div>
+
+          <!-- Duas tabelas lado a lado em uma página com 32 linhas cada e linha do total -->
+          <div class="reconhecimento-tabelas-wrap">
+            <div class="reconhecimento-tabela-bloco">
+              <div class="reconhecimento-tabela-titulo">Quarteirões 01 a 32</div>
+              <table class="reconhecimento-tabela" id="tabelaReconhecimento1">
+                <thead>
+                  <tr>
+                    <th style="width: 22%;">Quarteirão</th>
+                    <th style="width: 13%;">R</th>
+                    <th style="width: 13%;">C</th>
+                    <th style="width: 13%;">TB</th>
+                    <th style="width: 13%;">PE</th>
+                    <th style="width: 13%;">O</th>
+                    <th style="width: 13%;" class="th-total">TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyReconhecimento1"></tbody>
+                <tfoot id="tfootReconhecimento1"></tfoot>
+              </table>
+            </div>
+
+            <div class="reconhecimento-tabela-bloco">
+              <div class="reconhecimento-tabela-titulo">Quarteirões 33 a 64</div>
+              <table class="reconhecimento-tabela" id="tabelaReconhecimento2">
+                <thead>
+                  <tr>
+                    <th style="width: 22%;">Quarteirão</th>
+                    <th style="width: 13%;">R</th>
+                    <th style="width: 13%;">C</th>
+                    <th style="width: 13%;">TB</th>
+                    <th style="width: 13%;">PE</th>
+                    <th style="width: 13%;">O</th>
+                    <th style="width: 13%;" class="th-total">TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody id="tbodyReconhecimento2"></tbody>
+                <tfoot id="tfootReconhecimento2"></tfoot>
+              </table>
+            </div>
+          </div>
         </div>
       </section>
       <section id="aba-fad7" class="conteudo-aba">
@@ -1576,6 +1719,57 @@
         </div>
       </div>
     </div>
+    <div class="modal-overlay" id="modalSincronizarAndamento">
+      <div class="modal-conteudo" style="max-width: 650px;">
+        <div class="modal-header">
+          <h3 style="display: flex; align-items: center; gap: 8px;">🔄 Sincronização c/ "Andamento dos quarteirões"</h3>
+          <button type="button" class="btn-fechar-modal" id="btnFecharModalSincronizarAndamento">&times;</button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; font-size: 0.85rem; color: #334155;">
+          <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 8px; padding: 12px;">
+            <strong style="color: #14532d; font-size: 0.92rem;">☁️ Sincronização em Tempo Real (Firebase)</strong>
+            <p style="margin: 4px 0 8px; color: #166534; font-size: 0.8rem;">
+              Os dois aplicativos podem se comunicar e atualizar a mesma tabela de <strong>Resumo de Reconhecimento</strong> automaticamente em tempo real através do Firebase!
+            </p>
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; font-size: 0.78rem;">
+              <div><strong>Servidor Firebase:</strong> <code style="color:#0369a1;">https://tabela-de-lancamentos-default-rtdb.firebaseio.com/</code></div>
+              <div style="margin-top: 4px;"><strong>Chave Compartilhada:</strong> <code style="color:#166534; font-weight:700;">andamento_quarteiroes/resumo_reconhecimento</code></div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <button type="button" class="btn btn-verde" id="btnPuxarNuvemAndamento" style="padding: 10px; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 4px;">
+              <span>📥 Puxar da Nuvem Compartilhada</span>
+              <small style="font-weight: 400; opacity: 0.9; font-size: 0.72rem;">Atualizar com os dados do Andamento</small>
+            </button>
+            <button type="button" class="btn btn-cinza" id="btnEnviarNuvemAndamento" style="padding: 10px; font-weight: 700; display: flex; flex-direction: column; align-items: center; gap: 4px; background: #e0f2fe; color: #0369a1; border-color: #7dd3fc;">
+              <span>📤 Enviar para Nuvem Compartilhada</span>
+              <small style="font-weight: 400; opacity: 0.9; font-size: 0.72rem;">Gravar tabela atual no nó compartilhado</small>
+            </button>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px;">
+            <strong style="font-size: 0.82rem; color: #0f172a;">📋 Transferência Direta (Copiar / Colar):</strong>
+            <p style="margin: 3px 0 6px; font-size: 0.76rem; color: #64748b;">Se preferir transferir os dados sem internet ou entre arquivos, você pode copiar ou colar os dados estruturados abaixo:</p>
+            <textarea id="txtSyncReconhecimentoJSON" style="width: 100%; height: 60px; font-size: 0.72rem; font-family: monospace; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px; background: #ffffff;"></textarea>
+            <div style="display: flex; gap: 8px; margin-top: 6px;">
+              <button type="button" class="btn btn-cinza" id="btnCopiarJSONReconhecimento" style="font-size: 0.78rem;">📋 Copiar Dados</button>
+              <button type="button" class="btn btn-cinza" id="btnColarJSONReconhecimento" style="font-size: 0.78rem;">📥 Aplicar Dados Colados</button>
+            </div>
+          </div>
+
+          <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; padding: 10px; font-size: 0.78rem; color: #92400e;">
+            <strong>💡 Como conectar o outro aplicativo ("Andamento dos quarteirões")?</strong>
+            <p style="margin: 4px 0 0; line-height: 1.4;">
+              Basta que o aplicativo "Andamento dos quarteirões" leia e salve na mesma chave <code>andamento_quarteiroes/resumo_reconhecimento</code> no Firebase Realtime Database. Qualquer alteração feita lá reflete aqui automaticamente!
+            </p>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px;">
+          <button type="button" class="btn btn-cinza" id="btnFecharModalSincronizarAndamento2">Fechar</button>
+        </div>
+      </div>
+    </div>
     <script>
       const firebaseConfig = {
         apiKey: "AIzaSyA1YbZ9uGY3WW5fiMLVpTC2_fC2qKB6vos",
@@ -1802,6 +1996,7 @@
         else if (elementoId === "areaRelatorioCampo") { fw = 1400; }
         else if (elementoId === "areaQuarteiroesDesignados") { fw = 1200; }
         else if (elementoId === "areaConfigEstrato") { fw = 1100; }
+        else if (elementoId === "areaResumoReconhecimento") { fw = 1400; }
         else { fw = 1580; }
         el.style.width = fw + "px"; el.style.maxWidth = "none"; el.style.minWidth = fw + "px";
         void el.offsetWidth;
@@ -2116,6 +2311,10 @@
               .then(() => { sincronizadoInicial = true; atualizarStatusNuvem("☁️ Nuvem OK", "online"); })
               .catch(() => atualizarStatusNuvem("⚠️ Erro Nuvem", "offline"))
               .finally(() => setTimeout(() => { salvandoLocalmente = false; }, 400));
+            // Sincroniza também no nó dedicado compartilhado com o aplicativo "Andamento dos quarteirões"
+            if (estado.resumoReconhecimento) {
+              db.ref("andamento_quarteiroes/resumo_reconhecimento").set(JSON.parse(JSON.stringify(estado.resumoReconhecimento))).catch(() => {});
+            }
           } catch (e) { salvandoLocalmente = false; atualizarStatusNuvem("⚠️ Erro Local", "offline"); }
         }, 500);
       }
@@ -2153,6 +2352,29 @@
             atualizarStatusNuvem("☁️ Nuvem OK", "online");
           }
         }, () => atualizarStatusNuvem("⚠️ Offline", "offline"));
+
+        // Ouvinte em tempo real para a chave compartilhada com o aplicativo "Andamento dos quarteirões"
+        db.ref("andamento_quarteiroes/resumo_reconhecimento").on("value", snapshot => {
+          if (salvandoLocalmente) return;
+          const dadosExternos = snapshot.val();
+          if (dadosExternos && typeof dadosExternos === "object") {
+            const normalizado = normalizarDadosReconhecimento(dadosExternos);
+            const strAtual = JSON.stringify(estado.resumoReconhecimento || {});
+            const strNovo = JSON.stringify(normalizado);
+            if (strAtual !== strNovo) {
+              estado.resumoReconhecimento = normalizado;
+              try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {}
+              if (document.getElementById("aba-resumo-reconhecimento")?.classList.contains("ativo")) {
+                renderizarResumoReconhecimento();
+              }
+              const bdg = document.getElementById("badgeReconhecimentoStatus");
+              if (bdg) {
+                bdg.textContent = "🔄 Atualizado da Nuvem!";
+                setTimeout(() => { bdg.textContent = "💾 Salvo automaticamente"; }, 2500);
+              }
+            }
+          }
+        });
       }
       function salvar() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(estado)); } catch(e) {} salvarNuvem(); }
       function carregar() {
@@ -2185,6 +2407,7 @@
         if (!estado.configEquipe) estado.configEquipe = obterConfigEquipePadrao();
         else if (!Array.isArray(estado.configEquipe.agentes)) estado.configEquipe.agentes = NOMES_AGENTES_PADRAO.map(nome => ({ id: "ag_" + Date.now() + "_" + Math.random().toString(36).slice(2,6), nome, ativo: true }));
         if (!estado.configEstrato) estado.configEstrato = obterConfigEstratoPadrao();
+        if (!estado.resumoReconhecimento || typeof estado.resumoReconhecimento !== "object") estado.resumoReconhecimento = obterResumoReconhecimentoPadrao();
         const r = repoAtivo();
         if (Object.keys(r).length === 0) { const s = String(semanaAtualDoAno()); r[s] = criarSemana(null, s, estado.atividadeAtiva, "1"); estado.semanaAtiva = s; }
         if (!estado.semanaAtiva || !r[estado.semanaAtiva]) estado.semanaAtiva = Object.keys(r)[0];
@@ -2243,10 +2466,30 @@
         const inp = document.getElementById("programadosDia");
         const aviso = document.getElementById("avisoProgObrigatorio");
         if (!inp || !d) return;
+        const dataConf = diaEstaConfirmado();
         const ok = progDiaPreenchido(d);
-        inp.classList.toggle("campo-preenchido", ok);
-        inp.classList.toggle("campo-invalido", !ok);
-        if (aviso) aviso.classList.toggle("ativo", !ok);
+        if (!dataConf) {
+          inp.classList.remove("campo-preenchido");
+          inp.classList.add("campo-invalido");
+          inp.title = "Confirme a data antes de preencher o campo 👥 Prog.";
+          if (aviso) {
+            aviso.innerHTML = "⚠️ Confirme a <strong>📅 Data</strong> no banner acima antes de preencher o campo 👥 Prog. e realizar os lançamentos desta semana.";
+            aviso.classList.add("ativo");
+          }
+        } else if (!ok) {
+          inp.classList.remove("campo-preenchido");
+          inp.classList.add("campo-invalido");
+          inp.title = "Preencha o campo 👥 Prog.";
+          if (aviso) {
+            aviso.innerHTML = "⚠️ Data confirmada! Agora preencha o campo <strong>👥 Prog. (programados)</strong> antes de realizar os lançamentos ou gerar relatórios desta semana.";
+            aviso.classList.add("ativo");
+          }
+        } else {
+          inp.classList.add("campo-preenchido");
+          inp.classList.remove("campo-invalido");
+          inp.title = "";
+          if (aviso) aviso.classList.remove("ativo");
+        }
       }
       function temDadosProducaoReais(dia) {
         if (!dia || !Array.isArray(dia.agentes)) return false;
@@ -2294,12 +2537,6 @@
 
       function atualizarBannerConfirmacao() { const b = document.getElementById("bannerConfirmacaoDia"), dt = document.getElementById("bannerConfirmacaoDetalhes"); if (!b || !dt) return; const d = diaAtual(); if (!d) { b.style.display = "none"; return; } if (diaEstaConfirmado()) { b.style.display = "none"; } else { b.style.display = "flex"; dt.textContent = `Semana ${pad2(estado.semanaAtiva)} · ${nomeDiaExibido(d.data, estado.diaAtivo) || "—"} · ${formatarDataBR(d.data) || "—"}`; } }
       function abrirModalConfirmacaoData() {
-        const dPre = diaAtual();
-        if (!progDiaPreenchido(dPre)) {
-          alert("⚠️ Preencha o campo 👥 Prog. (programados) antes de confirmar a data.");
-          document.getElementById("programadosDia")?.focus();
-          return;
-        }
         const d = diaAtual(); if (!d) return;
         document.getElementById("confSemana").textContent = `Semana ${pad2(estado.semanaAtiva)}`;
         document.getElementById("confDiaSemana").textContent = nomeDiaExibido(d.data, estado.diaAtivo) || "—";
@@ -2311,7 +2548,17 @@
         document.getElementById("modalConfirmacaoData").classList.add("ativo");
       }
       function fecharModalConfirmacaoData() { document.getElementById("modalConfirmacaoData").classList.remove("ativo"); }
-      function confirmarDataDia() { const d = diaAtual(); if (!d || !d.data) return; d._dataConfirmada = d.data; salvar(); fecharModalConfirmacaoData(); renderizar(); atualizarTotais(); }
+      function confirmarDataDia() {
+        const d = diaAtual(); if (!d || !d.data) return;
+        d._dataConfirmada = d.data;
+        salvar();
+        fecharModalConfirmacaoData();
+        renderizar();
+        atualizarTotais();
+        setTimeout(() => {
+          document.getElementById("programadosDia")?.focus();
+        }, 150);
+      }
 
       // ============ QUARTEIRÕES: MAPEAMENTO E STATUS ============
       function chaveQuarteiraoConcluido(q) { return `ciclo_${estado.atividadeAtiva}_${q}`; }
@@ -2880,12 +3127,33 @@
         if (!ag || !dia) return;
         const v = valoresDoDia(ag); const c = dia._dataConfirmada === dia.data;
         const col = document.querySelector(`.coluna-agente[data-agente-id="${ag.id}"]`); if (!col) return;
-        if (!progDiaPreenchido(dia)) {
-          col.querySelectorAll('.corpo-tabelas-agente input:not(.nome-agente), .corpo-tabelas-agente select').forEach(i => { i.disabled = true; i.title = "Preencha 👥 Prog. antes de lançar"; });
+        if (!c) {
+          col.querySelectorAll('.corpo-tabelas-agente input:not(.nome-agente), .corpo-tabelas-agente select').forEach(i => {
+            i.disabled = true;
+            i.title = "Confirme a data antes de lançar";
+          });
           return;
         }
-        col.querySelectorAll('.corpo-tabelas-agente input:not(.nome-agente), .corpo-tabelas-agente select').forEach(i => { i.disabled = !c; i.title = c ? "" : "Confirme a data antes de lançar"; });
-        if (c) { col.querySelectorAll('.corpo-tabelas-agente [data-producao-col]').forEach(i => { const cc = Number(i.dataset.producaoCol); const q = String(v[`b1-r0-c${cc}`] || '').trim() !== ''; const cn = String(v[`b1-r1-c${cc}`] || '').trim() !== ''; if (!q || !cn) { i.disabled = true; i.title = "Preencha Quarteirão e Concluído?"; } }); }
+        if (!progDiaPreenchido(dia)) {
+          col.querySelectorAll('.corpo-tabelas-agente input:not(.nome-agente), .corpo-tabelas-agente select').forEach(i => {
+            i.disabled = true;
+            i.title = "Preencha 👥 Prog. antes de lançar";
+          });
+          return;
+        }
+        col.querySelectorAll('.corpo-tabelas-agente input:not(.nome-agente), .corpo-tabelas-agente select').forEach(i => {
+          i.disabled = false;
+          i.title = "";
+        });
+        col.querySelectorAll('.corpo-tabelas-agente [data-producao-col]').forEach(i => {
+          const cc = Number(i.dataset.producaoCol);
+          const q = String(v[`b1-r0-c${cc}`] || '').trim() !== '';
+          const cn = String(v[`b1-r1-c${cc}`] || '').trim() !== '';
+          if (!q || !cn) {
+            i.disabled = true;
+            i.title = "Preencha Quarteirão e Concluído?";
+          }
+        });
       }
       function renderizar() {
         const s = semana(); if (!s) return;
@@ -3715,7 +3983,7 @@
           if (!teclas.has(e.key) || e.ctrlKey || e.metaKey || e.altKey) return;
           const a = e.target; if (!a || !a.tagName || (a.tagName !== "INPUT" && a.tagName !== "SELECT")) return;
           if (a.tagName === "INPUT" && ign.has(a.type)) return;
-          const cont = a.closest(".coluna-agente") || a.closest(".resumo-wrapper") || a.closest(".tabela-agentes-config-wrap") || a.closest(".fad7-form") || a.closest(".rc-form") || a.closest(".estrato-container");
+          const cont = a.closest(".coluna-agente") || a.closest(".resumo-wrapper") || a.closest(".tabela-agentes-config-wrap") || a.closest(".fad7-form") || a.closest(".rc-form") || a.closest(".estrato-container") || a.closest(".reconhecimento-container");
           if (!cont) return;
           if (a.tagName === "SELECT" && (e.key === "ArrowUp" || e.key === "ArrowDown")) return;
           if (a.tagName === "INPUT" && a.type === "text") { if (e.shiftKey) return; const v = a.value || ""; const p1 = a.selectionStart ?? 0, p2 = a.selectionEnd ?? 0; if (p1 !== p2) return; if (e.key === "ArrowLeft" && p1 > 0) return; if (e.key === "ArrowRight" && p1 < v.length) return; }
@@ -3831,6 +4099,471 @@
         document.querySelectorAll("[data-rc]").forEach(inp => { const k = inp.dataset.rc; const ev = (inp.tagName === "SELECT" || inp.type === "checkbox") ? "change" : "input"; inp.addEventListener(ev, () => { const r = obterRelatorioCampoAtivo(); if (inp.type === "checkbox") r[k] = !!inp.checked; else r[k] = inp.value; salvar(); }); });
         const b4 = document.getElementById("btnRcAutoPreencher"); if (b4) b4.addEventListener("click", () => { const r = obterRelatorioCampoAtivo(); const c = estado.configEquipe || {}; if (c.estrato && !r.estrato) r.estrato = c.estrato; if (c.bairro && !r.localidade) r.localidade = c.bairro; if (c.supervisor && !r.supervisorNome) r.supervisorNome = c.supervisor; if (c.responsavel && !r.agenteNome) r.agenteNome = c.responsavel; salvar(); renderizarRelatorioCampo(); const b = b4; const t = b.textContent; b.textContent = "✅ Preenchido!"; setTimeout(() => { b.textContent = t; }, 1500); });
       }
+
+      function obterResumoReconhecimentoPadrao() {
+        const t1 = [];
+        for (let i = 1; i <= 32; i++) {
+          t1.push({ quarteirao: String(i), r: "", c: "", tb: "", pe: "", o: "" });
+        }
+        const t2 = [];
+        for (let i = 33; i <= 64; i++) {
+          t2.push({ quarteirao: String(i), r: "", c: "", tb: "", pe: "", o: "" });
+        }
+        return {
+          cabecalho: {
+            uf: "",
+            distrito: "",
+            municipio: "",
+            localidade: "",
+            subdistrito: "",
+            sublocal: "",
+            categoria: ""
+          },
+          tabela1: t1,
+          tabela2: t2
+        };
+      }
+
+      function normalizarDadosReconhecimento(dados) {
+        if (!dados || typeof dados !== "object") return obterResumoReconhecimentoPadrao();
+        const res = obterResumoReconhecimentoPadrao();
+        const cab = dados.cabecalho || dados.header || dados;
+        if (cab && typeof cab === "object") {
+          res.cabecalho.uf = cab.uf || cab.UF || cab.unidadeFederal || "";
+          res.cabecalho.distrito = cab.distrito || cab.Distrito || "";
+          res.cabecalho.municipio = cab.municipio || cab.Municipio || "";
+          res.cabecalho.localidade = cab.localidade || cab.Localidade || "";
+          res.cabecalho.subdistrito = cab.subdistrito || cab.Subdistrito || "";
+          res.cabecalho.sublocal = cab.sublocal || cab.Sublocal || "";
+          res.cabecalho.categoria = cab.categoria || cab.Categoria || "";
+        }
+        const listaUnica = Array.isArray(dados.tabela) ? dados.tabela : (Array.isArray(dados.linhas) ? dados.linhas : (Array.isArray(dados.quarteiroes) ? dados.quarteiroes : null));
+        if (listaUnica) {
+          for (let i = 0; i < 32; i++) {
+            const item = listaUnica[i] || {};
+            res.tabela1[i] = {
+              quarteirao: item.quarteirao ?? item.Quarteirao ?? item.q ?? String(i + 1),
+              r: item.r ?? item.R ?? "",
+              c: item.c ?? item.C ?? "",
+              tb: item.tb ?? item.TB ?? "",
+              pe: item.pe ?? item.PE ?? "",
+              o: item.o ?? item.O ?? ""
+            };
+          }
+          for (let i = 0; i < 32; i++) {
+            const item = listaUnica[i + 32] || {};
+            res.tabela2[i] = {
+              quarteirao: item.quarteirao ?? item.Quarteirao ?? item.q ?? String(i + 33),
+              r: item.r ?? item.R ?? "",
+              c: item.c ?? item.C ?? "",
+              tb: item.tb ?? item.TB ?? "",
+              pe: item.pe ?? item.PE ?? "",
+              o: item.o ?? item.O ?? ""
+            };
+          }
+          return res;
+        }
+        if (Array.isArray(dados.tabela1)) {
+          dados.tabela1.forEach((item, i) => {
+            if (i < 32 && item) {
+              res.tabela1[i] = {
+                quarteirao: item.quarteirao ?? item.Quarteirao ?? item.q ?? String(i + 1),
+                r: item.r ?? item.R ?? "",
+                c: item.c ?? item.C ?? "",
+                tb: item.tb ?? item.TB ?? "",
+                pe: item.pe ?? item.PE ?? "",
+                o: item.o ?? item.O ?? ""
+              };
+            }
+          });
+        }
+        if (Array.isArray(dados.tabela2)) {
+          dados.tabela2.forEach((item, i) => {
+            if (i < 32 && item) {
+              res.tabela2[i] = {
+                quarteirao: item.quarteirao ?? item.Quarteirao ?? item.q ?? String(i + 33),
+                r: item.r ?? item.R ?? "",
+                c: item.c ?? item.C ?? "",
+                tb: item.tb ?? item.TB ?? "",
+                pe: item.pe ?? item.PE ?? "",
+                o: item.o ?? item.O ?? ""
+              };
+            }
+          });
+        }
+        return res;
+      }
+
+      function garantirResumoReconhecimento() {
+        if (!estado.resumoReconhecimento || typeof estado.resumoReconhecimento !== "object") {
+          estado.resumoReconhecimento = obterResumoReconhecimentoPadrao();
+        } else {
+          estado.resumoReconhecimento = normalizarDadosReconhecimento(estado.resumoReconhecimento);
+        }
+        return estado.resumoReconhecimento;
+      }
+
+      function calcularTotaisTabelaReconhecimento(linhas) {
+        let totR = 0, totC = 0, totTB = 0, totPE = 0, totO = 0, totGeral = 0, quartComDados = 0;
+        linhas.forEach(linha => {
+          const r = num(linha.r), c = num(linha.c), tb = num(linha.tb), pe = num(linha.pe), o = num(linha.o);
+          const linhaTot = r + c + tb + pe + o;
+          totR += r; totC += c; totTB += tb; totPE += pe; totO += o; totGeral += linhaTot;
+          if (linhaTot > 0 || (linha.quarteirao && String(linha.quarteirao).trim() !== "" && (linha.r !== "" || linha.c !== "" || linha.tb !== "" || linha.pe !== "" || linha.o !== ""))) {
+            quartComDados++;
+          }
+        });
+        return { totR, totC, totTB, totPE, totO, totGeral, quartComDados };
+      }
+
+      function renderizarResumoReconhecimento() {
+        const rec = garantirResumoReconhecimento();
+        const cab = rec.cabecalho;
+
+        document.querySelectorAll("[data-rec-cab]").forEach(inp => {
+          const k = inp.dataset.recCab;
+          inp.value = (cab[k] !== undefined && cab[k] !== null) ? cab[k] : "";
+        });
+
+        const totais1 = calcularTotaisTabelaReconhecimento(rec.tabela1);
+        const totais2 = calcularTotaisTabelaReconhecimento(rec.tabela2);
+        const totConsolidado = {
+          totR: totais1.totR + totais2.totR,
+          totC: totais1.totC + totais2.totC,
+          totTB: totais1.totTB + totais2.totTB,
+          totPE: totais1.totPE + totais2.totPE,
+          totO: totais1.totO + totais2.totO,
+          totGeral: totais1.totGeral + totais2.totGeral,
+          quartComDados: totais1.quartComDados + totais2.quartComDados
+        };
+
+        const cardCons = document.getElementById("reconhecimentoConsolidadoCard");
+        if (cardCons) {
+          cardCons.innerHTML = `
+            <div class="reconhecimento-consolidado-titulo">
+              <span>📊 Totais Consolidados do Reconhecimento:</span>
+            </div>
+            <div class="reconhecimento-consolidado-itens">
+              <div class="reconhecimento-consolidado-item">
+                <span class="rc-lbl">Quart. com Dados</span>
+                <span class="rc-val">${formatarNumeroMilhar(totConsolidado.quartComDados)}</span>
+              </div>
+              <div class="reconhecimento-consolidado-item">
+                <span class="rc-lbl">R (Residência)</span>
+                <span class="rc-val">${formatarNumeroMilhar(totConsolidado.totR)}</span>
+              </div>
+              <div class="reconhecimento-consolidado-item">
+                <span class="rc-lbl">C (Comércio)</span>
+                <span class="rc-val">${formatarNumeroMilhar(totConsolidado.totC)}</span>
+              </div>
+              <div class="reconhecimento-consolidado-item">
+                <span class="rc-lbl">TB (Terreno Baldio)</span>
+                <span class="rc-val">${formatarNumeroMilhar(totConsolidado.totTB)}</span>
+              </div>
+              <div class="reconhecimento-consolidado-item">
+                <span class="rc-lbl">PE (Ponto Estrat.)</span>
+                <span class="rc-val">${formatarNumeroMilhar(totConsolidado.totPE)}</span>
+              </div>
+              <div class="reconhecimento-consolidado-item">
+                <span class="rc-lbl">O (Outros)</span>
+                <span class="rc-val">${formatarNumeroMilhar(totConsolidado.totO)}</span>
+              </div>
+              <div class="reconhecimento-consolidado-item destaque">
+                <span class="rc-lbl">TOTAL DE IMÓVEIS</span>
+                <span class="rc-val">${formatarNumeroMilhar(totConsolidado.totGeral)}</span>
+              </div>
+            </div>
+          `;
+        }
+
+        function montarTabela(tbodyId, tfootId, tabelaNome, listaLinhas, totaisTab) {
+          const tbody = document.getElementById(tbodyId);
+          const tfoot = document.getElementById(tfootId);
+          if (!tbody || !tfoot) return;
+
+          tbody.innerHTML = "";
+          listaLinhas.forEach((linha, i) => {
+            const tr = document.createElement("tr");
+            const r = num(linha.r), c = num(linha.c), tb = num(linha.tb), pe = num(linha.pe), o = num(linha.o);
+            const linhaTemValor = (linha.r !== "" && linha.r !== undefined) || (linha.c !== "" && linha.c !== undefined) || (linha.tb !== "" && linha.tb !== undefined) || (linha.pe !== "" && linha.pe !== undefined) || (linha.o !== "" && linha.o !== undefined);
+            const totalLinha = r + c + tb + pe + o;
+            const totalExibido = linhaTemValor ? formatarNumeroMilhar(totalLinha) : "";
+
+            tr.innerHTML = `
+              <td><input type="text" class="input-quarteirao" data-rec-tab="${tabelaNome}" data-rec-row="${i}" data-rec-col="quarteirao" value="${linha.quarteirao ?? ''}" placeholder="${tabelaNome === 'tabela1' ? (i + 1) : (i + 33)}" /></td>
+              <td><input type="text" inputmode="numeric" data-rec-tab="${tabelaNome}" data-rec-row="${i}" data-rec-col="r" value="${linha.r ?? ''}" /></td>
+              <td><input type="text" inputmode="numeric" data-rec-tab="${tabelaNome}" data-rec-row="${i}" data-rec-col="c" value="${linha.c ?? ''}" /></td>
+              <td><input type="text" inputmode="numeric" data-rec-tab="${tabelaNome}" data-rec-row="${i}" data-rec-col="tb" value="${linha.tb ?? ''}" /></td>
+              <td><input type="text" inputmode="numeric" data-rec-tab="${tabelaNome}" data-rec-row="${i}" data-rec-col="pe" value="${linha.pe ?? ''}" /></td>
+              <td><input type="text" inputmode="numeric" data-rec-tab="${tabelaNome}" data-rec-row="${i}" data-rec-col="o" value="${linha.o ?? ''}" /></td>
+              <td class="td-total" id="recTot_${tabelaNome}_${i}">${totalExibido}</td>
+            `;
+            tbody.appendChild(tr);
+          });
+
+          tfoot.innerHTML = `
+            <tr>
+              <td class="total-label">TOTAL</td>
+              <td>${formatarNumeroMilhar(totaisTab.totR)}</td>
+              <td>${formatarNumeroMilhar(totaisTab.totC)}</td>
+              <td>${formatarNumeroMilhar(totaisTab.totTB)}</td>
+              <td>${formatarNumeroMilhar(totaisTab.totPE)}</td>
+              <td>${formatarNumeroMilhar(totaisTab.totO)}</td>
+              <td class="td-total">${formatarNumeroMilhar(totaisTab.totGeral)}</td>
+            </tr>
+          `;
+        }
+
+        montarTabela("tbodyReconhecimento1", "tfootReconhecimento1", "tabela1", rec.tabela1, totais1);
+        montarTabela("tbodyReconhecimento2", "tfootReconhecimento2", "tabela2", rec.tabela2, totais2);
+      }
+
+      function configurarListenersResumoReconhecimento() {
+        const area = document.getElementById("aba-resumo-reconhecimento");
+        if (!area) return;
+
+        area.querySelectorAll("[data-rec-cab]").forEach(inp => {
+          const k = inp.dataset.recCab;
+          inp.addEventListener("input", () => {
+            const rec = garantirResumoReconhecimento();
+            rec.cabecalho[k] = inp.value;
+            salvar();
+          });
+        });
+
+        const tratarInputTabela = (e) => {
+          const inp = e.target;
+          if (!inp || !inp.dataset || inp.dataset.recTab === undefined) return;
+          const tab = inp.dataset.recTab;
+          const row = Number(inp.dataset.recRow);
+          const col = inp.dataset.recCol;
+          const rec = garantirResumoReconhecimento();
+          const linha = rec[tab]?.[row];
+          if (!linha) return;
+
+          linha[col] = inp.value;
+
+          const r = num(linha.r), c = num(linha.c), tb = num(linha.tb), pe = num(linha.pe), o = num(linha.o);
+          const linhaTemValor = (linha.r !== "" && linha.r !== undefined) || (linha.c !== "" && linha.c !== undefined) || (linha.tb !== "" && linha.tb !== undefined) || (linha.pe !== "" && linha.pe !== undefined) || (linha.o !== "" && linha.o !== undefined);
+          const totLinha = r + c + tb + pe + o;
+          const cellTot = document.getElementById(`recTot_${tab}_${row}`);
+          if (cellTot) cellTot.textContent = linhaTemValor ? formatarNumeroMilhar(totLinha) : "";
+
+          const totais1 = calcularTotaisTabelaReconhecimento(rec.tabela1);
+          const totais2 = calcularTotaisTabelaReconhecimento(rec.tabela2);
+          const totConsolidado = {
+            totR: totais1.totR + totais2.totR,
+            totC: totais1.totC + totais2.totC,
+            totTB: totais1.totTB + totais2.totTB,
+            totPE: totais1.totPE + totais2.totPE,
+            totO: totais1.totO + totais2.totO,
+            totGeral: totais1.totGeral + totais2.totGeral,
+            quartComDados: totais1.quartComDados + totais2.quartComDados
+          };
+
+          const tfoot1 = document.getElementById("tfootReconhecimento1");
+          if (tfoot1) {
+            tfoot1.innerHTML = `<tr><td class="total-label">TOTAL</td><td>${formatarNumeroMilhar(totais1.totR)}</td><td>${formatarNumeroMilhar(totais1.totC)}</td><td>${formatarNumeroMilhar(totais1.totTB)}</td><td>${formatarNumeroMilhar(totais1.totPE)}</td><td>${formatarNumeroMilhar(totais1.totO)}</td><td class="td-total">${formatarNumeroMilhar(totais1.totGeral)}</td></tr>`;
+          }
+          const tfoot2 = document.getElementById("tfootReconhecimento2");
+          if (tfoot2) {
+            tfoot2.innerHTML = `<tr><td class="total-label">TOTAL</td><td>${formatarNumeroMilhar(totais2.totR)}</td><td>${formatarNumeroMilhar(totais2.totC)}</td><td>${formatarNumeroMilhar(totais2.totTB)}</td><td>${formatarNumeroMilhar(totais2.totPE)}</td><td>${formatarNumeroMilhar(totais2.totO)}</td><td class="td-total">${formatarNumeroMilhar(totais2.totGeral)}</td></tr>`;
+          }
+          const cardCons = document.getElementById("reconhecimentoConsolidadoCard");
+          if (cardCons) {
+            cardCons.innerHTML = `
+              <div class="reconhecimento-consolidado-titulo">
+                <span>📊 Totais Consolidados do Reconhecimento:</span>
+              </div>
+              <div class="reconhecimento-consolidado-itens">
+                <div class="reconhecimento-consolidado-item"><span class="rc-lbl">Quart. com Dados</span><span class="rc-val">${formatarNumeroMilhar(totConsolidado.quartComDados)}</span></div>
+                <div class="reconhecimento-consolidado-item"><span class="rc-lbl">R (Residência)</span><span class="rc-val">${formatarNumeroMilhar(totConsolidado.totR)}</span></div>
+                <div class="reconhecimento-consolidado-item"><span class="rc-lbl">C (Comércio)</span><span class="rc-val">${formatarNumeroMilhar(totConsolidado.totC)}</span></div>
+                <div class="reconhecimento-consolidado-item"><span class="rc-lbl">TB (Terreno Baldio)</span><span class="rc-val">${formatarNumeroMilhar(totConsolidado.totTB)}</span></div>
+                <div class="reconhecimento-consolidado-item"><span class="rc-lbl">PE (Ponto Estrat.)</span><span class="rc-val">${formatarNumeroMilhar(totConsolidado.totPE)}</span></div>
+                <div class="reconhecimento-consolidado-item"><span class="rc-lbl">O (Outros)</span><span class="rc-val">${formatarNumeroMilhar(totConsolidado.totO)}</span></div>
+                <div class="reconhecimento-consolidado-item destaque"><span class="rc-lbl">TOTAL DE IMÓVEIS</span><span class="rc-val">${formatarNumeroMilhar(totConsolidado.totGeral)}</span></div>
+              </div>
+            `;
+          }
+          salvar();
+        };
+
+        const tratarBlurTabela = (e) => {
+          const inp = e.target;
+          if (!inp || !inp.dataset || inp.dataset.recTab === undefined) return;
+          const col = inp.dataset.recCol;
+          if (col !== "quarteirao" && inp.value && /^\d+$/.test(inp.value.trim())) {
+            inp.value = formatarNumeroMilhar(inp.value);
+            const tab = inp.dataset.recTab;
+            const row = Number(inp.dataset.recRow);
+            const rec = garantirResumoReconhecimento();
+            if (rec[tab]?.[row]) {
+              rec[tab][row][col] = inp.value;
+              salvar();
+            }
+          }
+        };
+
+        area.addEventListener("input", tratarInputTabela);
+        area.addEventListener("blur", tratarBlurTabela, true);
+
+        const btnPdf = document.getElementById("btnImprimirPDFReconhecimento");
+        if (btnPdf) {
+          btnPdf.addEventListener("click", () => {
+            gerarPDF("areaResumoReconhecimento", `PMCD_Resumo_Reconhecimento_${hojeISO()}.pdf`, { orientacao: "landscape" })
+              .catch(e => alert("❌ " + (e?.message || e)));
+          });
+        }
+
+        const btnSinc = document.getElementById("btnSincronizarReconhecimento");
+        if (btnSinc) {
+          btnSinc.addEventListener("click", () => {
+            const rec = garantirResumoReconhecimento();
+            const cab = rec.cabecalho;
+            const est = estado.configEstrato || {};
+            const eq = estado.configEquipe || {};
+            if (!cab.municipio && est.cidade) cab.municipio = est.cidade;
+            if (!cab.distrito && est.distrito) cab.distrito = est.distrito;
+            if (!cab.localidade && (est.bairro || eq.bairro)) cab.localidade = est.bairro || eq.bairro;
+            if (!cab.uf) cab.uf = "BA";
+            if (!cab.categoria) cab.categoria = "Urbano";
+            salvar();
+            renderizarResumoReconhecimento();
+            const bdg = document.getElementById("badgeReconhecimentoStatus");
+            if (bdg) {
+              bdg.textContent = "🔄 Sincronizado!";
+              setTimeout(() => { bdg.textContent = "💾 Salvo automaticamente"; }, 2500);
+            }
+          });
+        }
+
+        const btnLimpar = document.getElementById("btnLimparReconhecimento");
+        if (btnLimpar) {
+          btnLimpar.addEventListener("click", () => {
+            if (!confirm("Deseja realmente limpar todos os números digitados nas tabelas de reconhecimento?")) return;
+            estado.resumoReconhecimento = obterResumoReconhecimentoPadrao();
+            salvar();
+            renderizarResumoReconhecimento();
+            const bdg = document.getElementById("badgeReconhecimentoStatus");
+            if (bdg) {
+              bdg.textContent = "🧹 Tabela reiniciada!";
+              setTimeout(() => { bdg.textContent = "💾 Salvo automaticamente"; }, 2500);
+            }
+          });
+        }
+
+        const modalSync = document.getElementById("modalSincronizarAndamento");
+        const btnOpenSync = document.getElementById("btnSincronizarAndamentoApp");
+        const btnCloseSync1 = document.getElementById("btnFecharModalSincronizarAndamento");
+        const btnCloseSync2 = document.getElementById("btnFecharModalSincronizarAndamento2");
+        const txtSyncJSON = document.getElementById("txtSyncReconhecimentoJSON");
+
+        const abrirModalSync = () => {
+          if (!modalSync) return;
+          const rec = garantirResumoReconhecimento();
+          if (txtSyncJSON) txtSyncJSON.value = JSON.stringify(rec, null, 2);
+          modalSync.classList.add("ativo");
+        };
+
+        const fecharModalSync = () => {
+          if (modalSync) modalSync.classList.remove("ativo");
+        };
+
+        if (btnOpenSync) btnOpenSync.addEventListener("click", abrirModalSync);
+        if (btnCloseSync1) btnCloseSync1.addEventListener("click", fecharModalSync);
+        if (btnCloseSync2) btnCloseSync2.addEventListener("click", fecharModalSync);
+
+        const btnPuxar = document.getElementById("btnPuxarNuvemAndamento");
+        if (btnPuxar) {
+          btnPuxar.addEventListener("click", () => {
+            if (!dbAtivo || !db) {
+              alert("⚠️ Conexão com Firebase não está ativa.");
+              return;
+            }
+            btnPuxar.disabled = true;
+            btnPuxar.textContent = "⏳ Puxando dados...";
+            db.ref("andamento_quarteiroes/resumo_reconhecimento").once("value")
+              .then(snap => {
+                const val = snap.val();
+                if (val && typeof val === "object" && (Array.isArray(val.tabela1) || Array.isArray(val.tabela2))) {
+                  estado.resumoReconhecimento = val;
+                  salvar();
+                  renderizarResumoReconhecimento();
+                  if (txtSyncJSON) txtSyncJSON.value = JSON.stringify(val, null, 2);
+                  alert("✅ Dados sincronizados com sucesso do aplicativo 'Andamento dos quarteirões'!");
+                  fecharModalSync();
+                } else {
+                  alert("ℹ️ Ainda não há dados gravados na chave 'andamento_quarteiroes/resumo_reconhecimento'. Você pode usar o botão 'Enviar para Nuvem' para compartilhar a tabela atual pela primeira vez.");
+                }
+              })
+              .catch(err => alert("❌ Erro ao puxar dados: " + (err?.message || err)))
+              .finally(() => {
+                btnPuxar.disabled = false;
+                btnPuxar.innerHTML = "<span>📥 Puxar da Nuvem Compartilhada</span><small style='font-weight:400;opacity:0.9;font-size:0.72rem;'>Atualizar com os dados do Andamento</small>";
+              });
+          });
+        }
+
+        const btnEnviar = document.getElementById("btnEnviarNuvemAndamento");
+        if (btnEnviar) {
+          btnEnviar.addEventListener("click", () => {
+            if (!dbAtivo || !db) {
+              alert("⚠️ Conexão com Firebase não está ativa.");
+              return;
+            }
+            const rec = garantirResumoReconhecimento();
+            btnEnviar.disabled = true;
+            btnEnviar.textContent = "⏳ Enviando dados...";
+            db.ref("andamento_quarteiroes/resumo_reconhecimento").set(JSON.parse(JSON.stringify(rec)))
+              .then(() => {
+                alert("✅ Tabela do Resumo de Reconhecimento enviada com sucesso para a chave compartilhada com 'Andamento dos quarteirões'!");
+              })
+              .catch(err => alert("❌ Erro ao enviar: " + (err?.message || err)))
+              .finally(() => {
+                btnEnviar.disabled = false;
+                btnEnviar.innerHTML = "<span>📤 Enviar para Nuvem Compartilhada</span><small style='font-weight:400;opacity:0.9;font-size:0.72rem;'>Gravar tabela atual no nó compartilhado</small>";
+              });
+          });
+        }
+
+        const btnCopiarJSON = document.getElementById("btnCopiarJSONReconhecimento");
+        if (btnCopiarJSON) {
+          btnCopiarJSON.addEventListener("click", () => {
+            if (txtSyncJSON) {
+              txtSyncJSON.select();
+              navigator.clipboard?.writeText(txtSyncJSON.value).catch(() => {});
+              btnCopiarJSON.textContent = "✅ Copiado!";
+              setTimeout(() => { btnCopiarJSON.textContent = "📋 Copiar Dados"; }, 2000);
+            }
+          });
+        }
+
+        const btnColarJSON = document.getElementById("btnColarJSONReconhecimento");
+        if (btnColarJSON) {
+          btnColarJSON.addEventListener("click", () => {
+            const raw = txtSyncJSON?.value?.trim();
+            if (!raw) {
+              alert("⚠️ Cole o código JSON na caixa de texto antes de aplicar.");
+              return;
+            }
+            try {
+              const parsed = JSON.parse(raw);
+              if (!parsed || (typeof parsed !== "object") || (!parsed.tabela1 && !parsed.cabecalho)) {
+                throw new Error("Formato inválido de JSON de Resumo de Reconhecimento.");
+              }
+              estado.resumoReconhecimento = parsed;
+              salvar();
+              renderizarResumoReconhecimento();
+              alert("✅ Dados aplicados com sucesso!");
+              fecharModalSync();
+            } catch(e) {
+              alert("❌ Erro ao processar dados: " + (e?.message || e));
+            }
+          });
+        }
+      }
+
       document.addEventListener("DOMContentLoaded", () => {
         try {
           inicializarFirebase(); carregar(); iniciarSincronizacaoNuvem();
@@ -3839,7 +4572,7 @@
           aplicarFonte(fS);
           const selF = document.getElementById("selectFonte"); if (selF) selF.addEventListener("change", e => aplicarFonte(e.target.value));
           const inPA = document.getElementById("progAno"); if (inPA && !inPA.value) inPA.value = new Date().getFullYear();
-          const MAPA = { "dashboard": { icone: "📈", titulo: "Dashboard" }, "sugarbo": { icone: "🍬", titulo: "SUGARBO" }, "config-equipe": { icone: "⚙️", titulo: "Configuração da Equipe" }, "config-estrato": { icone: "🗺️", titulo: "Configuração do Estrato" }, "lancamentos": { icone: "📝", titulo: "Lançamentos Diários" }, "resumo": { icone: "📊", titulo: "Resumo da Semana" }, "ciclo": { icone: "🔄", titulo: "Resumo do Ciclo" }, "producao-individual": { icone: "👤", titulo: "Produção Individual" }, "quarteiroes-designados": { icone: "🧱", titulo: "Quarteirões Designados" }, "fad7": { icone: "📋", titulo: "FAD 7" }, "relatorio-campo": { icone: "📄", titulo: "Relatório de Campo" } };
+          const MAPA = { "dashboard": { icone: "📈", titulo: "Dashboard" }, "sugarbo": { icone: "🍬", titulo: "SUGARBO" }, "config-equipe": { icone: "⚙️", titulo: "Configuração da Equipe" }, "config-estrato": { icone: "🗺️", titulo: "Configuração do Estrato" }, "lancamentos": { icone: "📝", titulo: "Lançamentos Diários" }, "resumo": { icone: "📊", titulo: "Resumo da Semana" }, "ciclo": { icone: "🔄", titulo: "Resumo do Ciclo" }, "producao-individual": { icone: "👤", titulo: "Produção Individual" }, "quarteiroes-designados": { icone: "🧱", titulo: "Quarteirões Designados" }, "resumo-reconhecimento": { icone: "🗺️", titulo: "Resumo de reconhecimento" }, "fad7": { icone: "📋", titulo: "FAD 7" }, "relatorio-campo": { icone: "📄", titulo: "Relatório de Campo" } };
           function alternarAba(id) {
             if (!MAPA[id]) id = "lancamentos"; const m = MAPA[id];
             const iE = document.getElementById("menuDropdownIcone"), nE = document.getElementById("menuDropdownNome"), bE = document.getElementById("navStatusBadge");
@@ -3856,6 +4589,7 @@
             if (id === "config-estrato") { renderizarConfigEstrato(); }
             if (id === "producao-individual") { renderizarProducaoIndividual(); }
             if (id === "quarteiroes-designados") { renderizarQuarteiroesDesignados(); }
+            if (id === "resumo-reconhecimento") { renderizarResumoReconhecimento(); }
             if (id === "fad7") { if (estado.atividadeAtiva !== "liraa") { const s = semana(); const an = obterAnoSemana(s); const c = normalizarNumeroCiclo(s?.cabecalho?.ciclo || "1"); estado.atividadeAtiva = "liraa"; if (!estado.semanasLiraa) estado.semanasLiraa = {}; if (!estado.semanasLiraa[String(estado.semanaAtiva)]) { const p = obterPeriodoDaSemana(estado.semanaAtiva, an, c, "liraa"); estado.semanasLiraa[String(estado.semanaAtiva)] = criarSemana(p.inicioISO, String(estado.semanaAtiva), "liraa", c); } salvar(); renderizar(); atualizarTotais(); } renderizarFad7(); }
             if (id === "relatorio-campo") { renderizarRelatorioCampo(); }
             if (id === "dashboard") {
@@ -3910,8 +4644,48 @@
           const eDD = document.getElementById("dataDia"); if (eDD) eDD.addEventListener("change", e => { const d = diaAtual(); if (d) { d.data = e.target.value; if (!autoDetectarProgramacaoPorData(e.target.value, true)) { salvar(); renderizar(); atualizarTotais(); } } });
           const ePD = document.getElementById("programadosDia");
           if (ePD) {
-            ePD.addEventListener("input", e => { const d = diaAtual(); if (d) { d.programados = e.target.value; atualizarEstadoCampoProg(); salvar(); renderizarResumo(); renderizarCiclo(); } });
-            ePD.addEventListener("blur", () => { const d = diaAtual(); if (d) { const v = ePD.value.trim(); if (v === "") { ePD.value = ""; } else { const n = Math.max(0, Math.trunc(Number(v) || 0)); ePD.value = String(n); d.programados = String(n); } atualizarEstadoCampoProg(); salvar(); } });
+            ePD.addEventListener("click", () => {
+              if (!diaEstaConfirmado()) {
+                abrirModalConfirmacaoData();
+              }
+            });
+            ePD.addEventListener("keydown", (e) => {
+              if (!diaEstaConfirmado() && e.key !== "Tab" && e.key !== "Escape") {
+                e.preventDefault();
+                alert("⚠️ Confirme primeiro a data no banner antes de preencher o campo 👥 Prog. (programados).");
+                abrirModalConfirmacaoData();
+              }
+            });
+            ePD.addEventListener("input", e => {
+              if (!diaEstaConfirmado()) {
+                e.target.value = "";
+                abrirModalConfirmacaoData();
+                return;
+              }
+              const d = diaAtual();
+              if (d) {
+                d.programados = e.target.value;
+                atualizarEstadoCampoProg();
+                salvar();
+                renderizarResumo();
+                renderizarCiclo();
+              }
+            });
+            ePD.addEventListener("blur", () => {
+              const d = diaAtual();
+              if (d) {
+                const v = ePD.value.trim();
+                if (v === "") {
+                  ePD.value = "";
+                } else {
+                  const n = Math.max(0, Math.trunc(Number(v) || 0));
+                  ePD.value = String(n);
+                  d.programados = String(n);
+                }
+                atualizarEstadoCampoProg();
+                salvar();
+              }
+            });
           }
           const bAD = document.getElementById("btnAutoPreencherSemana"); if (bAD) bAD.addEventListener("click", autoPreencherDatasSemana);
           const bAA = document.getElementById("btnAdicionarAgente"); if (bAA) bAA.addEventListener("click", adicionarAgente);
@@ -3919,7 +4693,7 @@
           document.querySelectorAll("[data-rodape]").forEach(inp => inp.addEventListener("input", () => { const s = semana(); if (s?.rodape) s.rodape[inp.dataset.rodape] = inp.value; if (estado.configEquipe && inp.dataset.rodape === "responsavel") estado.configEquipe.responsavel = inp.value; salvar(); renderizarConfigEquipe(); }));
           document.querySelectorAll("[data-ciclocab]").forEach(inp => inp.addEventListener("input", () => { if (!estado.ciclo.cabecalho) estado.ciclo.cabecalho = {}; estado.ciclo.cabecalho[inp.dataset.ciclocab] = inp.value; if (estado.configEquipe && ["bairro","estrato","equipe","supervisor"].includes(inp.dataset.ciclocab)) estado.configEquipe[inp.dataset.ciclocab] = inp.value; salvar(); renderizarConfigEquipe(); }));
           document.querySelectorAll("[data-ciclorodape]").forEach(inp => inp.addEventListener("input", () => { if (!estado.ciclo.rodape) estado.ciclo.rodape = {}; estado.ciclo.rodape[inp.dataset.ciclorodape] = inp.value; if (estado.configEquipe && inp.dataset.ciclorodape === "responsavel") estado.configEquipe.responsavel = inp.value; salvar(); renderizarConfigEquipe(); }));
-          configurarListenersConfigEquipe(); configurarListenersConfigEstrato(); configurarListenersFad7(); configurarListenersRelatorioCampo(); instalarNavegacaoSetas(); configurarDashboard();
+          configurarListenersConfigEquipe(); configurarListenersConfigEstrato(); configurarListenersResumoReconhecimento(); configurarListenersFad7(); configurarListenersRelatorioCampo(); instalarNavegacaoSetas(); configurarDashboard();
           document.querySelectorAll(".font-assinatura-select").forEach(sel => sel.addEventListener("change", () => aplicarFonteAssinatura(sel)));
           sincronizarFontesAssinatura();
           const bOC = document.getElementById("btnCorrigirSemana"); if (bOC) bOC.addEventListener("click", abrirModalCorrecao);
